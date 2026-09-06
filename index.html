@@ -1199,6 +1199,87 @@
       border-color: var(--accent-blue);
     }
 
+    /* Interactive Lens Perspective Panel */
+    .lens-perspective-panel {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-top: 0.9rem;
+      animation: fadeIn 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    [data-theme="light"] .lens-perspective-panel {
+      background: #f8fafc;
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+    .lens-perspective-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.25);
+      padding-bottom: 0.5rem;
+    }
+    .lens-perspective-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .lens-perspective-badge {
+      font-size: 0.75rem;
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--accent-blue);
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .lens-perspective-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    .lens-perspective-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-blue);
+    }
+    [data-theme="light"] .lens-perspective-item {
+      background: #ffffff;
+      border-color: var(--accent-blue);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .lens-perspective-item strong {
+      color: var(--accent-cyan);
+    }
+    [data-theme="light"] .lens-perspective-item strong {
+      color: #0284c7;
+    }
+
+    /* Scene Card Lens Highlighting (Never Hides Other Scenes) */
+    .scene-card.lens-highlight-card {
+      border-color: var(--accent-blue) !important;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.18) !important;
+    }
+    .scene-card.lens-highlight-card .scene-category-pill {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent-cyan);
+      border-color: var(--accent-blue);
+    }
+    .scene-card.lens-highlight-card .user-gear-box {
+      border-color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
     /* Scene Card User Gear Recommendation Box */
     .user-gear-box {
       background: rgba(34, 211, 238, 0.08);
@@ -1366,11 +1447,11 @@
           </button>
         </div>
 
-        <!-- Section 1: 專屬鏡頭庫 (點擊直接篩選適拍題材) -->
+        <!-- Section 1: 專屬鏡頭庫 (點擊查看各題材實戰視角與打法，絕不隱藏場景) -->
         <div class="gear-section-block">
           <div class="gear-section-title">
             <span>🔭 我的專屬鏡頭庫（4 顆）</span>
-            <span class="hint-text">👉 點擊鏡頭可<strong>直接篩選「能拍什麼題材」</strong>；點右側按鈕才跳景深計算機</span>
+            <span class="hint-text">👉 點擊鏡頭可查看<strong>「此鏡頭在各題材的實戰視角與站位打法」</strong>（所有場景皆保留顯示，不予隱藏）；點右側按鈕套入景深計算機</span>
           </div>
           <div class="gear-chip-list">
             <!-- 16-35 GM -->
@@ -1382,7 +1463,7 @@
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(16, 2.8);" title="套入景深計算機">🧮 算景深</button>
                 </div>
                 <span class="lens-sub">🎯 <strong>甜區：</strong>f/4.0–f/5.6 · 📐 <strong>最短對焦：</strong>0.28m (0.19x) · ✨ <strong>星芒：</strong>f/11–f/14 (22道針芒)</span>
-                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">銀河星空 / 極光大景 / 建築室內 / 瀑布閃電 (13 個題材)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">大景張力 · 建築透視 · 璀璨星空 · 水岸仰拍煙火</span>
               </div>
             </div>
 
@@ -1395,7 +1476,7 @@
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(50, 7.1);" title="套入景深計算機">🧮 算景深</button>
                 </div>
                 <span class="lens-sub">🎯 <strong>甜區：</strong>f/4.0–f/5.6 · 📐 <strong>最短對焦：</strong>0.21m(廣)/0.30m(望) (<strong>0.32x強近攝</strong>) · ✨ <strong>星芒：</strong>f/11–f/14 (22道無洋蔥圈)</span>
-                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">團體合照 / 街拍人文 / 靜物美食 / 博物館花海 (15 個題材)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">萬用掛機 · 0.21m微距近攝 · 晨昏街拍 · 碼頭全景煙火</span>
               </div>
             </div>
 
@@ -1408,7 +1489,7 @@
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(200, 2.8);" title="套入景深計算機">🧮 算景深</button>
                 </div>
                 <span class="lens-sub">🎯 <strong>甜區：</strong>f/4.0–f/5.6 (200端收至<strong>f/5.6</strong>巔峰畫質) · 📐 <strong>最短對焦：</strong>0.96m (0.25x) · ✨ <strong>星芒：</strong>f/11–f/14</span>
-                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">長焦人像空氣切割 / 航空鐵道 / 舞台飛羽 / 櫻花花海 (11 個題材)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">長焦空間壓縮 · 空氣切割人像 · 賽車飛羽 · 遠距地標煙火特寫</span>
               </div>
             </div>
 
@@ -1421,9 +1502,14 @@
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(55, 1.8);" title="套入景深計算機">🧮 算景深</button>
                 </div>
                 <span class="lens-sub">🎯 <strong>甜區：</strong>f/2.8–f/4.0 (蔡司刀鋒銳利) · 📐 <strong>最短對焦：</strong>0.50m (0.14x) · ✨ <strong>星芒：f/8–f/11</strong> (<strong>f/8即可成形！</strong>18道璀璨光芒)</span>
-                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">F1.8微光夜景之王 / 螢火蟲 / 博物館暗光 / 糖水人像 (8 個題材)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">F1.8微光夜景之王 · 螢火蟲 · 博物館暗光 · 細緻如絲煙火</span>
               </div>
             </div>
+          </div>
+
+          <!-- Dynamic Lens Perspective Panel -->
+          <div id="lensPerspectivePanel" class="lens-perspective-panel">
+            <!-- Populated dynamically via JS -->
           </div>
         </div>
 
@@ -1866,17 +1952,23 @@
         </article>
 
         <!-- Scene: 煙火施放 -->
-        <article class="scene-card" data-category="astro landscape" data-lenses="16-35 24-70" data-filters="cpl" data-tags="煙火 疊圖 變亮疊圖 多張合成 快門線 ISO100 小光圈 16-35mm 24-70mm CPL">
+        <article class="scene-card" data-category="astro landscape" data-lenses="16-35 24-70 70-200 55" data-filters="cpl" data-tags="煙火 疊圖 變亮疊圖 多張合成 快門線 ISO100 小光圈 16-35mm 24-70mm 70-200mm 55mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🎆 璀璨煙火與城市夜景 (現代數位疊圖流)</h2>
               <div class="user-gear-box">
                 <div class="user-gear-box-title">
-                  <span>🎯 您的裝備最佳拍法</span>
-                  <span class="lens-pick">首選：16-35 GM 或 24-70 GM II</span>
+                  <span>🎯 您的裝備最佳拍法（各鏡頭實戰視角攻略）</span>
+                  <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
                 </div>
                 <div class="user-gear-box-content">
-                  完全<strong>棄用傳統易手震的搖黑卡</strong>！利用 16-35 GM（近距離大景）或 24-70 GM II（中遠距特寫），光圈固定在甜區 <strong>f/8–f/11</strong>、快門設為 <strong>2~4 秒</strong>、ISO 100。每發煙火單獨拍攝，回電腦使用 Photoshop <strong>「變亮 (Lighten)」</strong>混合模式疊圖，煙霧零累積、花火自由挑選組合！
+                  <div style="margin-bottom: 0.45rem;">完全<strong>棄用傳統易手震的搖黑卡</strong>！固定光圈甜區 <strong>f/8–f/11</strong>、快門設為 <strong>2~4 秒</strong>、ISO 100。每發煙火單獨拍攝，回電腦使用 Photoshop <strong>「變亮 (Lighten)」</strong>混合模式疊圖，煙霧零累積、花火自由挑選組合！</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>16-35 GM（近距離·仰拍大景）</strong>：水岸第一排、河堤橋下仰拍，包攬水面倒影、近處人群地景與全天際炸開的巨型煙火。</div>
+                    <div>🔭 <strong>24-70 GM II（中距離·標準均衡）</strong>：碼頭草坪、高樓陽台，靈活調配 24~70mm 焦段，取得城市天際線與煙火的黃金比例。</div>
+                    <div>🔭 <strong>70-200 GM（遠距離·空間壓縮）</strong>：登上象山、碧山巖或遠方制高點，長焦強力壓縮將數公里外的台北 101/地標建築與高空煙火「緊密壓平」特寫！</div>
+                    <div>🔭 <strong>55mm F1.8 ZA（定焦·極致細緻）</strong>：中遠距定點，蔡司刀鋒銳利微反差，收至 f/8 描繪最細如金絲的花火線條。</div>
+                  </div>
                 </div>
               </div>
               <p class="scene-desc">棄用傳統易晃動的搖黑卡！採用現代「單發乾淨拍 ➔ 後製變亮堆疊 (Lighten Blending)」，煙霧零干擾、完美掌控構圖。</p>
@@ -1904,10 +1996,10 @@
           </div>
 
           <div class="gear-list">
+            <span class="gear-tag">🔭 16-35mm (近距大景) / 24-70mm (中距標準) / 70-200mm (遠距壓縮) / 55mm (極致細節) 皆可拍</span>
             <span class="gear-tag">📐 穩固重型三腳架</span>
-            <span class="gear-tag">⏱️ 定時電子快門線</span>
+            <span class="gear-tag">⏱️ 電子定時快門線 (防震必備)</span>
             <span class="gear-tag">💻 現代「變亮 (Lighten)」疊圖技術 (取代黑卡)</span>
-            <span class="gear-tag">🔭 16-35mm 或 24-70mm 變焦鏡</span>
           </div>
 
           <div class="pro-rules">
@@ -1922,20 +2014,24 @@
         </article>
 
         <!-- Scene: 瀑布流水與絲絹水感 -->
-        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70" data-filters="cpl nd8" data-tags="瀑布 流水 慢快門 絲絹 減光鏡 ND鏡 CPL 偏光鏡 腳架 16-35mm 24-70mm ND8">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70 70-200" data-filters="cpl nd8" data-tags="瀑布 流水 慢快門 絲絹 減光鏡 ND鏡 CPL 偏光鏡 腳架 16-35mm 24-70mm 70-200mm ND8 CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌊 瀑布溪流與綿密絲絹水感</h2>
-          <div class="user-gear-box">
-            <div class="user-gear-box-title">
-              <span>🎯 您的裝備最佳拍法</span>
-              <span class="lens-pick">首選：16-35 GM 或 24-70 GM II + 82mm CPL/ND</span>
-            </div>
-            <div class="user-gear-box-content">
-              您手頭已有 <strong>82mm CPL 與 82mm ND8</strong>！直接鎖在 16-35 GM 或 24-70 GM II 上。在陰天或溪流林蔭下，原本約 1/30s 的快門裝上 ND8 後剛好降至 <strong>1/4 秒黃金絲絹水感</strong>！若水流光線仍偏亮，可將 <strong>CPL 疊在 ND8 上</strong>（總共約減 4.5 檔），快門直接進入 0.4s ~ 1s 的綿密絲流領域！
-            </div>
-          </div>
-
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
+                  <span class="lens-pick">3 鏡皆可針對距離選用</span>
+                </div>
+                <div class="user-gear-box-content">
+                  <div style="margin-bottom: 0.45rem;">利用手頭的 <strong>82mm CPL 與 82mm ND8</strong>（70-200mm 加 77→82mm 轉接環共用），在陰天或溪流林蔭下，裝上 ND8 剛好減 3 檔降至 <strong>1/4 秒黃金絲絹水感</strong>；強光下將 <strong>CPL 疊在 ND8 上</strong>（減約 4.5 檔），快門直接進入 0.4s ~ 1s 的綿密絲流領域：</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>16-35 GM（深潭前景大景）</strong>：廣角端逼近眼前巨石與深潭水花（最近對焦 0.28m），由近至遠張力深邃。</div>
+                    <div>🔭 <strong>24-70 GM II（萬用標準構圖）</strong>：中距靈活拿捏瀑布全貌與兩側林蔭綠葉的構圖比例。</div>
+                    <div>🔭 <strong>70-200 GM（高處懸瀑特寫）</strong>：長焦空間壓縮，特寫高聳懸崖上飛流直下的水花細絲，避開周遭雜亂枝葉。</div>
+                  </div>
+                </div>
+              </div>
               <p class="scene-desc">慢速快門將奔騰水花化為柔順白絹，CPL 消除濕滑岩石反光。</p>
             </div>
             <span class="scene-category-pill">風景經典</span>
@@ -1955,15 +2051,16 @@
               <span class="param-value">ISO 50 – 100</span>
             </div>
             <div class="param-extra">
-              <span>👓 <strong>必備濾鏡：</strong>CPL 圓形偏光鏡 + ND8 / ND16 / ND64 減光鏡</span>
-              <span>⏱️ <strong>快門釋放：</strong>設定 2 秒自拍倒數計時（防手按震動）</span>
+              <span>👓 <strong>必備濾鏡：</strong>82mm CPL 圓形偏光鏡 + 82mm ND8 減光鏡</span>
+              <span>⏱️ <strong>快門釋放：</strong>使用電子快門線或 2 秒延遲自拍（杜絕手震）</span>
             </div>
           </div>
 
           <div class="gear-list">
+            <span class="gear-tag">🔭 16-35mm (深潭大景) / 24-70mm (萬用均衡) / 70-200mm (高處懸瀑特寫)</span>
             <span class="gear-tag">📐 碳纖維三腳架</span>
-            <span class="gear-tag">👓 CPL 偏光鏡 (轉動消除水面反光)</span>
-            <span class="gear-tag">🕶️ ND8 / ND64 減光鏡</span>
+            <span class="gear-tag">⏱️ 電子定時快門線</span>
+            <span class="gear-tag">👓 82mm CPL 偏光鏡 + 🕶️ 82mm ND8 減光鏡</span>
             <span class="gear-tag">🧻 鏡頭專用吸水拭鏡布 (防瀑布水霧)</span>
           </div>
 
@@ -1980,10 +2077,25 @@
         </article>
 
         <!-- Scene: 晨昏日出日落 / 藍調時刻 -->
-        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70 70-200" data-filters="cpl" data-tags="晨昏 日出 日落 藍調 星芒 HDR 包圍曝光 GND 16-35mm 24-70mm 70-200mm CPL">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70 70-200 55" data-filters="cpl" data-tags="晨昏 日出 日落 藍調 星芒 HDR 包圍曝光 GND 16-35mm 24-70mm 70-200mm 55mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌅 晨昏日落與極致藍調時刻 (Blue Hour)</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
+                  <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
+                </div>
+                <div class="user-gear-box-content">
+                  <div style="margin-bottom: 0.45rem;">Sony A7R3 擁有 15 檔高動態範圍，搭配<strong>定時電子快門線</strong>開啟 <strong>AEB 自動包圍曝光（3~5張，間隔 2EV）</strong>，回電腦以亮度遮罩 (Luminosity Masking) 融合，徹底告別傳統搖黑卡與漸變鏡邊界壓痕：</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>16-35 GM（浩瀚大景）</strong>：容納全天際絢麗彩霞、火燒雲與大地水面倒影，f/11~f/13 展現 22 道鋒利太陽星芒。</div>
+                    <div>🔭 <strong>24-70 GM II（黃金標準）</strong>：最靈活的萬用晨昏構圖，地景建築與夕陽比例完美均衡。</div>
+                    <div>🔭 <strong>70-200 GM（遠山與巨日特寫）</strong>：長焦空間壓縮，將遠方山巒剪影、層疊雲海與初升/落下的火球特寫放大，宛如潑墨國畫！</div>
+                    <div>🔭 <strong>55mm F1.8 ZA（蔡司純淨）</strong>：定焦極致微反差，收至 f/8~f/10 即可展現 18 道純淨星芒，避開 A7R3 繞射軟化。</div>
+                  </div>
+                </div>
+              </div>
               <p class="scene-desc">掌握日落前後黃金半小時光線變化，拍出耀眼太陽星芒與高動態範圍。</p>
             </div>
             <span class="scene-category-pill">大景風光</span>
@@ -2009,9 +2121,10 @@
           </div>
 
           <div class="gear-list">
-            <span class="gear-tag">📐 三腳架</span>
-            <span class="gear-tag">🕶️ GND 漸變減光鏡 (平衡天空與地景大光比)</span>
-            <span class="gear-tag">🔭 廣角鏡頭 (16-35mm)</span>
+            <span class="gear-tag">🔭 16-35mm (浩瀚大景) / 24-70mm (標準均衡) / 70-200mm (遠山巨日特寫) / 55mm 皆可拍</span>
+            <span class="gear-tag">📐 重型穩固三腳架</span>
+            <span class="gear-tag">⏱️ 電子定時快門線 (AEB 連拍必備)</span>
+            <span class="gear-tag">👓 82mm CPL 偏光鏡 (轉動增強霞光雲彩對比)</span>
           </div>
 
           <div class="pro-rules">
@@ -2026,10 +2139,25 @@
         </article>
 
         <!-- Scene: 城市夜景與車流光軌 -->
-        <article class="scene-card" data-category="landscape astro" data-lenses="16-35 24-70" data-filters="nd8" data-tags="城市夜景 車軌 光軌 慢快門 藍調 腳架 小光圈 16-35mm 24-70mm ND8">
+        <article class="scene-card" data-category="landscape astro" data-lenses="16-35 24-70 70-200 55" data-filters="nd8" data-tags="城市夜景 車軌 光軌 慢快門 藍調 腳架 小光圈 16-35mm 24-70mm 70-200mm 55mm ND8">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🚗 城市夜景與車流光軌 (Light Trails)</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
+                  <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
+                </div>
+                <div class="user-gear-box-content">
+                  <div style="margin-bottom: 0.45rem;">利用 Sony A7R3 在日落後 20–35 分鐘的「藍調時刻」開拍，關閉防手震，搭配<strong>電子快門線</strong>釋放快門：</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>16-35 GM（超廣天橋俯拍）</strong>：站位在路口天橋或圓環俯拍，放射狀超廣車軌穿透整個畫面，張力極強。</div>
+                    <div>🔭 <strong>24-70 GM II（繁華街區標準）</strong>：經典標準視角，拿捏大樓燈火天際線與地面車流的光芒平衡。</div>
+                    <div>🔭 <strong>70-200 GM（遠距高架橋壓縮）</strong>：登上遠處高樓或制高點，長焦強力壓縮將多層高架橋交織的車流壓平成金色光毯！</div>
+                    <div>🔭 <strong>55mm F1.8 ZA（蔡司 18 道星芒之王）</strong>：收縮至 <strong>f/8–f/10</strong> 即可展現極度尖銳的 18 道路燈星芒，且避開 f/16 繞射軟化！</div>
+                  </div>
+                </div>
+              </div>
               <p class="scene-desc">慢速曝光將穿梭車潮化作紅色尾燈與白色頭燈的金色絲帶。</p>
             </div>
             <span class="scene-category-pill">夜色風華</span>
@@ -2055,9 +2183,9 @@
           </div>
 
           <div class="gear-list">
+            <span class="gear-tag">🔭 16-35mm (超廣張力) / 24-70mm (標準街景) / 70-200mm (長焦車流壓縮) / 55mm (星芒之王)</span>
             <span class="gear-tag">📐 重心穩定的三腳架</span>
-            <span class="gear-tag">🔭 廣角至中焦變焦 (24-105mm)</span>
-            <span class="gear-tag">⏱️ 定時快門線</span>
+            <span class="gear-tag">⏱️ 電子定時快門線 (防震長曝)</span>
           </div>
 
           <div class="pro-rules">
@@ -2249,10 +2377,25 @@
         </article>
 
         <!-- Scene: 建築外觀與室內空間 -->
-        <article class="scene-card" data-category="landscape" data-lenses="16-35" data-filters="cpl" data-tags="建築 室內 橫平豎直 透視校正 偏光鏡 廣角 畸變 16-35mm CPL">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70 70-200 55" data-filters="cpl" data-tags="建築 室內 橫平豎直 透視校正 偏光鏡 廣角 畸變 16-35mm 24-70mm 70-200mm 55mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏛️ 建築外觀與室內空間空間感</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
+                  <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
+                </div>
+                <div class="user-gear-box-content">
+                  <div style="margin-bottom: 0.45rem;">開啟機身電子水平儀嚴格校正垂直線，搭配 <strong>82mm CPL</strong> 消除玻璃帷幕雜光：</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>16-35 GM（挑高空間透視）</strong>：室內展廳與挑高大廳必備，極限廣角展現磅礡空間感，相機務必保持俯仰 0 度防變形。</div>
+                    <div>🔭 <strong>24-70 GM II（標準外觀幾何）</strong>：退後至中距離拍攝建築立面，24~50mm 線條自然工整。</div>
+                    <div>🔭 <strong>70-200 GM（局部幾何極簡）</strong>：長焦空間壓縮，特寫高樓頂部玻璃帷幕幾何反光、屋簷結構光影，拍出極簡幾何大作！</div>
+                    <div>🔭 <strong>55mm F1.8 ZA（蔡司真實還原）</strong>：定焦低畸變與高反差，真實記錄石材、木質與建築構件細節。</div>
+                  </div>
+                </div>
+              </div>
               <p class="scene-desc">嚴格維持水平與垂直線條，展現空間結構的純粹對稱與幾何張力。</p>
             </div>
             <span class="scene-category-pill">建築空間</span>
@@ -2273,14 +2416,14 @@
             </div>
             <div class="param-extra">
               <span>📐 <strong>核心鐵律：</strong>開啟電子水平儀，相機嚴格維持「水平」與「俯仰 0 度」避免垂直透視變形</span>
-              <span>👓 <strong>偏光鏡：</strong>轉動 CPL 消除落地大窗戶與反光地板雜光</span>
+              <span>👓 <strong>偏光鏡：</strong>轉動 82mm CPL 消除落地大窗戶與反光地板雜光</span>
             </div>
           </div>
 
           <div class="gear-list">
-            <span class="gear-tag">🔭 14-24mm 超廣角鏡 / 移軸鏡頭 (Tilt-Shift)</span>
-            <span class="gear-tag">📐 齒輪微調雲台 (Gear Head) 三腳架</span>
-            <span class="gear-tag">👓 圓形 CPL 偏光鏡</span>
+            <span class="gear-tag">🔭 16-35mm (空間透視) / 24-70mm (標準幾何) / 70-200mm (極簡局部) / 55mm (真實還原)</span>
+            <span class="gear-tag">📐 重心穩定的三腳架</span>
+            <span class="gear-tag">👓 82mm CPL 偏光鏡 (消玻璃反光)</span>
           </div>
 
           <div class="pro-rules">
@@ -2563,17 +2706,23 @@
         </article>
 
         <!-- Scene 22: 櫻花、楓葉與花卉花海 -->
-        <article class="scene-card" data-category="landscape portrait" data-lenses="70-200 24-70 55" data-filters="cpl" data-tags="櫻花 楓葉 花卉 花海 逆光 透光 散景 壓縮感 曝光補償 70-200mm 24-70mm 55mm CPL">
+        <article class="scene-card" data-category="landscape portrait" data-lenses="70-200 24-70 55 16-35" data-filters="cpl" data-tags="櫻花 楓葉 花卉 花海 逆光 透光 散景 壓縮感 曝光補償 70-200mm 24-70mm 55mm 16-35mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌸 櫻花、楓葉與花卉花海 (Cherry Blossoms & Foliage)</h2>
               <div class="user-gear-box">
                 <div class="user-gear-box-title">
-                  <span>🎯 您的裝備最佳拍法</span>
-                  <span class="lens-pick">首選：FE 70-200mm GM / 82mm CPL</span>
+                  <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
+                  <span class="lens-pick">4 顆鏡頭皆有專屬打法</span>
                 </div>
                 <div class="user-gear-box-content">
-                  花海拍攝第一神器就是 <strong>70-200mm GM</strong>！用 135mm~200mm 端從下往上仰拍，利用長焦強大壓縮感將散落的花簇層層疊加成繁花茂密的視覺震撼，同時徹底虛化地面的垃圾桶與雜亂遊客。裝上 <strong>82mm CPL</strong> 轉動消除葉面反光，綠葉與紅楓色彩立現濃郁飽和！
+                  <div style="margin-bottom: 0.45rem;">拍花海重視透光與層次，善用<strong>「逆光/側逆光」</strong>讓陽光穿透花瓣，並搭配 <strong>82mm CPL</strong> 消除葉面反光：</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>70-200 GM（長焦壓縮爆框）</strong>：135~200mm 仰拍，將散落花簇層層壓縮成繁花茂密的視覺震撼，徹底虛化地面遊客。</div>
+                    <div>🔭 <strong>24-70 GM II（0.21m 近攝微距）</strong>：70mm 端最近對焦僅 21cm (0.32x)，免換微距鏡直接拍攝花蕊露珠特寫與人花合影。</div>
+                    <div>🔭 <strong>55mm F1.8 ZA（微光奶油散景）</strong>：f/1.8 大光圈帶來柔美光斑，蔡司微反差呈現花瓣晶瑩剔透的水晶發光感。</div>
+                    <div>🔭 <strong>16-35 GM（櫻花大道仰拍）</strong>：走進林蔭大道超廣仰拍，盛開花枝如巨幕般遮蔽天空，震撼張力十足！</div>
+                  </div>
                 </div>
               </div>
               <p class="scene-desc">利用長焦壓縮花瓣密度，善用逆光透光質感，拍出粉嫩透亮的晶瑩花景。</p>
@@ -2601,8 +2750,8 @@
           </div>
 
           <div class="gear-list">
-            <span class="gear-tag">🔭 70-200mm 望遠變焦 (長焦壓縮)</span>
-            <span class="gear-tag">👓 CPL 偏光鏡 (消葉面蠟質反光)</span>
+            <span class="gear-tag">🔭 70-200mm (壓縮爆框) / 24-70mm (0.21m近攝) / 55mm (奶油散景) / 16-35mm (花道仰拍)</span>
+            <span class="gear-tag">👓 82mm CPL 偏光鏡 (轉動消除葉面反光)</span>
             <span class="gear-tag">💡 小型反光板 / 白色雨傘補面光</span>
           </div>
 
@@ -2669,17 +2818,23 @@
         </article>
 
         <!-- Scene 24: 閃電暴風與雷雨夜空 -->
-        <article class="scene-card" data-category="landscape astro" data-lenses="16-35 24-70" data-filters="nd8" data-tags="閃電 疊圖 變亮疊圖 雷雨 暴風雨 長曝 B門 夜景 減光鏡 16-35mm 24-70mm ND8">
+        <article class="scene-card" data-category="landscape astro" data-lenses="16-35 24-70 70-200" data-filters="nd8" data-tags="閃電 疊圖 變亮疊圖 雷雨 暴風雨 長曝 B門 夜景 減光鏡 16-35mm 24-70mm 70-200mm ND8">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>⚡ 閃電暴風與雷雨夜空 (Lightning & Thunderstorms)</h2>
               <div class="user-gear-box">
                 <div class="user-gear-box-title">
-                  <span>🎯 您的裝備最佳拍法</span>
-                  <span class="lens-pick">首選：FE 16-35mm GM / 82mm ND8</span>
+                  <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
+                  <span class="lens-pick">3 鏡皆可針對距離選用</span>
                 </div>
                 <div class="user-gear-box-content">
-                  使用 <strong>16-35mm GM</strong> 廣角端涵蓋大面積積雨雲放電區域。雷電本身爆發亮度極強，光圈縮至 <strong>f/8 – f/11</strong> 既能壓制閃電過曝，又能確保地景建築處於全畫面最銳利景深範圍！白天雷雨若想長曝捕捉閃電，掛上 <strong>82mm ND8</strong> 即可拉出 1/2s~1s 長曝等待雷擊。
+                  <div style="margin-bottom: 0.45rem;">雷電爆發瞬間極亮，光圈縮至甜區 <strong>f/8 – f/11</strong>、ISO 100，搭配<strong>電子快門線</strong>設定間隔定時連拍（每張 10~20 秒）：</div>
+                  <div style="font-size: 0.82rem; line-height: 1.6; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 0.4rem;">
+                    <div>🔭 <strong>16-35 GM（超廣大範圍覆蓋）</strong>：涵蓋大面積積雨雲放電區域，守株待兔捕捉橫跨半個天空的巨大枝狀閃電。</div>
+                    <div>🔭 <strong>24-70 GM II（城市天際線同框）</strong>：標準視角，將市區摩天大樓、跨海大橋與雷擊緊湊收納於同一構圖。</div>
+                    <div>🔭 <strong>70-200 GM（安全遠距特寫）</strong>：在安全的室內或數公里外，利用長焦壓縮特寫遠方山頭或積雨雲核心放電細節，既安全又震撼！</div>
+                    <div>🕶️ <strong>82mm ND8 減光鏡</strong>：白天雷雨閃電長曝必備，減 3 檔可拉出 1/2s~2s 曝光時間等待雷擊。</div>
+                  </div>
                 </div>
               </div>
               <p class="scene-desc">利用長曝讓雷電自行曝光在感光元件上，安全第一捕捉大自然的極限能量。</p>
@@ -2707,7 +2862,7 @@
           </div>
 
           <div class="gear-list">
-            <span class="gear-tag">🔭 超廣角變焦鏡 (16-35mm 大範圍覆蓋)</span>
+            <span class="gear-tag">🔭 16-35mm (超廣天際) / 24-70mm (地標同框) / 70-200mm (安全遠距特寫)</span>
             <span class="gear-tag">📐 重型防風腳架 + 有線快門線 (鎖定定時連拍)</span>
             <span class="gear-tag">🕶️ 82mm ND8 減光鏡 (白天雷雨長曝)</span>
             <span class="gear-tag">☔ 相機防雨罩 / 雨衣大毛巾</span>
@@ -3514,9 +3669,142 @@
         });
       }
 
-      // --- Gear Filter State (Lenses & Filters) ---
+      // --- Gear Filter & Perspective State (Lenses & Filters) ---
       let activeGearLens = null;   // '16-35' | '24-70' | '70-200' | '55'
       let activeGearFilter = null; // 'cpl' | 'nd8'
+
+      const lensPerspectiveData = {
+        'default': {
+          title: '💡 攝影大師心法：大三元 + 55定焦的「視角與距離」全題材哲學',
+          badge: '全焦段 16-200mm 覆蓋 · 零死角',
+          html: `<div style="font-size: 0.83rem; color: var(--text-main); line-height: 1.6;">
+            <strong>「煙火、晨昏、夜景或人像，從來沒有限定哪一顆鏡頭才能拍！」</strong>在真實攝影實戰中，鏡頭代表的是<strong>「構圖視角」與「站位距離」</strong>而非題材限制：想拍水岸第一排的浩瀚大景就用 <strong>16-35 GM</strong>；想在碼頭草坪彈性兼顧就用 <strong>24-70 GM II</strong>；想在數公里外（如象山或遠山）把地標建築與高空煙火緊密壓縮特寫就換 <strong>70-200 GM</strong>；想在暗光中獲得最細緻光柱與星芒就派 <strong>55mm F1.8 ZA</strong>。<br>
+            👉 <strong>點擊上方任一鏡頭</strong>，下方 25 個場景皆完整保留顯示（絕不隱藏），並為您標註該鏡頭在各場景中的站位距離與獨門視角！
+          </div>`
+        },
+        '16-35': {
+          title: '🔭 FE 16-35mm F2.8 GM 實戰視角與站位打法全解析',
+          badge: '廣角張力 · 宏大天地 · 空間深度',
+          html: `<div class="lens-perspective-grid">
+            <div class="lens-perspective-item">
+              <strong>🎆 煙火與車軌：近距離水岸仰拍大景</strong><br>
+              站位在水岸第一排、河堤或天橋上仰拍，包攬水面倒影、近處人群地景與全天際炸開的巨型煙火；圓環超廣放射車軌。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🌌 銀河星空與極光：光學進光天花板</strong><br>
+              16mm f/2.8 NPF 精算法則可達 14.5 秒安全快門，ISO 3200–6400 捕捉燦爛銀河拱橋與舞動極光大景。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🏞️ 瀑布流水與海岸：貼近前景深潭</strong><br>
+              超廣角貼近眼前溪石與湧浪（最近對焦 0.28m），搭配 82mm CPL 與 ND8 拉出絲絹水感與天地縱深。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🏛️ 建築與室內空間：挑高視野與透視</strong><br>
+              利用機身水平儀校正垂直線條，展現壯闊室內空間與宏偉外觀，防範邊緣透視畸變。
+            </div>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px dashed rgba(56, 189, 248, 0.2); padding-top: 0.4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>🎯 <strong>光學提醒：</strong>甜區 f/4.0–f/5.6（邊緣 f/5.6–f/8）· 廣角端邊緣避免放人臉 · 星芒 f/11–f/14 (22道針芒)</span>
+            <button class="clear-filter-btn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;" onclick="clearGearFilter()">✕ 恢復全視角概覽</button>
+          </div>`
+        },
+        '24-70': {
+          title: '🔭 FE 24-70mm F2.8 GM II 實戰視角與站位打法全解析',
+          badge: '萬用標準鏡皇 · 0.21m 微距近攝',
+          html: `<div class="lens-perspective-grid">
+            <div class="lens-perspective-item">
+              <strong>🎆 煙火與晨昏：中距離標準均衡視角</strong><br>
+              碼頭草坪、對岸高樓，在 24mm 到 70mm 之間自由變倍，精準拿捏城市天際線與高空花火的黃金比例。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>📦 美食靜物與微距：0.21m 超近攝利器</strong><br>
+              70mm 端最近對焦僅 21cm、放大率高達 0.32x（APS-C 裁切達 0.48x 微距），免換鏡頭即可拍攝商品花蕊細節。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>👨‍👩‍👧‍👦 團體合照與街拍：真實比例零畸變</strong><br>
+              35mm/50mm 端收至 f/7.1~f/8，前後 2~3 排全員睫毛清晰，杜絕超廣角邊緣人臉拉伸變形。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🏞️ 風景流水與海浪：82mm 濾鏡原生直上</strong><br>
+              與 16-35 GM 共用 82mm CPL 和 ND8，直上消反光與長曝拉絲；XA 極限非球面鏡片確保星芒光斑純淨無洋蔥圈。
+            </div>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px dashed rgba(56, 189, 248, 0.2); padding-top: 0.4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>🎯 <strong>光學提醒：</strong>甜區 f/4.0–f/5.6（全開即極致）· 70mm 近攝善用景深合成 · 星芒 f/11–f/14 (22道針芒)</span>
+            <button class="clear-filter-btn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;" onclick="clearGearFilter()">✕ 恢復全視角概覽</button>
+          </div>`
+        },
+        '70-200': {
+          title: '🔭 FE 70-200mm F2.8 GM 實戰視角與站位打法全解析',
+          badge: '望遠空間壓縮 · 空氣切割散景',
+          html: `<div class="lens-perspective-grid">
+            <div class="lens-perspective-item">
+              <strong>🎆 煙火與夜景：遠距空間壓縮</strong><br>
+              登上象山、碧山巖或彩虹河濱，將數公里外的台北 101 或地標建築與高空煙火「緊密壓平」特寫，視覺震撼力遠超廣角！高架橋車流壓縮如金色光毯。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🌅 晨昏日出日落：長焦巨日與遠山</strong><br>
+              利用 200mm 端將初升太陽或夕陽放大為巨大火球，層疊遠山雲海形成國畫般的水墨剪影，避開雜亂地景。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🏃 賽事、飛羽與鐵道：高速定格追焦</strong><br>
+              1/1600s+ 快門定格飛羽與賽車；A7R3 開啟 APS-C 模式變身 105-300mm f/2.8；列車搖鏡追焦切換至鏡頭 OSS Mode 2。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>👤 長焦人像與花海：空氣切割奶油散景</strong><br>
+              135mm~200mm 端帶來極致背景虛化與純淨度；櫻花楓葉花海遠距壓縮爆框，層次分明。
+            </div>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px dashed rgba(56, 189, 248, 0.2); padding-top: 0.4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>🎯 <strong>光學提醒：</strong>甜區 f/4.0–f/5.6（200端收至 f/5.6 畫質大幅躍升）· 星芒推薦 f/11–f/14（22道纖細芒）</span>
+            <button class="clear-filter-btn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;" onclick="clearGearFilter()">✕ 恢復全視角概覽</button>
+          </div>`
+        },
+        '55': {
+          title: '🔭 Sonnar T* FE 55mm F1.8 ZA 實戰視角與站位打法全解析',
+          badge: '蔡司微反差刀鋒 · 微光大光圈之王',
+          html: `<div class="lens-perspective-grid">
+            <div class="lens-perspective-item">
+              <strong>✨ 夜景街拍與車軌：f/8 即可成形的 18 道璀璨星芒</strong><br>
+              9 片圓形葉片在 f/8 就能射出極其耀眼的針狀星芒，完全不需要硬縮到 f/16，完美規避 A7R3 的繞射軟化！
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🌌 螢火蟲與暗光微光：f/1.8 巨大通光量</strong><br>
+              f/1.8 進光量比 f/2.8 大 1.33 檔，同 ISO 下能捕捉最微弱的流螢亮點，並將前景背景虛化為如夢似幻的光斑。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🏛️ 博物館水族館：禁用閃光燈與腳架的救星</strong><br>
+              微光室內展覽全開 f/1.8 壓低 ISO；近乎零畸變的純淨畫質真實還原文物與藝術品細節。
+            </div>
+            <div class="lens-perspective-item">
+              <strong>🎆 煙火與人像：極致純淨光絲與經典視角</strong><br>
+              中遠距離定點拍攝煙火，蔡司 T* 鍍膜極致抗眩光，描繪最純淨的花火線條；半身人像奶油散景過渡自然。
+            </div>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px dashed rgba(56, 189, 248, 0.2); padding-top: 0.4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>🎯 <strong>光學提醒：</strong>甜區 f/2.8–f/4.0 · 星芒 f/8–f/11（f/8即尖銳漂亮）· 最近對焦 0.50m 保持適當距離</span>
+            <button class="clear-filter-btn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;" onclick="clearGearFilter()">✕ 恢復全視角概覽</button>
+          </div>`
+        }
+      };
+
+      function updateLensPerspectivePanel(lensKey) {
+        const panel = document.getElementById('lensPerspectivePanel');
+        if (!panel) return;
+        const data = lensPerspectiveData[lensKey] || lensPerspectiveData['default'];
+        panel.innerHTML = `
+          <div class="lens-perspective-header">
+            <div class="lens-perspective-title">
+              <span>${data.title}</span>
+            </div>
+            <span class="lens-perspective-badge">${data.badge}</span>
+          </div>
+          ${data.html}
+        `;
+      }
+
+      // 初始化鏡頭面板
+      updateLensPerspectivePanel('default');
 
       window.toggleGearLensFilter = function(lensKey, lensName) {
         if (activeGearLens === lensKey) {
@@ -3534,6 +3822,9 @@
         document.querySelectorAll('.gear-chip[data-filter]').forEach(chip => {
           chip.classList.remove('active');
         });
+
+        // Update Lens Perspective Panel
+        updateLensPerspectivePanel(lensKey);
 
         // Show active notice banner
         const notice = document.getElementById('activeGearFilterNotice');
@@ -3567,6 +3858,9 @@
           chip.classList.remove('active');
         });
 
+        // Reset Lens Perspective Panel to default
+        updateLensPerspectivePanel('default');
+
         // Show active notice banner
         const notice = document.getElementById('activeGearFilterNotice');
         const icon = document.getElementById('activeFilterIcon');
@@ -3588,6 +3882,7 @@
         document.querySelectorAll('.gear-chip[data-lens], .gear-chip[data-filter]').forEach(chip => {
           chip.classList.remove('active');
         });
+        updateLensPerspectivePanel('default');
         const notice = document.getElementById('activeGearFilterNotice');
         if (notice) notice.style.display = 'none';
         filterScenes();
@@ -3651,30 +3946,47 @@
             }
           }
 
+          // 核心攝影邏輯修正：選擇鏡頭時「絕不隱藏任何場景」，保留全部 25 場景皆可看！
+          // 只有選擇實體濾鏡（CPL 或 ND8）時才進行場景篩選
           let matchesGear = true;
-          if (activeGearLens) {
-            matchesGear = lenses.includes(activeGearLens);
-          } else if (activeGearFilter) {
+          if (activeGearFilter) {
             matchesGear = filters.includes(activeGearFilter);
           }
 
           if (matchesSearch && matchesTag && matchesGear) {
             card.style.display = 'flex';
             visibleCount++;
+
+            // 當選取鏡頭時，若該卡片為該鏡頭強項主場則高亮標註，其餘場景亦完全正常顯示
+            if (activeGearLens) {
+              card.classList.toggle('lens-highlight-card', lenses.includes(activeGearLens));
+            } else {
+              card.classList.remove('lens-highlight-card');
+            }
           } else {
             card.style.display = 'none';
+            card.classList.remove('lens-highlight-card');
           }
         });
 
         // Update notice banner text
         const noticeText = document.getElementById('activeFilterText');
         if ((activeGearLens || activeGearFilter) && noticeText) {
-          const name = activeGearLens ? 
-            (activeGearLens === '16-35' ? 'FE 16-35mm F2.8 GM' : 
-             activeGearLens === '24-70' ? 'FE 24-70mm F2.8 GM II' :
-             activeGearLens === '70-200' ? 'FE 70-200mm F2.8 GM' : 'Sonnar T* FE 55mm F1.8 ZA') :
-            (activeGearFilter === 'cpl' ? '82mm CPL 偏光鏡' : '82mm ND8 減光鏡');
-          noticeText.innerHTML = `正在篩選<strong>【${name}】</strong>適拍題材（共找到 <strong>${visibleCount}</strong> 個場景）：`;
+          if (activeGearLens) {
+            const lensNames = {
+              '16-35': 'FE 16-35mm F2.8 GM (超廣角)',
+              '24-70': 'FE 24-70mm F2.8 GM II (標準鏡皇)',
+              '70-200': 'FE 70-200mm F2.8 GM (望遠長焦)',
+              '55': 'Sonnar T* FE 55mm F1.8 ZA (大光圈標頭)'
+            };
+            noticeText.innerHTML = `已開啟<strong>【${lensNames[activeGearLens] || activeGearLens}】</strong>視角導覽：下方全部 <strong>${visibleCount}</strong> 個場景皆完整保留顯示，並為您標註此鏡頭的「站位距離與視角打法」，不隱藏任何題材！`;
+          } else {
+            const filterNames = {
+              'cpl': '82mm CPL 偏光鏡',
+              'nd8': '82mm ND8 減光鏡'
+            };
+            noticeText.innerHTML = `正在篩選推薦使用<strong>【${filterNames[activeGearFilter] || activeGearFilter}】</strong>的實戰場景（共找到 <strong>${visibleCount}</strong> 個場景）：`;
+          }
         }
       }
 

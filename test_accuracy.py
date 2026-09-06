@@ -91,5 +91,8 @@ assert '4.51' in html
 assert '已備 電子定時快門線' in html
 assert '拍攝日食/日環食絕對安全紅線' in html
 assert '現代數位攝影核心流派：極限後製、多張疊圖' in html
+assert 'lensPerspectivePanel' in html, "Missing lens perspective panel"
+assert 'lens-highlight-card' in html, "Missing lens-highlight-card CSS/JS"
+assert 'data-lenses="16-35 24-70 70-200 55"' in html, "Fireworks, Sunrise, or Light Trails should support all 4 lenses"
 
 print("All 25 scenes, UI features, optical formulas, lens sweet spots, and gear filtering verified perfectly!")
