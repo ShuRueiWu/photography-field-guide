@@ -28,22 +28,76 @@
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     }
 
-    /* Light Theme */
+    /* Eye-Care Soft Light Theme (Anti-Glare Warm Tone / 柔光護眼暖調，徹底告別刺眼冷白) */
     [data-theme="light"] {
-      --bg-primary: #f8fafc;
-      --bg-secondary: #ffffff;
-      --bg-card: #f1f5f9;
-      --bg-card-hover: #e2e8f0;
-      --border-color: #cbd5e1;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --accent-blue: #0284c7;
-      --accent-cyan: #0891b2;
-      --accent-amber: #d97706;
-      --accent-emerald: #059669;
-      --accent-rose: #e11d48;
-      --accent-purple: #7c3aed;
-      --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      --bg-primary: #ece8e1;
+      --bg-secondary: #f6f3ed;
+      --bg-card: #dfd9ce;
+      --bg-card-hover: #d5cebf;
+      --border-color: #d0c9bb;
+      --text-main: #24272e;
+      --text-muted: #646a75;
+      --accent-blue: #0369a1;
+      --accent-cyan: #0e7490;
+      --accent-amber: #b45309;
+      --accent-emerald: #047857;
+      --accent-rose: #be123c;
+      --accent-purple: #6d28d9;
+      --danger: #dc2626;
+      --card-shadow: 0 4px 16px rgba(45, 38, 28, 0.08);
+    }
+
+    [data-theme="light"] .scene-card:hover {
+      border-color: rgba(3, 105, 161, 0.4);
+      box-shadow: 0 8px 24px rgba(45, 38, 28, 0.12);
+    }
+    [data-theme="light"] .my-gear-banner {
+      background: linear-gradient(135deg, rgba(3, 105, 161, 0.08), rgba(109, 40, 217, 0.08));
+      border-color: rgba(3, 105, 161, 0.25);
+      box-shadow: 0 4px 16px rgba(45, 38, 28, 0.06);
+    }
+    [data-theme="light"] .gear-tag {
+      background: rgba(180, 83, 9, 0.1);
+      border-color: rgba(180, 83, 9, 0.25);
+      color: #b45309;
+    }
+    [data-theme="light"] .pro-rules {
+      background: rgba(4, 120, 87, 0.08);
+      border-left-color: #047857;
+    }
+    [data-theme="light"] .pitfall-alert {
+      background: rgba(190, 18, 60, 0.08);
+      border-left-color: #be123c;
+    }
+    [data-theme="light"] .user-gear-box {
+      background: rgba(14, 116, 144, 0.08);
+      border-color: rgba(14, 116, 144, 0.25);
+    }
+    [data-theme="light"] .user-gear-box-title {
+      color: #0e7490;
+    }
+    [data-theme="light"] .user-gear-box-title .lens-pick {
+      background: rgba(14, 116, 144, 0.15);
+      color: #0e7490;
+    }
+    [data-theme="light"] .check-num-badge {
+      background: rgba(3, 105, 161, 0.1);
+      border-color: rgba(3, 105, 161, 0.25);
+      color: #0369a1;
+    }
+    [data-theme="light"] .check-item.completed {
+      background: rgba(4, 120, 87, 0.08);
+      border-color: rgba(4, 120, 87, 0.3);
+    }
+    [data-theme="light"] .check-item.completed .check-num-badge {
+      background: rgba(4, 120, 87, 0.15);
+      border-color: rgba(4, 120, 87, 0.35);
+      color: #047857;
+    }
+    [data-theme="light"] .tag-btn.active {
+      background: rgba(3, 105, 161, 0.12);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
     }
 
     /* Astro Red Night Mode (Preserves Dark Adaptation & Fireflies Safe) */
@@ -2740,15 +2794,19 @@
 
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (theme === 'red') {
           themeIcon.textContent = '🔴';
           themeLabel.textContent = '暗夜紅光';
+          if (metaTheme) metaTheme.setAttribute('content', '#170303');
         } else if (theme === 'light') {
           themeIcon.textContent = '☀️';
-          themeLabel.textContent = '亮色';
+          themeLabel.textContent = '柔光護眼';
+          if (metaTheme) metaTheme.setAttribute('content', '#f6f3ed');
         } else {
           themeIcon.textContent = '🌙';
           themeLabel.textContent = '深色';
+          if (metaTheme) metaTheme.setAttribute('content', '#181b24');
         }
       }
 
