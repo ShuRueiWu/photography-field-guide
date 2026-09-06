@@ -8,15 +8,19 @@ with open('/Users/sierra/Documents/photography-field-guide/index.html', 'r', enc
 # 1. Check Scene count
 scenes = re.findall(r'<article class="scene-card"', html)
 print(f"Total scene cards found: {len(scenes)}")
-assert len(scenes) == 20, f"Expected 20 scenes, got {len(scenes)}"
+assert len(scenes) == 24, f"Expected 24 scenes, got {len(scenes)}"
 
-assert '<span id="count-all">20</span>' in html, "Scene counter should show 20"
+assert '<span id="count-all">24</span>' in html, "Scene counter should show 24"
 
-# 2. Check 4 new scenes
+# 2. Check scenes coverage
 assert '135mm / 200mm' in html
 assert '海岸岩石慢門與海浪拉絲' in html
 assert '壯麗雪景與高調雪山' in html
 assert '超長焦巨型懸日與懸月' in html
+assert '博物館、水族館與玻璃展櫃' in html
+assert '櫻花、楓葉與花卉花海' in html
+assert '航空飛機與鐵道火車' in html
+assert '閃電暴風與雷雨夜空' in html
 
 # 3. Check updated zone focus & group photo
 assert '超焦距約為 <strong>5.1 公尺</strong>' in html
@@ -63,9 +67,11 @@ assert 10 <= t_npf <= 20
 
 # Test ND filter 6 stops from 1/60s:
 t_nd64 = (1/60) * (2 ** 6)
+assert round(t_nd64, 2) == 1.07
+
 # 7. Test Gear Separation and Click-to-Filter Scene Logic:
 scene_tags = re.findall(r'<article class="scene-card"[^>]+>', html)
-assert len(scene_tags) == 20
+assert len(scene_tags) == 24
 for s in scene_tags:
     assert 'data-lenses=' in s, f"Scene missing data-lenses: {s}"
     assert 'data-filters=' in s, f"Scene missing data-filters: {s}"
@@ -76,4 +82,10 @@ assert 'activeGearFilterNotice' in html, "Missing activeGearFilterNotice"
 assert '專屬鏡頭庫' in html, "Lenses should be separated into dedicated section"
 assert '光學濾鏡庫' in html, "Filters should be separated into dedicated section"
 
-print("All 20 scenes, UI features, optical formulas, and gear filtering verified perfectly!")
+# 8. Test Lens Sweet Spots, MFD, and Sunstars
+assert '光學甜區 (Sweet Spot) 與星芒速查對照表' in html
+assert '0.21m (24端) / 0.30m (70端)' in html
+assert 'f/8 – f/11 (f/8即成形！不必縮f/16)' in html
+assert '4.51' in html
+
+print("All 24 scenes, UI features, optical formulas, lens sweet spots, and gear filtering verified perfectly!")

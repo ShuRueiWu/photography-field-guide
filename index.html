@@ -1381,7 +1381,8 @@
                   <span>FE 16-35mm F2.8 GM</span>
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(16, 2.8);" title="套入景深計算機">🧮 算景深</button>
                 </div>
-                <span class="lens-sub">82mm 口徑 · 銀河星空 / 極光大景 / 建築室內 / 瀑布晨昏 (12 個題材)</span>
+                <span class="lens-sub">🎯 <strong>甜區：</strong>f/4.0–f/5.6 · 📐 <strong>最短對焦：</strong>0.28m (0.19x) · ✨ <strong>星芒：</strong>f/11–f/14 (22道針芒)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">銀河星空 / 極光大景 / 建築室內 / 瀑布閃電 (13 個題材)</span>
               </div>
             </div>
 
@@ -1393,7 +1394,8 @@
                   <span>FE 24-70mm F2.8 GM II</span>
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(50, 7.1);" title="套入景深計算機">🧮 算景深</button>
                 </div>
-                <span class="lens-sub">82mm 口徑 · 團體合照 / 街拍人文 / 靜物美食 / 旅遊隨拍 (12 個題材)</span>
+                <span class="lens-sub">🎯 <strong>甜區：</strong>f/4.0–f/5.6 · 📐 <strong>最短對焦：</strong>0.21m(廣)/0.30m(望) (<strong>0.32x強近攝</strong>) · ✨ <strong>星芒：</strong>f/11–f/14 (22道無洋蔥圈)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">團體合照 / 街拍人文 / 靜物美食 / 博物館花海 (15 個題材)</span>
               </div>
             </div>
 
@@ -1405,7 +1407,8 @@
                   <span>FE 70-200mm F2.8 GM</span>
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(200, 2.8);" title="套入景深計算機">🧮 算景深</button>
                 </div>
-                <span class="lens-sub">77mm 口徑 · 戶外長焦散景 / 舞台演講 / 高速生態 / 懸日懸月 (9 個題材)</span>
+                <span class="lens-sub">🎯 <strong>甜區：</strong>f/4.0–f/5.6 (200端收至<strong>f/5.6</strong>巔峰畫質) · 📐 <strong>最短對焦：</strong>0.96m (0.25x) · ✨ <strong>星芒：</strong>f/11–f/14</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">長焦人像空氣切割 / 航空鐵道 / 舞台飛羽 / 櫻花花海 (11 個題材)</span>
               </div>
             </div>
 
@@ -1417,7 +1420,8 @@
                   <span>Sonnar 55mm F1.8 ZA</span>
                   <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(55, 1.8);" title="套入景深計算機">🧮 算景深</button>
                 </div>
-                <span class="lens-sub">49mm 口徑 · F1.8大光圈之王 / 螢火蟲 / 暗光人像隨拍 (7 個題材)</span>
+                <span class="lens-sub">🎯 <strong>甜區：</strong>f/2.8–f/4.0 (蔡司刀鋒銳利) · 📐 <strong>最短對焦：</strong>0.50m (0.14x) · ✨ <strong>星芒：f/8–f/11</strong> (<strong>f/8即可成形！</strong>18道璀璨光芒)</span>
+                <span class="lens-sub" style="color: var(--accent-cyan); font-size: 0.7rem;">F1.8微光夜景之王 / 螢火蟲 / 博物館暗光 / 糖水人像 (8 個題材)</span>
               </div>
             </div>
           </div>
@@ -1469,7 +1473,7 @@
           <input type="text" id="sceneSearch" class="search-input" placeholder="搜尋場景、參數、器材、光圈技巧... 例如：團體照、銀河、85mm、偏光鏡、f/7.1">
         </div>
         <div class="tag-cloud" id="tagCloud">
-          <button class="tag-btn active" data-tag="all">✨ 全部場景 (<span id="count-all">20</span>)</button>
+          <button class="tag-btn active" data-tag="all">✨ 全部場景 (<span id="count-all">24</span>)</button>
           <button class="tag-btn" data-tag="portrait">👤 人像與人文</button>
           <button class="tag-btn" data-tag="group">👨‍👩‍👧‍👦 團體與合照</button>
           <button class="tag-btn" data-tag="landscape">🏞️ 風景與流水</button>
@@ -1487,7 +1491,7 @@
           <span id="activeFilterIcon">🎯</span>
           <span id="activeFilterText">目前篩選：...</span>
         </div>
-        <button class="clear-filter-btn" onclick="clearGearFilter()">✕ 顯示全部 20 個場景</button>
+        <button class="clear-filter-btn" onclick="clearGearFilter()">✕ 顯示全部 24 個場景</button>
       </div>
 
       <!-- Scene Cards Grid -->
@@ -2482,6 +2486,219 @@
           </div>
         </article>
 
+        <!-- Scene 21: 博物館、水族館與玻璃展櫃 -->
+        <article class="scene-card" data-category="macro portrait landscape" data-lenses="55 24-70 16-35" data-filters="" data-tags="博物館 水族館 展覽 魚 玻璃反光 壓克力 禁閃光燈 禁腳架 高ISO 55mm 24-70mm 16-35mm">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🏛️ 博物館、水族館與玻璃展櫃 (Museums & Aquariums)</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法</span>
+                  <span class="lens-pick">首選：55mm F1.8 ZA / 24-70mm GM II</span>
+                </div>
+                <div class="user-gear-box-content">
+                  暗部弱光首推 <strong>55mm F1.8 ZA</strong>，F1.8 超大光圈進光量是 F2.8 的 2.5 倍，能用更低 ISO 保留文物與游動水母的極限細節！拍攝展櫃小文物則切換至 <strong>24-70 GM II</strong>，利用 0.21m/0.30m 近攝能力特寫文物紋理。
+                </div>
+              </div>
+              <p class="scene-desc">嚴禁閃光燈與三腳架，需在微光下拍出通透無雜光的玻璃展品與游動生物。</p>
+            </div>
+            <span class="scene-category-pill">室內微光</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/1.8 – f/2.8</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/125s – 1/250s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 1600 – 6400</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>游動生物快門：</strong>水母/慢游魚類 1/125s；活潑小魚 1/250s–1/500s；靜止雕塑展品 1/60s (開機身防震)</span>
+              <span>📐 <strong>對焦模式：</strong>AF-C + 彈性定點 (Spot AF)，對準魚眼或文物雕刻最精彩的受光面</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 大光圈定焦 / 恆定大光圈變焦鏡</span>
+            <span class="gear-tag">🧽 矽膠/橡膠遮光罩 (貼合玻璃消反光)</span>
+            <span class="gear-tag">🧥 黑色外套或暗色衣服 (防身後反射)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🔲 物理貼緊消反光秘訣：</strong>將鏡頭遮光罩「斜貼」或「直貼」在展櫃/水族箱玻璃上（可用軟質矽膠遮光罩保護玻璃不刮傷），徹底阻斷身後室內天花板與其他遊客的倒影反射；穿著純黑深色衣物亦能顯著減少玻璃鏡面映出自己的身影！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 水族館切勿使用 CPL 偏光鏡：</strong>許多大型水族箱觀景窗是厚達數十公分的壓克力（Acrylic/Plexiglass）材質，壓克力內部存在巨大的物理成型應力。若戴上 CPL 偏光鏡，會產生嚴重的「彩虹雙折射應力斑（Birefringence）」，整個水面會布滿花花綠綠的彩虹光斑，反而毀掉照片！
+          </div>
+        </article>
+
+        <!-- Scene 22: 櫻花、楓葉與花卉花海 -->
+        <article class="scene-card" data-category="landscape portrait" data-lenses="70-200 24-70 55" data-filters="cpl" data-tags="櫻花 楓葉 花卉 花海 逆光 透光 散景 壓縮感 曝光補償 70-200mm 24-70mm 55mm CPL">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌸 櫻花、楓葉與花卉花海 (Cherry Blossoms & Foliage)</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法</span>
+                  <span class="lens-pick">首選：FE 70-200mm GM / 82mm CPL</span>
+                </div>
+                <div class="user-gear-box-content">
+                  花海拍攝第一神器就是 <strong>70-200mm GM</strong>！用 135mm~200mm 端從下往上仰拍，利用長焦強大壓縮感將散落的花簇層層疊加成繁花茂密的視覺震撼，同時徹底虛化地面的垃圾桶與雜亂遊客。裝上 <strong>82mm CPL</strong> 轉動消除葉面反光，綠葉與紅楓色彩立現濃郁飽和！
+                </div>
+              </div>
+              <p class="scene-desc">利用長焦壓縮花瓣密度，善用逆光透光質感，拍出粉嫩透亮的晶瑩花景。</p>
+            </div>
+            <span class="scene-category-pill">自然風光</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/2.8 – f/5.6</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/250s – 1/500s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">曝光補償</span>
+              <span class="param-value">+0.7 EV 至 +1.3 EV</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>構圖方向：</strong>尋找「逆光 / 側逆光」角度，讓陽光穿透花瓣葉脈，產生半透明發光水晶感</span>
+              <span>📐 <strong>特寫近攝：</strong>換上 24-70 GM II，利用 0.21m/0.30m (0.32x) 近攝拍攝雨後花瓣水珠</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 70-200mm 望遠變焦 (長焦壓縮)</span>
+            <span class="gear-tag">👓 CPL 偏光鏡 (消葉面蠟質反光)</span>
+            <span class="gear-tag">💡 小型反光板 / 白色雨傘補面光</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🌸 白加黑減原則：</strong>拍攝滿樹潔白或淡粉色的櫻花時，相機測光系統會將大面積白色誤判為「環境過曝」，進而自動將照片壓暗，導致拍出來的櫻花灰暗骯髒。<strong>請務必主動將曝光補償調高 +0.7 EV ~ +1.3 EV</strong>，花朵才會呈現白皙粉嫩的透亮光澤！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 戶外微風是模糊元凶：</strong>長焦拍攝花朵微距特寫時，即使一陣微風吹拂，花瓣在畫面中就已產生劇烈晃動。在戶外切勿將快門放慢至 1/100s 以下，建議拉高到 <strong>1/250s ~ 1/500s</strong>，才能凝結花瓣邊緣銳利細節。
+          </div>
+        </article>
+
+        <!-- Scene 23: 航空飛機與鐵道動態 -->
+        <article class="scene-card" data-category="action landscape" data-lenses="70-200 24-70" data-filters="cpl nd8" data-tags="飛機 航空 鐵道 火車 螺旋槳 噴射機 搖鏡 追焦 追焦攝影 70-200mm 24-70mm CPL ND8">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>✈️ 航空飛機與鐵道火車 (Aviation & Railways)</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法</span>
+                  <span class="lens-pick">首選：FE 70-200mm GM / 82mm ND8</span>
+                </div>
+                <div class="user-gear-box-content">
+                  <strong>70-200mm GM</strong> 為航空與鐵道首選利器！將鏡頭側邊 OSS 開關切換為 <strong>Mode 2（橫向追焦防震）</strong>，能大幅提高平移搖鏡成功率。拍螺旋槳機時，強烈陽光下若想把快門放慢至 1/125s~1/250s，光圈容易縮爆繞射，裝上 <strong>82mm ND8</strong> 即可在甜區 f/5.6~f/8 輕鬆拉出完整旋轉圓盤！
+                </div>
+              </div>
+              <p class="scene-desc">噴射客機極限凝結 vs 螺旋槳旋轉弧線 vs 鐵道列車橫向動感搖鏡追焦。</p>
+            </div>
+            <span class="scene-category-pill">高速交通</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">噴射客機/高鐵</span>
+              <span class="param-value">1/1000s–1/2000s · f/5.6–f/8</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">螺旋槳機/直升機</span>
+              <span class="param-value">1/125s–1/250s · f/8 (掛ND8)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">鐵道搖鏡追焦</span>
+              <span class="param-value">1/30s–1/60s · f/8 · Mode 2</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦設定：</strong>AF-C (連續自動對焦) + 廣域或追蹤彈性定點 + Hi/Hi+ 高速連拍</span>
+              <span>📐 <strong>搖鏡心法：</strong>雙腳站穩如圓規底座，以腰部為軸心平滑旋轉上半身，跟隨機頭/車頭同步等速平移</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 70-200mm 望遠高速對焦變焦鏡</span>
+            <span class="gear-tag">🕶️ ND8 減光鏡 (艷陽下壓低快門拍槳葉)</span>
+            <span class="gear-tag">👓 CPL 偏光鏡 (消除機身與駕駛艙反光)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🌀 螺旋槳切勿用高速快門凍結：</strong>拍攝 ATR、C-130 或直升機等螺旋槳航空器時，若使用 1/2000s 高速快門，槳葉會完全定格死板，飛機看起來宛如吊掛在半空的模型玩具！<strong>務必將快門降至 1/125s ~ 1/250s</strong>，拍出美麗的半透明旋轉動力光盤（Propeller Blur）！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 跑道高溫熱浪擾動：</strong>夏季正午在機場跑道頭或鐵軌旁長焦拍攝時，地表熱空氣劇烈對流會造成嚴重的大氣波紋熱浪，再好的紅圈/GM鏡頭也會拍出宛如水彩畫般的發虛模糊。最佳時段為<strong>清晨剛日出後 2 小時內</strong>，或雨後地面降溫大氣通透之際。
+          </div>
+        </article>
+
+        <!-- Scene 24: 閃電暴風與雷雨夜空 -->
+        <article class="scene-card" data-category="landscape astro" data-lenses="16-35 24-70" data-filters="nd8" data-tags="閃電 雷雨 暴風雨 長曝 B門 黑卡 夜景 減光鏡 16-35mm 24-70mm ND8">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>⚡ 閃電暴風與雷雨夜空 (Lightning & Thunderstorms)</h2>
+              <div class="user-gear-box">
+                <div class="user-gear-box-title">
+                  <span>🎯 您的裝備最佳拍法</span>
+                  <span class="lens-pick">首選：FE 16-35mm GM / 82mm ND8</span>
+                </div>
+                <div class="user-gear-box-content">
+                  使用 <strong>16-35mm GM</strong> 廣角端涵蓋大面積積雨雲放電區域。雷電本身爆發亮度極強，光圈縮至 <strong>f/8 – f/11</strong> 既能壓制閃電過曝，又能確保地景建築處於全畫面最銳利景深範圍！白天雷雨若想長曝捕捉閃電，掛上 <strong>82mm ND8</strong> 即可拉出 1/2s~1s 長曝等待雷擊。
+                </div>
+              </div>
+              <p class="scene-desc">利用長曝讓雷電自行曝光在感光元件上，安全第一捕捉大自然的極限能量。</p>
+            </div>
+            <span class="scene-category-pill">極端氣象</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">夜間閃電長曝</span>
+              <span class="param-value">10s – 25s (或 B 門)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">光圈設定</span>
+              <span class="param-value">f/8 – f/11 (切勿開大)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 (純淨低噪點)</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦技巧：</strong>切換至手動對焦 (MF)，放大對準遠方幾公里外的城市地標建築或遠山邊緣鎖定</span>
+              <span>📐 <strong>降噪關閉：</strong>務必關閉機身「長時間曝光降噪」，否則曝 20 秒要等 20 秒黑畫面，會錯過連續雷擊</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 超廣角變焦鏡 (16-35mm 大範圍覆蓋)</span>
+            <span class="gear-tag">📐 重型防風腳架 + 有線快門線 (鎖定定時)</span>
+            <span class="gear-tag">🕶️ 82mm ND8 減光鏡 (白天雷雨長曝)</span>
+            <span class="gear-tag">☔ 相機防雨罩 / 雨衣大毛巾</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>⚡ 閃電曝光是「它自己畫上去」：</strong>長曝閃電不是看著閃電按下快門（人體神經反射至少 0.2 秒，看到再按絕對拍不到）。正確邏輯是：在腳架上開啟 15~25 秒長曝光或連續不間斷曝光，感光元件張開眼睛「等待」閃電在快門開啟的期間劈下，閃電在千分之一秒內發出的強光就會自動烙印在感光元件上！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 生命安全高於一切：</strong>切勿在空曠高地、樹下、水邊或高壓電塔旁架設金屬三腳架！若雷雨胞正在正上方（雷聲與閃電間隔小於 5 秒），請立即撤退至室內或封閉汽車內部（金屬車身形成法拉第籠能保護安全）。隔著室內窗戶或車內擋風玻璃拍攝最為安全。
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -2747,6 +2964,77 @@
 
     <!-- ==================== TAB 3: GEAR & FILTERS ==================== -->
     <section id="tab-gear" class="tab-content">
+      <!-- User's 4 Lenses Optical Characteristics & Sunstars Cheatsheet Card -->
+      <div class="gear-card" style="grid-column: 1 / -1; background: var(--bg-card); border: 2px solid var(--accent-blue);">
+        <h4 style="color: var(--accent-blue); font-size: 1.15rem;">🔬 您的 4 顆現役鏡頭 光學甜區 (Sweet Spot) 與星芒速查對照表 (Sony A7R3 42.4MP)</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">
+          針對 Sony A7R3 高畫素全片幅感光元件（像素間距 4.51μm）微觀解像力、光圈葉片結構與星芒特性實測總結：
+        </p>
+        <div style="overflow-x: auto; margin-top: 0.75rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); background: rgba(56, 189, 248, 0.08); color: var(--accent-cyan);">
+                <th style="padding: 0.6rem 0.75rem;">鏡頭型號</th>
+                <th style="padding: 0.6rem 0.75rem;">光圈葉片</th>
+                <th style="padding: 0.6rem 0.75rem;">星芒芒數與特性</th>
+                <th style="padding: 0.6rem 0.75rem;">推薦好看星芒光圈</th>
+                <th style="padding: 0.6rem 0.75rem;">最短對焦 (MFD)</th>
+                <th style="padding: 0.6rem 0.75rem;">最大放大倍率</th>
+                <th style="padding: 0.6rem 0.75rem;">A7R3 最佳甜區 (Sweet Spot)</th>
+                <th style="padding: 0.6rem 0.75rem;">口徑/轉接</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.65rem 0.75rem; font-weight: 700; color: var(--text-main);">FE 16-35mm F2.8 GM</td>
+                <td style="padding: 0.65rem 0.75rem;">11 片圓形</td>
+                <td style="padding: 0.65rem 0.75rem;"><strong>22 道星芒</strong> (放射狀纖細針芒)</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-amber); font-weight: 700;">f/11 – f/14 (f/16最尖)</td>
+                <td style="padding: 0.65rem 0.75rem;">0.28 公尺 (28 cm)</td>
+                <td style="padding: 0.65rem 0.75rem;">0.19x</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-emerald); font-weight: 700;">f/4.0 – f/5.6 (中央峰值)<br><span style="font-size: 0.75rem; color: var(--text-muted);">邊緣畫質於 f/5.6–f/8 達到最均勻</span></td>
+                <td style="padding: 0.65rem 0.75rem;">82mm 原生直上</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.65rem 0.75rem; font-weight: 700; color: var(--text-main);">FE 24-70mm F2.8 GM II</td>
+                <td style="padding: 0.65rem 0.75rem;">11 片圓形</td>
+                <td style="padding: 0.65rem 0.75rem;"><strong>22 道星芒</strong> (XA鏡片研磨無洋蔥圈)</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-amber); font-weight: 700;">f/11 – f/14 (乾淨俐落)</td>
+                <td style="padding: 0.65rem 0.75rem;">0.21m (24端) / 0.30m (70端)</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-cyan); font-weight: 700;">0.32x (強大半微距近攝)</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-emerald); font-weight: 700;">f/4.0 – f/5.6<br><span style="font-size: 0.75rem; color: var(--text-muted);">全焦段極高解像力，全開f/2.8中央已封頂</span></td>
+                <td style="padding: 0.65rem 0.75rem;">82mm 原生直上</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.65rem 0.75rem; font-weight: 700; color: var(--text-main);">FE 70-200mm F2.8 GM</td>
+                <td style="padding: 0.65rem 0.75rem;">11 片圓形</td>
+                <td style="padding: 0.65rem 0.75rem;"><strong>22 道星芒</strong> (遠距點光源聚合)</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-amber); font-weight: 700;">f/11 – f/14</td>
+                <td style="padding: 0.65rem 0.75rem;">0.96 公尺 (96 cm)</td>
+                <td style="padding: 0.65rem 0.75rem;">0.25x</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-emerald); font-weight: 700;">f/4.0 – f/5.6<br><span style="font-size: 0.75rem; color: var(--text-muted);">200mm端收至 f/5.6 解像力顯著暴升</span></td>
+                <td style="padding: 0.65rem 0.75rem;">77mm (加77-82環共用)</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.65rem 0.75rem; font-weight: 700; color: var(--text-main);">Sonnar 55mm F1.8 ZA</td>
+                <td style="padding: 0.65rem 0.75rem;">9 片圓形</td>
+                <td style="padding: 0.65rem 0.75rem;"><strong>18 道星芒</strong> (蔡司經典璀璨針芒)</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-amber); font-weight: 700;">f/8 – f/11 (f/8即成形！不必縮f/16)</td>
+                <td style="padding: 0.65rem 0.75rem;">0.50 公尺 (50 cm)</td>
+                <td style="padding: 0.65rem 0.75rem;">0.14x</td>
+                <td style="padding: 0.65rem 0.75rem; color: var(--accent-emerald); font-weight: 700;">f/2.8 – f/4.0<br><span style="font-size: 0.75rem; color: var(--text-muted);">f/4.0 達到全畫面天文級刀鋒銳利度</span></td>
+                <td style="padding: 0.65rem 0.75rem;">49mm 輕量隨身</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top: 0.85rem; font-size: 0.8rem; line-height: 1.5; color: var(--text-muted); background: var(--bg-primary); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-cyan);">💡 Sony A7R3 42.4MP 高畫素繞射警戒提醒：</strong><br>
+          A7R3 的像素尺寸為 <strong>4.51 微米 (μm)</strong>。在光學物理上，當光圈縮至 <strong>f/8</strong> 時，繞射光斑（Airy Disk）直徑約為 10.7μm（涵蓋跨越超過 2 個感光畫素）。因此從 <strong>f/9 ~ f/11</strong> 開始，100% 像素微觀檢視下繞射會使極限銳度緩慢下降；縮至 <strong>f/16</strong> 則會產生肉眼可見的輕微軟化發虛。<br>
+          <strong>實戰星芒策略：</strong>蔡司 55mm F1.8 在 <strong>f/8–f/10</strong> 就能射出璀璨銳利的 18 道星芒，完全不必縮到 f/16，完美兼顧銳度與星芒；16-35 GM 與 24-70 GM II 在拍夜景星芒時建議收至 <strong>f/11–f/13</strong> 即可成形，保留高解析力！
+        </div>
+      </div>
+
       <div class="gear-guide-grid">
 
         <div class="gear-card">
