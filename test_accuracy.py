@@ -8,9 +8,9 @@ with open('/Users/sierra/Documents/photography-field-guide/index.html', 'r', enc
 # 1. Check Scene count
 scenes = re.findall(r'<article class="scene-card"', html)
 print(f"Total scene cards found: {len(scenes)}")
-assert len(scenes) == 24, f"Expected 24 scenes, got {len(scenes)}"
+assert len(scenes) == 25, f"Expected 25 scenes, got {len(scenes)}"
 
-assert '<span id="count-all">24</span>' in html, "Scene counter should show 24"
+assert '<span id="count-all">25</span>' in html, "Scene counter should show 25"
 
 # 2. Check scenes coverage
 assert '135mm / 200mm' in html
@@ -21,6 +21,7 @@ assert '博物館、水族館與玻璃展櫃' in html
 assert '櫻花、楓葉與花卉花海' in html
 assert '航空飛機與鐵道火車' in html
 assert '閃電暴風與雷雨夜空' in html
+assert '旋轉星軌與同心圓天體' in html
 
 # 3. Check updated zone focus & group photo
 assert '超焦距約為 <strong>5.1 公尺</strong>' in html
@@ -71,7 +72,7 @@ assert round(t_nd64, 2) == 1.07
 
 # 7. Test Gear Separation and Click-to-Filter Scene Logic:
 scene_tags = re.findall(r'<article class="scene-card"[^>]+>', html)
-assert len(scene_tags) == 24
+assert len(scene_tags) == 25
 for s in scene_tags:
     assert 'data-lenses=' in s, f"Scene missing data-lenses: {s}"
     assert 'data-filters=' in s, f"Scene missing data-filters: {s}"
@@ -87,5 +88,8 @@ assert '光學甜區 (Sweet Spot) 與星芒速查對照表' in html
 assert '0.21m (24端) / 0.30m (70端)' in html
 assert 'f/8 – f/11 (f/8即成形！不必縮f/16)' in html
 assert '4.51' in html
+assert '已備 電子定時快門線' in html
+assert '拍攝日食/日環食絕對安全紅線' in html
+assert '現代數位攝影核心流派：極限後製、多張疊圖' in html
 
-print("All 24 scenes, UI features, optical formulas, lens sweet spots, and gear filtering verified perfectly!")
+print("All 25 scenes, UI features, optical formulas, lens sweet spots, and gear filtering verified perfectly!")
