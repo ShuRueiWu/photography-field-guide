@@ -886,6 +886,163 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    
+    /* --- User's Custom Gear (Sony A7R3 + Trinity + 55 ZA) Styling --- */
+    .my-gear-banner {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(124, 58, 237, 0.15));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .my-gear-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .my-gear-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .my-gear-badge {
+      background: linear-gradient(135deg, #f97316, #ef4444);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+    .my-gear-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .my-gear-toggle-btn.active {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+    .gear-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .gear-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .gear-chip:hover {
+      border-color: var(--accent-blue);
+      background: var(--bg-card-hover);
+    }
+    .gear-chip .lens-tag {
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+    .gear-chip .lens-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Scene Card User Gear Recommendation Box */
+    .user-gear-box {
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      transition: all 0.2s;
+    }
+    .user-gear-box-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+    .user-gear-box-title .lens-pick {
+      background: rgba(34, 211, 238, 0.2);
+      color: var(--accent-cyan);
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+    }
+    .user-gear-box-content {
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    /* Preset Quick Buttons for Calculators */
+    .calc-quick-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+    .calc-quick-label {
+      font-size: 0.75rem;
+      color: var(--accent-amber);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .calc-quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .quick-preset-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .quick-preset-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
     /* Print Styles */
     @media print {
       header, .nav-bar, .search-filter-section, .theme-switch-btn, footer {
@@ -969,6 +1126,51 @@
 
     <!-- ==================== TAB 1: SCENES ==================== -->
     <section id="tab-scenes" class="tab-content active">
+
+      <!-- Sony A7R3 & Holy Trinity Custom Gear Banner -->
+      <div class="my-gear-banner" id="myGearBanner">
+        <div class="my-gear-header">
+          <div class="my-gear-title">
+            <span>🧰</span>
+            <span>您的專屬器材庫現役配置</span>
+            <span class="my-gear-badge">Sony A7R3 旗艦全幅</span>
+          </div>
+          <button class="my-gear-toggle-btn active" id="toggleMyGearBtn">
+            <span>🎯 器材專屬數據快選：已啟用</span>
+          </button>
+        </div>
+        <div class="gear-chip-list">
+          <div class="gear-chip" title="4240萬高畫素全片幅，像素尺寸 4.51μm">
+            <span>📷</span>
+            <span class="lens-tag">Sony A7R3</span>
+            <span class="lens-sub">42.4MP · 全幅 · 4.51μm</span>
+          </div>
+          <div class="gear-chip" onclick="jumpToLensCalc(16, 2.8)" title="點擊直接套入計算機">
+            <span>🔭</span>
+            <span class="lens-tag">FE 16-35mm F2.8 GM</span>
+            <span class="lens-sub">82mm 口徑 · 超廣角/星空大景</span>
+          </div>
+          <div class="gear-chip" onclick="jumpToLensCalc(50, 7.1)" title="點擊直接套入計算機">
+            <span>🔭</span>
+            <span class="lens-tag">FE 24-70mm F2.8 GM II</span>
+            <span class="lens-sub">82mm 口徑 · 團體/隨拍/0.32x近攝</span>
+          </div>
+          <div class="gear-chip" onclick="jumpToLensCalc(200, 2.8)" title="點擊直接套入計算機">
+            <span>🔭</span>
+            <span class="lens-tag">FE 70-200mm F2.8 GM</span>
+            <span class="lens-sub">77mm 口徑 · 散景壓縮/運動飛羽</span>
+          </div>
+          <div class="gear-chip" onclick="jumpToLensCalc(55, 1.8)" title="點擊直接套入計算機">
+            <span>🔭</span>
+            <span class="lens-tag">Sonnar 55mm F1.8 ZA</span>
+            <span class="lens-sub">49mm 口徑 · 最大光圈王/螢火蟲</span>
+          </div>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
+          <span>💡 <strong>濾鏡省錢共享技巧：</strong>16-35 GM 與 24-70 GM II 皆為 <strong>82mm 口徑</strong>，只需買一套 82mm CPL 與 ND 即可雙鏡共用！</span>
+          <span>🔄 70-200 GM 為 <strong>77mm</strong>，只需加一枚 <strong>77mm轉82mm轉接環 (Step-Up Ring)</strong> 即可直接共用 82mm 濾鏡！</span>
+        </div>
+      </div>
       <div class="search-filter-section">
         <div class="search-box">
           <span class="search-icon">🔍</span>
@@ -995,6 +1197,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👨‍👩‍👧‍👦 多人團體照 / 全家福合照</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：FE 24-70mm F2.8 GM II (82mm口徑)</span>
+            </div>
+            <div class="user-gear-box-content">
+              轉至 <strong>35mm 或 50mm 端</strong>，光圈縮至 <strong>f/7.1 – f/8</strong>。距離 3.5 米時 50mm f/7.1 景深達 2.24 米（35mm f/8 更達 4.3 米），確保 2~3 排所有人臉孔根根睫毛清晰！對焦點放第一排肩膀。
+            </div>
+          </div>
+
               <p class="scene-desc">確保前後排每個人臉部清晰銳利，防範廣角變形與閉眼。</p>
             </div>
             <span class="scene-category-pill">團體必備</span>
@@ -1053,6 +1265,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👤 85mm 經典半身 / 糖水特寫人像</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的無 85 鏡替代方案</span>
+              <span class="lens-pick">首選：70-200 GM @ 135-200mm f/2.8 或 55 1.8 ZA</span>
+            </div>
+            <div class="user-gear-box-content">
+              您沒有 85mm f/1.4，但戶外請直接拿出 <strong>70-200 GM 推到 135mm–200mm f/2.8</strong>！200mm 望遠壓縮帶來的背景虛化奶油融化感超越 85mm f/1.8！若在室內或近距離半身，則換上 <strong>55mm F1.8 ZA @ f/1.8–f/2.2</strong>，蔡司通透空氣感無可比擬。
+            </div>
+          </div>
+
               <p class="scene-desc">人像鏡皇焦段，提供極致奶油散景與完美的五官透視比例。</p>
             </div>
             <span class="scene-category-pill">人像首選</span>
@@ -1108,6 +1330,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🚶 35mm / 50mm 旅遊隨拍與街頭人文</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：55mm F1.8 ZA (281g 極致輕便) 或 24-70 GM II</span>
+            </div>
+            <div class="user-gear-box-content">
+              長時間漫步隨拍首推 <strong>55mm F1.8 ZA</strong>，全套機鏡不到 1 公斤！若想玩街拍超焦距泛焦，帶 <strong>24-70 GM II</strong> 轉至 35mm 端，設為 f/8、對焦鎖定 5 公尺，2.6 米至無限遠抬手即拍！
+            </div>
+          </div>
+
               <p class="scene-desc">交代主體與周遭空間故事，展現生動的故事感與身臨其境視角。</p>
             </div>
             <span class="scene-category-pill">人文街拍</span>
@@ -1152,6 +1384,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>✨ 螢火蟲微光軌跡拍攝</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">唯一首選：Sonnar 55mm F1.8 ZA (最大光圈王)</span>
+            </div>
+            <div class="user-gear-box-content">
+              螢火蟲需要極限進光量！您的鏡頭群中 <strong>55mm F1.8 ZA 是唯一能開到 f/1.8 的鏡頭</strong>（比 f/2.8 多了 1.33 檔進光量！），且 55mm 的焦距壓縮感能把微弱光點放大成迷人光斑。設為 <strong>f/1.8 全開、ISO 1600–3200、單張 20 秒連拍</strong>回家疊圖！
+            </div>
+          </div>
+
               <p class="scene-desc">捕抓漆黑森林中漫天飛舞的綠黃色夢幻光點與呼吸光軌。</p>
             </div>
             <span class="scene-category-pill">季節限定</span>
@@ -1200,6 +1442,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌌 銀河核心與壯麗星空</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">唯一首選：FE 16-35mm F2.8 GM @ 16mm 端 (82mm口徑)</span>
+            </div>
+            <div class="user-gear-box-content">
+              轉至 <strong>16mm 端、光圈全開 f/2.8</strong>。在 A7R3 的 4240 萬畫素下，NPF 精算法則安全快門為 <strong>14.5 秒</strong>（建議設 14s 或 15s 防星點拖尾）。因無 f/1.4，請將感光度拉高至 <strong>ISO 3200 – 6400</strong> 彌補進光量。
+            </div>
+          </div>
+
               <p class="scene-desc">記錄浩瀚星海與璀璨銀河拱橋，精算快門時間避免星點拖尾拉絲。</p>
             </div>
             <span class="scene-category-pill">星空必拍</span>
@@ -1246,6 +1498,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌌 夢幻舞動極光 (Aurora)</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：FE 16-35mm F2.8 GM @ 16mm f/2.8</span>
+            </div>
+            <div class="user-gear-box-content">
+              16mm f/2.8 全開。慢速微弱極光用 <strong>6–8 秒、ISO 1600–3200</strong>；當極光爆發翻滾跳躍時，快門縮短至 <strong>2–3 秒、ISO 拉至 6400</strong> 定格簾幕細絲。
+            </div>
+          </div>
+
               <p class="scene-desc">根據極光活動劇烈程度動態切換快門，保留天際光幕絲狀紋理。</p>
             </div>
             <span class="scene-category-pill">極地追光</span>
@@ -1338,6 +1600,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌊 瀑布溪流與綿密絲絹水感</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：16-35 GM 或 24-70 GM II + 82mm CPL/ND</span>
+            </div>
+            <div class="user-gear-box-content">
+              兩顆大三元鏡頭口徑均為 <strong>82mm</strong>！您只需要備妥一枚 82mm CPL 偏光鏡與一枚 82mm ND64 減光鏡，兩顆鏡頭隨時交換通用，光圈設在 f/8–f/11 最利甜區。
+            </div>
+          </div>
+
               <p class="scene-desc">慢速快門將奔騰水花化為柔順白絹，CPL 消除濕滑岩石反光。</p>
             </div>
             <span class="scene-category-pill">風景經典</span>
@@ -1470,6 +1742,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏃 運動賽事與飛羽飛鳥 (Sports & Birds)</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：FE 70-200mm F2.8 GM + A7R3 APS-C裁切</span>
+            </div>
+            <div class="user-gear-box-content">
+              使用 <strong>70-200 GM @ 200mm f/2.8</strong>。若距離不夠遠，直接在 A7R3 開啟「APS-C 裁切功能」，鏡頭瞬間等效變成 <strong>105-300mm f/2.8 超長焦</strong>，且依然享有 1880 萬高畫素！
+            </div>
+          </div>
+
               <p class="scene-desc">利用千分之一秒高速快門定格極速動態，或搖鏡追焦展現速度流線。</p>
             </div>
             <span class="scene-category-pill">極速定格</span>
@@ -1551,6 +1833,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>📦 精緻商品商攝與美食靜物</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：FE 24-70mm F2.8 GM II (具 0.32x 近攝力)</span>
+            </div>
+            <div class="user-gear-box-content">
+              24-70 GM II 近攝能力大幅進化！70mm 端最近對焦距離僅 <strong>21 公分</strong>，放大倍率達 <strong>0.32x</strong>，兼具優異微距能力。搭配 f/8–f/11 與腳架，商品商標與細節銳利無比。
+            </div>
+          </div>
+
               <p class="scene-desc">精準控制光影質感與景深，展現產品材質紋理與誘人細節。</p>
             </div>
             <span class="scene-category-pill">商攝必讀</span>
@@ -1712,6 +2004,16 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👤 135mm / 200mm 極致空間壓縮與空氣切割人像</h2>
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">唯一首選：FE 70-200mm F2.8 GM (77mm口徑)</span>
+            </div>
+            <div class="user-gear-box-content">
+              站距模特兒 5–8 米，轉到 <strong>135mm–200mm 端、光圈 f/2.8 全開</strong>。開啟 Eye-AF 與機身 OSS 防手震，快門至少 1/320s，享受電影等級的空氣切割散景！
+            </div>
+          </div>
+
               <p class="scene-desc">利用長焦透視壓縮感拉近遠方背景，營造主體如同立體剪紙般的空氣切割分離度。</p>
             </div>
             <span class="scene-category-pill">長焦神鏡</span>
@@ -1890,6 +2192,20 @@
         <div class="calc-card" id="calc-dof">
           <div class="calc-header">
             <h3>📏 景深 (DoF) 與超焦距精密計算機</h3>
+          <!-- User Lens Quick Selector Strip -->
+          <div class="calc-quick-strip">
+            <div class="calc-quick-label">⚡ 您的專屬鏡頭快速代入 (Sony A7R3 + 現役鏡頭)：</div>
+            <div class="calc-quick-buttons">
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(16, 2.8, 3.5)">16-35 GM @ 16mm f/2.8 (大景深)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(35, 2.8, 3.0)">16-35 GM @ 35mm f/2.8 (人文)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(35, 8.0, 3.5)">24-70 GM II @ 35mm f/8 (團體照安全推薦)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(50, 7.1, 3.5)">24-70 GM II @ 50mm f/7.1 (團體合照黃金檔)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(55, 1.8, 2.0)">55mm ZA @ f/1.8 (半身淺景深)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(70, 2.8, 2.5)">70-200 GM @ 70mm f/2.8 (全身人像)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyLensPreset(200, 2.8, 5.0)">70-200 GM @ 200mm f/2.8 (極致散景/空氣切割)</button>
+            </div>
+          </div>
+
             <p>即時計算前後景深範圍，並提供「多人團體照光圈健檢」！</p>
           </div>
 
@@ -1988,6 +2304,17 @@
         <div class="calc-card" id="calc-astro">
           <div class="calc-header">
             <h3>🌌 星空不拖尾快門計算機</h3>
+          <!-- User Astro Presets -->
+          <div class="calc-quick-strip">
+            <div class="calc-quick-label">🌌 您的現役器材星空快門一鍵試算 (Sony A7R3 42.4MP)：</div>
+            <div class="calc-quick-buttons">
+              <button type="button" class="quick-preset-btn" onclick="applyAstroPreset(16, 2.8, 42)">🌟 16-35 GM @ 16mm f/2.8 (銀河最首選：安全快門約 14.6 秒)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyAstroPreset(24, 2.8, 42)">🔭 16-35 / 24-70 @ 24mm f/2.8 (安全快門約 9.7 秒)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyAstroPreset(35, 2.8, 42)">🔭 16-35 / 24-70 @ 35mm f/2.8 (安全快門約 6.7 秒)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyAstroPreset(55, 1.8, 42)">🔥 55mm F1.8 ZA @ f/1.8 (星座特寫/深空微光：快門約 3.6 秒)</button>
+            </div>
+          </div>
+
             <p>告別拉絲星軌！精準計算銀河拍攝最長安全曝光秒數。</p>
           </div>
 
@@ -2347,6 +2674,69 @@
           themeIcon.textContent = '🌙';
           themeLabel.textContent = '深色';
         }
+      }
+
+      
+      // --- User Specific Gear Logic (Sony A7R3 + Trinity + 55 ZA) ---
+      window.applyLensPreset = function(focal, aperture, dist) {
+        document.getElementById('sensorSelect').value = "0.030"; // Full Frame A7R3
+        document.getElementById('focalInput').value = focal;
+        document.getElementById('apertureSelect').value = String(aperture);
+        document.getElementById('distInput').value = dist;
+        calculateDof();
+      };
+
+      window.applyAstroPreset = function(focal, aperture, mp) {
+        document.getElementById('astroSensor').value = "1.0"; // Full Frame A7R3
+        document.getElementById('astroFocal').value = focal;
+        document.getElementById('astroAperture').value = String(aperture);
+        document.getElementById('astroMegapixels').value = String(mp);
+        calculateAstro();
+      };
+
+      window.jumpToLensCalc = function(focal, aperture) {
+        // Switch to calculators tab
+        document.querySelector('.nav-btn[data-target="tab-calculators"]').click();
+        window.applyLensPreset(focal, aperture, focal >= 70 ? 4.5 : 3.5);
+      };
+
+      // Add Sony A7R3 Option to Sensor and Megapixel selects
+      const sensorSelectEl = document.getElementById('sensorSelect');
+      if (sensorSelectEl && !sensorSelectEl.innerHTML.includes('Sony A7R3')) {
+        sensorSelectEl.options[0].text = '全片幅 35mm (Sony A7R3 / 一般全幅, CoC: 0.030mm)';
+      }
+      const astroMegapixelsEl = document.getElementById('astroMegapixels');
+      if (astroMegapixelsEl && !astroMegapixelsEl.innerHTML.includes('4240')) {
+        const a7r3Option = new Option('4240 萬畫素 (您的 Sony A7R3 專屬設定)', '42', false, true);
+        astroMegapixelsEl.add(a7r3Option, astroMegapixelsEl.options[2]);
+        astroMegapixelsEl.value = "42";
+      }
+
+      // Toggle Custom Gear Box Visibility in Scenes
+      const toggleMyGearBtn = document.getElementById('toggleMyGearBtn');
+      let myGearModeActive = true;
+
+      function updateMyGearBoxes() {
+        const boxes = document.querySelectorAll('.user-gear-box');
+        boxes.forEach(box => {
+          box.style.display = myGearModeActive ? 'flex' : 'none';
+        });
+        if (toggleMyGearBtn) {
+          if (myGearModeActive) {
+            toggleMyGearBtn.classList.add('active');
+            toggleMyGearBtn.innerHTML = '<span>🎯 器材專屬數據快選：已啟用</span>';
+          } else {
+            toggleMyGearBtn.classList.remove('active');
+            toggleMyGearBtn.innerHTML = '<span>顯示通用模式 (點擊切換為我的裝備)</span>';
+          }
+        }
+      }
+
+      if (toggleMyGearBtn) {
+        toggleMyGearBtn.addEventListener('click', () => {
+          myGearModeActive = !myGearModeActive;
+          updateMyGearBoxes();
+        });
       }
 
       // --- Navigation Tabs ---
