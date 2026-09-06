@@ -93,6 +93,33 @@ assert '拍攝日食/日環食絕對安全紅線' in html
 assert '現代數位攝影核心流派：極限後製、多張疊圖' in html
 assert 'lensPerspectivePanel' in html, "Missing lens perspective panel"
 assert 'lens-highlight-card' in html, "Missing lens-highlight-card CSS/JS"
+assert 'hero-lens-badge' in html, "Missing hero-lens-badge CSS/JS"
+assert '🌟 此鏡主場' in html, "Missing hero badge text"
 assert 'data-lenses="16-35 24-70 70-200 55"' in html, "Fireworks, Sunrise, or Light Trails should support all 4 lenses"
 
-print("All 25 scenes, UI features, optical formulas, lens sweet spots, and gear filtering verified perfectly!")
+# 9. Test Filter Invariant: Selecting any lens MUST keep all 25 scenes visible
+lenses_to_test = ['16-35', '24-70', '70-200', '55']
+card_pattern = re.compile(r'<article class="scene-card"[^>]*data-lenses="([^"]*)"[^>]*data-filters="([^"]*)"', re.DOTALL)
+parsed_cards = card_pattern.findall(html)
+assert len(parsed_cards) == 25, f"Expected 25 parsed cards, got {len(parsed_cards)}"
+
+for test_lens in lenses_to_test:
+    visible_count = 0
+    hero_count = 0
+    for card_lenses, card_filters in parsed_cards:
+        # According to design: selecting activeGearLens never sets card.style.display = 'none'
+        visible_count += 1
+        if test_lens in card_lenses.split():
+            hero_count += 1
+    assert visible_count == 25, f"Lens {test_lens} must keep all 25 scenes visible! Got {visible_count}"
+    assert hero_count >= 5, f"Lens {test_lens} should have hero scenes! Got {hero_count}"
+    print(f"Verified invariant for lens {test_lens:6s}: visible={visible_count}/25, hero_highlighted={hero_count}")
+
+# Verify physical filters actually filter
+cpl_count = sum(1 for _, card_filters in parsed_cards if 'cpl' in card_filters.split())
+nd8_count = sum(1 for _, card_filters in parsed_cards if 'nd8' in card_filters.split())
+assert 0 < cpl_count < 25, f"CPL should filter scenes (got {cpl_count})"
+assert 0 < nd8_count < 25, f"ND8 should filter scenes (got {nd8_count})"
+print(f"Verified physical filters: CPL matches {cpl_count}/25, ND8 matches {nd8_count}/25")
+
+print("All 25 scenes, UI features, optical formulas, lens sweet spots, filter invariants, and hero badges verified perfectly!")

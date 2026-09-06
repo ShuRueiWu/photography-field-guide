@@ -402,6 +402,7 @@
       color: var(--text-main);
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 0.5rem;
       line-height: 1.35;
     }
@@ -1278,6 +1279,29 @@
     .scene-card.lens-highlight-card .user-gear-box {
       border-color: var(--accent-blue);
       background: rgba(56, 189, 248, 0.12);
+    }
+    .hero-lens-badge {
+      display: none;
+      align-items: center;
+      gap: 0.25rem;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(34, 211, 238, 0.18));
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-blue);
+      border-radius: 9999px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    [data-theme="light"] .hero-lens-badge {
+      background: rgba(2, 132, 199, 0.12);
+      color: #0284c7;
+      border-color: rgba(2, 132, 199, 0.35);
+    }
+    .scene-card.lens-highlight-card .hero-lens-badge {
+      display: inline-flex;
     }
 
     /* Scene Card User Gear Recommendation Box */
@@ -4047,15 +4071,33 @@
             card.style.display = 'flex';
             visibleCount++;
 
-            // 當選取鏡頭時，若該卡片為該鏡頭強項主場則高亮標註，其餘場景亦完全正常顯示
+            // 當選取鏡頭時，若該卡片為該鏡頭強項主場則高亮標註並顯示「🌟 此鏡主場」徽章，其餘場景亦完全正常顯示
             if (activeGearLens) {
-              card.classList.toggle('lens-highlight-card', lenses.includes(activeGearLens));
+              const isHero = lenses.includes(activeGearLens);
+              card.classList.toggle('lens-highlight-card', isHero);
+              let heroBadge = card.querySelector('.hero-lens-badge');
+              if (isHero) {
+                if (!heroBadge) {
+                  heroBadge = document.createElement('span');
+                  heroBadge.className = 'hero-lens-badge';
+                  heroBadge.innerHTML = '🌟 此鏡主場';
+                  const h2 = card.querySelector('.scene-title-group h2');
+                  if (h2) h2.appendChild(heroBadge);
+                }
+                heroBadge.style.display = 'inline-flex';
+              } else if (heroBadge) {
+                heroBadge.style.display = 'none';
+              }
             } else {
               card.classList.remove('lens-highlight-card');
+              const heroBadge = card.querySelector('.hero-lens-badge');
+              if (heroBadge) heroBadge.style.display = 'none';
             }
           } else {
             card.style.display = 'none';
             card.classList.remove('lens-highlight-card');
+            const heroBadge = card.querySelector('.hero-lens-badge');
+            if (heroBadge) heroBadge.style.display = 'none';
           }
         });
 
