@@ -1,0 +1,2787 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>攝影實戰現場速查指南 | Photography Field Guide & Cheatsheet</title>
+  <meta name="description" content="專為攝影新手與老手設計的實戰現場參數速查、光學景深計算、星空快門、減光鏡換算及出發防呆檢查清單。">
+  <meta name="theme-color" content="#12141a">
+  <style>
+    :root {
+      --bg-primary: #0f1117;
+      --bg-secondary: #181b24;
+      --bg-card: #202431;
+      --bg-card-hover: #262b3a;
+      --border-color: #2e3446;
+      --text-main: #e6edf3;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-cyan: #22d3ee;
+      --accent-amber: #fbbf24;
+      --accent-emerald: #34d399;
+      --accent-rose: #fb7185;
+      --accent-purple: #c084fc;
+      --danger: #f87171;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    /* Light Theme */
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #f1f5f9;
+      --bg-card-hover: #e2e8f0;
+      --border-color: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent-blue: #0284c7;
+      --accent-cyan: #0891b2;
+      --accent-amber: #d97706;
+      --accent-emerald: #059669;
+      --accent-rose: #e11d48;
+      --accent-purple: #7c3aed;
+      --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    /* Astro Red Night Mode (Preserves Dark Adaptation & Fireflies Safe) */
+    [data-theme="red"] {
+      --bg-primary: #0a0101;
+      --bg-secondary: #170303;
+      --bg-card: #220505;
+      --bg-card-hover: #310808;
+      --border-color: #4a0c0c;
+      --text-main: #ff8080;
+      --text-muted: #b84343;
+      --accent-blue: #ff6b6b;
+      --accent-cyan: #ff5252;
+      --accent-amber: #ff7b72;
+      --accent-emerald: #ff4d4d;
+      --accent-rose: #ff3333;
+      --accent-purple: #ff4d6d;
+      --danger: #ff1a1a;
+      --card-shadow: 0 4px 20px rgba(255,0,0,0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+    }
+
+    .logo-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-switch-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .theme-switch-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-blue);
+    }
+
+    /* Main Navigation Tabs */
+    .nav-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .nav-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tabs {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 1rem;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 0.8rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      color: var(--text-main);
+    }
+    .nav-btn.active {
+      color: var(--accent-blue);
+      border-bottom-color: var(--accent-blue);
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 4rem;
+    }
+
+    /* Quick Filter & Search Section */
+    .search-filter-section {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .tag-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s;
+    }
+    .tag-btn:hover {
+      background: var(--bg-card);
+      color: var(--text-main);
+    }
+    .tag-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+
+    /* Scene Grid */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 480px) {
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scene-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .scene-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .scene-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .scene-title-group h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scene-category-pill {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-blue);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .scene-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Parameters Grid (The Golden Exposure Triangle) */
+    .param-box {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 0.85rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .param-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .param-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .param-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .param-extra {
+      grid-column: span 3;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+      margin-top: 0.4rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--border-color);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .param-extra span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .param-extra strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Gear Badges */
+    .gear-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .gear-tag {
+      font-size: 0.75rem;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      color: var(--accent-amber);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Key Focus & Pro Rules */
+    .pro-rules {
+      background: rgba(52, 211, 153, 0.06);
+      border-left: 3px solid var(--accent-emerald);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.82rem;
+      color: var(--text-main);
+    }
+    .pro-rules strong {
+      color: var(--accent-emerald);
+    }
+
+    .pitfall-alert {
+      background: rgba(251, 113, 133, 0.08);
+      border-left: 3px solid var(--accent-rose);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.82rem;
+      color: var(--text-main);
+    }
+    .pitfall-alert strong {
+      color: var(--accent-rose);
+    }
+
+    .step-list {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .step-list li::marker {
+      color: var(--accent-blue);
+      font-weight: bold;
+    }
+    .step-list strong {
+      color: var(--text-main);
+    }
+
+    /* Accordion Details */
+    details {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    summary {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-main);
+      background: var(--bg-card);
+    }
+    summary:hover {
+      background: var(--bg-card-hover);
+    }
+    .details-content {
+      padding: 0.8rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: var(--bg-secondary);
+    }
+
+    /* Calculators Section */
+    .calc-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .calc-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .calc-header h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .calc-header p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    label .unit-badge {
+      font-size: 0.7rem;
+      color: var(--accent-blue);
+      font-family: var(--font-mono);
+    }
+
+    select, input[type="number"], input[type="range"] {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      font-family: inherit;
+    }
+    select:focus, input[type="number"]:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .calc-result-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .result-highlight {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .result-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .result-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+    }
+
+    .result-sub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+
+    .sub-result-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sub-result-item .label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .sub-result-item .val {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+    }
+
+    /* DoF Visual Bar */
+    .dof-visual-container {
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .dof-bar-wrapper {
+      height: 24px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin: 0.5rem 0;
+    }
+
+    .dof-sharp-zone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(34, 211, 238, 0.4), rgba(56, 189, 248, 0.8), rgba(34, 211, 238, 0.4));
+      border-left: 2px solid var(--accent-cyan);
+      border-right: 2px solid var(--accent-cyan);
+      transition: all 0.3s;
+    }
+
+    .subject-marker {
+      position: absolute;
+      top: -2px;
+      bottom: -2px;
+      width: 3px;
+      background: var(--accent-rose);
+      z-index: 2;
+      box-shadow: 0 0 8px var(--accent-rose);
+    }
+
+    .dof-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Real-World Group Photo Assistant Box */
+    .group-photo-assistant {
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+    .group-photo-assistant h4 {
+      color: var(--accent-amber);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .group-photo-assistant p {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* ND Timer Section */
+    .timer-action-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .timer-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+      color: #ffffff;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: filter 0.2s, transform 0.1s;
+    }
+    .timer-btn:active {
+      transform: scale(0.98);
+    }
+    .timer-btn.running {
+      background: var(--danger);
+    }
+
+    .timer-display {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      letter-spacing: 0.05em;
+    }
+
+    /* Checklist Section */
+    .checklist-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .checklist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .checklist-progress-text {
+      font-size: 0.85rem;
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+
+    .checklist-reset-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+    .checklist-reset-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-blue);
+    }
+
+    .check-group {
+      margin-bottom: 1.25rem;
+    }
+    .check-group-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0.5rem;
+      border-radius: 8px;
+      transition: background 0.15s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-item:hover {
+      background: var(--bg-card);
+    }
+    .check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--accent-blue);
+    }
+    .check-label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .check-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .check-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+    .check-item.completed .check-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    /* Gear & Filters Knowledge Section */
+    .gear-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .gear-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .gear-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .gear-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .gear-card ul {
+      padding-left: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+    footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    /* Hide tab content */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Print Styles */
+    @media print {
+      header, .nav-bar, .search-filter-section, .theme-switch-btn, footer {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      .tab-content {
+        display: block !important;
+      }
+      .scene-card {
+        display: flex !important;
+        border: 1px solid #ddd !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 1.2rem;
+      }
+      .calc-card, .checklist-card, .gear-card {
+        border: 1px solid #ddd !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 1.2rem;
+      }
+      .param-box {
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+      .param-value {
+        color: #0f172a !important;
+      }
+      details {
+        border: none !important;
+      }
+      details[open] .details-content {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo-box">
+        <div class="logo-badge">📷</div>
+        <div class="logo-text">
+          <h1>攝影實戰現場速查指南</h1>
+          <p>Photography Field Guide & Optical Cheatsheet</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <button class="theme-switch-btn" id="themeBtn" title="切換色彩模式（含暗夜紅光保護）">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">深色</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-bar">
+    <div class="nav-tabs">
+      <button class="nav-btn active" data-target="tab-scenes">🎯 全場景實戰速查</button>
+      <button class="nav-btn" data-target="tab-calculators">🧮 景深與曝光計算機</button>
+      <button class="nav-btn" data-target="tab-gear">🎒 必備器材與濾鏡指南</button>
+      <button class="nav-btn" data-target="tab-checklist">✅ 出發防呆檢查表</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- ==================== TAB 1: SCENES ==================== -->
+    <section id="tab-scenes" class="tab-content active">
+      <div class="search-filter-section">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="sceneSearch" class="search-input" placeholder="搜尋場景、參數、器材、光圈技巧... 例如：團體照、銀河、85mm、偏光鏡、f/7.1">
+        </div>
+        <div class="tag-cloud" id="tagCloud">
+          <button class="tag-btn active" data-tag="all">✨ 全部場景 (<span id="count-all">20</span>)</button>
+          <button class="tag-btn" data-tag="portrait">👤 人像與人文</button>
+          <button class="tag-btn" data-tag="group">👨‍👩‍👧‍👦 團體與合照</button>
+          <button class="tag-btn" data-tag="landscape">🏞️ 風景與流水</button>
+          <button class="tag-btn" data-tag="astro">🌌 星空夜景極光</button>
+          <button class="tag-btn" data-tag="action">⚡ 高速動態生態</button>
+          <button class="tag-btn" data-tag="macro">📦 靜物商品微距</button>
+          <button class="tag-btn" data-tag="tripod">📐 必備腳架</button>
+          <button class="tag-btn" data-tag="filter">👓 需濾鏡</button>
+        </div>
+      </div>
+
+      <!-- Scene Cards Grid -->
+      <div class="scene-grid" id="sceneGrid">
+
+        <!-- Scene: 多人團體照 / 合照 -->
+        <article class="scene-card" data-category="portrait group" data-tags="團體照 合照 景深 f/7.1 f/8 閉眼 邊緣變形 前景深">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>👨‍👩‍👧‍👦 多人團體照 / 全家福合照</h2>
+              <p class="scene-desc">確保前後排每個人臉部清晰銳利，防範廣角變形與閉眼。</p>
+            </div>
+            <span class="scene-category-pill">團體必備</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/7.1 – f/11</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/125s – 1/250s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 – 800</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦策略：</strong>單點對焦在「第一排與第二排人臉之間（前 1/3 處）」</span>
+              <span>📐 <strong>測光/對焦：</strong>矩陣測光 / AF-S 或臉部辨識 / 關閉大光圈糖水虛化</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 推薦 35mm – 50mm 焦段</span>
+            <span class="gear-tag">📐 穩定三腳架</span>
+            <span class="gear-tag">💡 機頂閃光燈 / 離機跳燈補光</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>📏 景深關鍵法則：</strong>景深分布為「前半段佔約 1/3、後半段佔約 2/3」。多人排成 2~3 排時，若盲目開大光圈（如 f/2.8），後排人臉必定模糊！以 50mm 鏡頭、距離 3.5 米為例，光圈收至 <strong>f/7.1</strong> 時總景深約 <strong>1.42 米</strong>；距離 4 米時總景深約 <strong>2.06 米</strong>。若站位前後有 2~3 排（縱深約 1.0~1.2 米），f/7.1~f/8 即可提供充足清晰度與邊緣解像力，切忌無止境縮到 f/16 導致快門過慢或光學繞射。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 老手避坑秘笈：</strong>
+            1. 廣角鏡（24mm 以下）邊緣拉伸畸變嚴重，<strong>嚴禁讓重要長輩或女生站在畫面最兩側邊緣</strong>（臉會被拉寬扁掉）。<br>
+            2. 連拍模式（High-speed Burst）至少連按 3–5 張；口令倒數「3、2、1」前請所有人先閉眼，數到 1 時再睜開，可大幅降低抓到閉眼廢片的機率！
+          </div>
+
+          <details>
+            <summary>📋 實戰執行步驟 (SOP)</summary>
+            <div class="details-content">
+              <ol class="step-list">
+                <li><strong>隊形安排：</strong>身高高者站後排，前後排盡量緊湊貼近，減少縱深厚度。</li>
+                <li><strong>相機高度：</strong>機位高度維持在前後排人臉的中間高度（約胸口到肩膀水平），切忌過高俯角或過低仰角。</li>
+                <li><strong>對焦點確認：</strong>若有兩排，對準第一排正中人臉；若有三排，對準第二排正中人臉（利用後景深大於前景深原理）。</li>
+                <li><strong>放大檢視：</strong>拍完第一張務必放大至 100% 檢查最後排最邊緣的人臉是否清晰銳利，若微糊立即將光圈再縮半級（如從 f/6.3 縮至 f/8）。</li>
+              </ol>
+            </div>
+          </details>
+        </article>
+
+        <!-- Scene: 85mm 經典半身特寫 / 淺景深人像 -->
+        <article class="scene-card" data-category="portrait" data-tags="人像 85mm 淺景深 特寫 眼睛對焦 糖水照 散景">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>👤 85mm 經典半身 / 糖水特寫人像</h2>
+              <p class="scene-desc">人像鏡皇焦段，提供極致奶油散景與完美的五官透視比例。</p>
+            </div>
+            <span class="scene-category-pill">人像首選</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/1.4 – f/2.2</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/200s – 1/500s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 – 400</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦模式：</strong>AF-C + 眼睛追焦 (Eye-AF 鎖定靠鏡頭較近的眼睛)</span>
+              <span>🎨 <strong>色溫：</strong>微調偏暖（5200K–5600K）使膚色紅潤透亮</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 85mm f/1.4 或 f/1.8</span>
+            <span class="gear-tag">💡 反光板 (銀白雙面)</span>
+            <span class="gear-tag">🕶️ ND8 減光鏡 (艷陽天全開大光圈必備)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>💡 景深與散景技巧：</strong>在 85mm 近身半身距離（約 2 米），f/1.4 的景深僅有約 3–4 公分！若被攝者側臉，可能「一隻眼睛清楚、另一隻眼睛已經脫焦」。若需要兩眼全清晰，建議將光圈微收至 <strong>f/2.2 – f/2.8</strong>。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 老手避坑：</strong>在晴朗戶外艷陽下，光圈開到 f/1.4 時，即使快門飆到機械極限 1/8000s 依然可能過曝。此時務必裝上 <strong>ND8 或 ND16 減光鏡</strong>，切勿為了妥協曝光而無奈縮光圈。
+          </div>
+
+          <details>
+            <summary>📋 實戰執行步驟 (SOP)</summary>
+            <div class="details-content">
+              <ol class="step-list">
+                <li>讓主體與背景拉開至少 3–5 米距離，背景雜物將徹底被奶油光斑虛化。</li>
+                <li>讓被攝者面對順光或 45 度側逆光，助手使用反光板白面在下方為臉部眼窩陰影補光（眼神光）。</li>
+                <li>快門嚴格維持在 1/200s 以上（85mm 手持安全快門基線為 1/85s，考慮微動建議拉高至 1/200s+）。</li>
+              </ol>
+            </div>
+          </details>
+        </article>
+
+        <!-- Scene: 35mm / 50mm 環境人文與街拍 -->
+        <article class="scene-card" data-category="portrait" data-tags="35mm 50mm 街拍 人文 旅遊 隨拍 盲拍 泛焦">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🚶 35mm / 50mm 旅遊隨拍與街頭人文</h2>
+              <p class="scene-desc">交代主體與周遭空間故事，展現生動的故事感與身臨其境視角。</p>
+            </div>
+            <span class="scene-category-pill">人文街拍</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/2.8 – f/5.6 (街拍f/8)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/250s – 1/500s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">Auto ISO (上限 6400)</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦：</strong>街頭快拍可用超焦距泛焦 (Zone Focus) 或廣域 AF-C</span>
+              <span>⚙️ <strong>模式：</strong>光圈優先 (A/Av) 或快門優先 (S/Tv)</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 35mm 或 50mm 定焦鏡</span>
+            <span class="gear-tag">🎒 輕便單肩包 / 腕帶</span>
+            <span class="gear-tag">🔕 電子靜音快門</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🎯 老法師的街拍超焦距 (Zone Focusing)：</strong>全片幅 35mm 鏡頭在 <strong>f/8</strong> 時，超焦距約為 <strong>5.1 公尺</strong>。若將對焦鎖定在 <strong>5 公尺</strong>，景深涵蓋 <strong>2.6 公尺到無限遠 (∞)</strong>；若在騎樓或近身巷弄，則可將焦點鎖定在 <strong>3 公尺</strong>（清晰範圍約 1.9m ~ 7.1m 專注近景人物抓拍）。抬手即拍，完全無需等待自動對焦合焦！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 注意事項：</strong>街頭行人走動速度快，1/60s 很容易造成肢體模糊。街拍寧可承受 ISO 3200 的噪點，也絕對要把快門鎖在 <strong>1/250s – 1/500s</strong> 保證瞬間凝結。
+          </div>
+        </article>
+
+        <!-- Scene: 螢火蟲 -->
+        <article class="scene-card" data-category="astro" data-tags="螢火蟲 夜景 長曝 大光圈 疊圖 腳架 紅光 噪點">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>✨ 螢火蟲微光軌跡拍攝</h2>
+              <p class="scene-desc">捕抓漆黑森林中漫天飛舞的綠黃色夢幻光點與呼吸光軌。</p>
+            </div>
+            <span class="scene-category-pill">季節限定</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/1.4 – f/2.0 全開</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">15s – 30s (定時連拍)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 800 – 3200</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦：</strong>天黑前手動對準前景樹木花草，或用手電筒打光手動合焦後切 MF</span>
+              <span>⚠️ <strong>降噪：</strong>關閉「長時間曝光降噪」（否則曝 30s 會卡住處理 30s 漏掉光點）</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 重型穩固三腳架</span>
+            <span class="gear-tag">🔭 35mm/50mm/85mm 大光圈定焦</span>
+            <span class="gear-tag">🔴 紅色玻璃紙包覆手電筒</span>
+            <span class="gear-tag">⏱️ 定時電子快門線</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>💡 為什麼要用大光圈＋短曝多張疊圖？</strong>
+            如果單張曝光 3~5 分鐘，感光元件發熱會產生大量紫紅熱噪點，且背景地景容易過曝死白。專業拍法是：單張曝 15–25 秒，連續拍攝 30–60 張，回家後用 Photoshop「變亮 (Lighten)」圖層模式進行疊圖！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 致命避坑與生態倫理：</strong>
+            1. <strong>嚴禁用白光強光直射螢火蟲</strong>，手電筒必須包三層紅色玻璃紙，且只照腳下路面。<br>
+            2. <strong>絕對不可開啟自動對焦輔助燈與閃光燈</strong>！關閉防手震避免內部浮動機構微震。
+          </div>
+        </article>
+
+        <!-- Scene: 銀河星空 -->
+        <article class="scene-card" data-category="astro" data-tags="銀河 星空 500法則 NPF法則 超廣角 疊圖 無限遠對焦">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌌 銀河核心與壯麗星空</h2>
+              <p class="scene-desc">記錄浩瀚星海與璀璨銀河拱橋，精算快門時間避免星點拖尾拉絲。</p>
+            </div>
+            <span class="scene-category-pill">星空必拍</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/1.4 – f/2.8 最大</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">10s – 20s (NPF法則)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 3200 – 6400</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦：</strong>開啟即時螢幕預覽，放大到最大倍率手動對準最亮恆星直到星點最微小銳利</span>
+              <span>🎨 <strong>白平衡：</strong>手動設為 3800K – 4200K (星空冷藍有層次)</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 超廣角大光圈 (14mm–24mm f/1.4~f/2.8)</span>
+            <span class="gear-tag">📐 超低重心腳架</span>
+            <span class="gear-tag">🌡️ 鏡頭防霧發熱帶 / 暖暖包</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>📐 500 法則 vs NPF 精算法則：</strong>
+            全片幅 500 法則安全快門 = 500 ÷ 鏡頭焦距。例如 24mm 鏡頭：500 ÷ 24 ≈ 20.8 秒。<br>
+            但現代高畫素機身（4000萬+）星點更容易察覺拉絲，建議改採更嚴苛的 <strong>NPF 法則或 350 法則</strong>（24mm 建議曝 10–13 秒），或使用星空專用計算機！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 老手避坑：</strong>鏡頭對焦環轉到底的「無限遠記號（∞）」通常<strong>不是真正的準焦位置</strong>（多數鏡頭有留熱膨脹餘量會過焦）。必須在螢幕上放大 10 倍手動旋轉對準恆星！
+          </div>
+        </article>
+
+        <!-- Scene: 極光追光 -->
+        <article class="scene-card" data-category="astro" data-tags="極光 爆發 快門動態調整 低溫 電池保暖 暖暖包">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌌 夢幻舞動極光 (Aurora)</h2>
+              <p class="scene-desc">根據極光活動劇烈程度動態切換快門，保留天際光幕絲狀紋理。</p>
+            </div>
+            <span class="scene-category-pill">極地追光</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">慢速微弱極光</span>
+              <span class="param-value">5s – 10s | f/2.0 | ISO 1600</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">劇烈跳躍爆發</span>
+              <span class="param-value">1s – 3s | f/1.4 | ISO 6400</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">白平衡</span>
+              <span class="param-value">3500K – 4000K</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦：</strong>對準遠處地平線燈火或亮星手動鎖定 MF</span>
+              <span>🔋 <strong>電源策略：</strong>備用電池放貼身內層口袋保暖，隨時輪替</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 14mm–20mm f/1.4–f/2.8 超廣角</span>
+            <span class="gear-tag">📐 航太鋁或碳纖維抗凍腳架</span>
+            <span class="gear-tag">🔥 鏡頭加熱帶 (防結霜結露)</span>
+            <span class="gear-tag">🧤 可掀指觸控保暖手套</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>💡 極光最關鍵認知：</strong>當極光大爆發如窗簾般快速翻滾跳躍時，若依然使用 10 秒慢快門，極光細緻的簾幕條紋會全部糊成一片死綠光！此時必須果斷<strong>把快門縮短至 1–2 秒，並將 ISO 飆升至 3200~6400</strong>！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 極寒回室內大忌：</strong>從零下 20 度的室外進到溫暖木屋時，冰冷的相機會瞬間凝結大量水氣導致機身與鏡頭內部受潮發霉。<strong>進屋前必須將相機裝入密封夾鏈袋排空空氣</strong>，靜置 2 小時等相機回溫後再取出！
+          </div>
+        </article>
+
+        <!-- Scene: 煙火施放 -->
+        <article class="scene-card" data-category="astro landscape" data-tags="煙火 B門 黑卡 快門線 ISO100 小光圈 煙霧">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🎆 璀璨煙火與城市夜景</h2>
+              <p class="scene-desc">使用 B 門與黑卡掌控花火線條粗細與曝光時長，避免煙霧漫延過曝。</p>
+            </div>
+            <span class="scene-category-pill">節慶夜景</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/8 – f/11 (最佳粗細)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門模式</span>
+              <span class="param-value">B 門 (Bulb) / 2s – 5s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 原生低感</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦：</strong>手動對焦 (MF) 鎖定在發射台地面建築或地標</span>
+              <span>⚠️ <strong>設定：</strong>關閉機身降噪、關閉防手震、相機設為 RAW</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 穩固三腳架</span>
+            <span class="gear-tag">⏱️ 具鎖定功能的電子快門線</span>
+            <span class="gear-tag">🃏 不反光黑卡紙</span>
+            <span class="gear-tag">🔭 24-70mm 或 16-35mm 變焦鏡</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🎨 黑卡遮擋神技：</strong>煙火施放前，用黑卡遮在鏡頭前（不觸碰鏡身）。當看見美麗花火升空發射瞬間，迅速移開黑卡 2–3 秒記錄花火炸開綻放，隨後再用黑卡遮住，等待下一顆高空花火再移開，即可在同一張底片收錄多顆乾淨花火。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 避坑提醒：</strong>
+            1. <strong>風向決定生死！</strong>務必提前查天氣預報站在<strong>「上風處」</strong>，否則煙火施放 30 秒後濃煙飄來，只會拍到一片霧濛濛的發光白煙。<br>
+            2. 光圈切勿開大於 f/5.6，否則煙火光柱過於刺眼粗糙爆白；收在 f/8–f/11 光絲最細膩銳利。
+          </div>
+        </article>
+
+        <!-- Scene: 瀑布流水與絲絹水感 -->
+        <article class="scene-card" data-category="landscape" data-tags="瀑布 流水 慢快門 絲絹 減光鏡 ND鏡 CPL 偏光鏡 腳架">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌊 瀑布溪流與綿密絲絹水感</h2>
+              <p class="scene-desc">慢速快門將奔騰水花化為柔順白絹，CPL 消除濕滑岩石反光。</p>
+            </div>
+            <span class="scene-category-pill">風景經典</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/8 – f/11 (甜區銳利)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">慢快門速度</span>
+              <span class="param-value">1/4s – 2s (依水速)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 50 – 100</span>
+            </div>
+            <div class="param-extra">
+              <span>👓 <strong>必備濾鏡：</strong>CPL 圓形偏光鏡 + ND8 / ND16 / ND64 減光鏡</span>
+              <span>⏱️ <strong>快門釋放：</strong>設定 2 秒自拍倒數計時（防手按震動）</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 碳纖維三腳架</span>
+            <span class="gear-tag">👓 CPL 偏光鏡 (轉動消除水面反光)</span>
+            <span class="gear-tag">🕶️ ND8 / ND64 減光鏡</span>
+            <span class="gear-tag">🧻 鏡頭專用吸水拭鏡布 (防瀑布水霧)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🌊 快門秒數美學：</strong>
+            • <strong>1/4s – 1/2s：</strong>既有絲絹平滑感，又能保留水流奔騰的紋理衝擊力（最推薦！）。<br>
+            • <strong>2s – 5s：</strong>完全化為霧化棉絮般的寧靜仙境感。<br>
+            • 切勿盲目曝到 30 秒，過長曝光會讓水流變成一整片無細節的平淡死白。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 避坑秘訣：</strong>在林間拍溪流常有微風吹拂，若快門長達 4 秒，溪邊的樹葉芒草會隨風晃動變糊。若想水流絲絹且樹葉銳利，可拍攝兩張（一張 1/2s 拍水、一張 1/250s 定格樹葉）回電腦後期蒙版合成。
+          </div>
+        </article>
+
+        <!-- Scene: 晨昏日出日落 / 藍調時刻 -->
+        <article class="scene-card" data-category="landscape" data-tags="晨昏 日出 日落 藍調 星芒 HDR 包圍曝光 GND">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌅 晨昏日落與極致藍調時刻 (Blue Hour)</h2>
+              <p class="scene-desc">掌握日落前後黃金半小時光線變化，拍出耀眼太陽星芒與高動態範圍。</p>
+            </div>
+            <span class="scene-category-pill">大景風光</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/11 – f/16 (刺芒)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">1/30s – 10s (動態)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 基底畫質</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>曝光輔助：</strong>開啟 AEB 自動包圍曝光 (3~5 張 ±1EV 或 ±2EV)</span>
+              <span>📊 <strong>直方圖：</strong>注意右側高光不貼壁，保護夕陽暖雲層次</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 三腳架</span>
+            <span class="gear-tag">🕶️ GND 漸變減光鏡 (平衡天空與地景大光比)</span>
+            <span class="gear-tag">🔭 廣角鏡頭 (16-35mm)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>⭐ 璀璨星芒物理學：</strong>光圈收至 <strong>f/11 或 f/16</strong>，利用光圈葉片邊緣繞射產生的尖銳星芒。奇數葉片（如 7 片、9 片）會產生雙倍芒線（14、18 芒）；偶數葉片（如 8 片）產生 8 道星芒。讓太陽被山稜線、建築物邊角微遮一半時，星芒最刺最漂亮！
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 致命失誤：</strong>太陽直射鏡頭容易產生耀光鬼影（Flare）。務必取下平時保護用的便宜 UV 鏡，並隨身攜帶拭鏡布確保前後鏡片一塵不染（一顆灰塵就會在逆光下放大成巨大光斑）。
+          </div>
+        </article>
+
+        <!-- Scene: 城市夜景與車流光軌 -->
+        <article class="scene-card" data-category="landscape astro" data-tags="城市夜景 車軌 光軌 慢快門 藍調 腳架 小光圈">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🚗 城市夜景與車流光軌 (Light Trails)</h2>
+              <p class="scene-desc">慢速曝光將穿梭車潮化作紅色尾燈與白色頭燈的金色絲帶。</p>
+            </div>
+            <span class="scene-category-pill">夜色風華</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/8 – f/13 (星芒銳利)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">10s – 30s (覆蓋號誌)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 純淨畫質</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>拍攝時機：</strong>日落後 20–35 分鐘「藍調時刻」，天空呈現深邃深藍而非死黑</span>
+              <span>🔒 <strong>防震：</strong>相機關閉防手震 (OSS/IS/IBIS)，使用快門線或 2 秒延遲釋放</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 重心穩定的三腳架</span>
+            <span class="gear-tag">🔭 廣角至中焦變焦 (24-105mm)</span>
+            <span class="gear-tag">⏱️ 定時快門線</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🚦 光軌連續飽滿的秘訣：</strong>觀察路口紅綠燈週期！若紅燈轉綠燈車流開始啟動時才按下快門，光軌才會從路口一路綿延至畫面盡頭，呈現連續不中斷的亮麗流動線條。
+          </div>
+        </article>
+
+        <!-- Scene: 高速運動與飛羽賽事 -->
+        <article class="scene-card" data-category="action" data-tags="運動 飛羽 鳥類 賽車 追焦 連拍 高速快門 AF-C">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🏃 運動賽事與飛羽飛鳥 (Sports & Birds)</h2>
+              <p class="scene-desc">利用千分之一秒高速快門定格極速動態，或搖鏡追焦展現速度流線。</p>
+            </div>
+            <span class="scene-category-pill">極速定格</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">凝結快門</span>
+              <span class="param-value">1/1600s – 1/4000s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/2.8 – f/5.6</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">Auto ISO (上限 12800)</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦系統：</strong>AF-C (連續伺服追焦) + 主體識別 (鳥類/運動員) + 3D 追蹤</span>
+              <span>⚡ <strong>連拍設定：</strong>高速連拍 (H+ 10-30fps) + RAW 格式儲存</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 70-200mm 或 100-400mm / 600mm 長焦鏡頭</span>
+            <span class="gear-tag">🚀 高速 CFexpress / UHS-II V60+ 記憶卡 (防寫入卡彈)</span>
+            <span class="gear-tag">🦵 單腳架 (Monopod, 減輕手持負擔)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🏎️ 搖鏡追焦 (Panning) 絕技：</strong>
+            想拍出主體銳利、背景化作放射流動線條的速度感？改用快門優先 (S 模式)，將快門降至 <strong>1/30s – 1/60s</strong>。以腰部為軸心，鏡頭平順跟隨奔跑選手或賽車等速水平旋轉，在移動過程中按下連拍！
+          </div>
+        </article>
+
+        <!-- Scene: 寵物與活潑孩童 -->
+        <article class="scene-card" data-category="action portrait" data-tags="寵物 狗 貓 兒童 奔跑抓拍 水平視線 AF-C">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🐾 奔跑寵物與活潑幼童</h2>
+              <p class="scene-desc">以平視視角貼近毛孩與孩子世界，高速快門抓拍天真奔跑神情。</p>
+            </div>
+            <span class="scene-category-pill">溫馨家庭</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦快門</span>
+              <span class="param-value">1/500s – 1/1000s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/2.0 – f/4.0</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">Auto ISO</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦：</strong>開啟「動物眼睛識別」或「人物面孔識別」，對焦模式鎖定 AF-C</span>
+              <span>📐 <strong>機位：</strong>翻轉螢幕貼地仰拍，相機高度與寵物/孩童眼睛等高</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 35mm / 50mm / 85mm 或 70-200mm 大光圈鏡</span>
+            <span class="gear-tag">📱 可翻轉觸控螢幕機身</span>
+            <span class="gear-tag">🎾 吸引注意力的零食玩具球</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>👶 視線高度是靈魂：</strong>千萬不要站著以大人「高高在上」的俯角往下拍！蹲下、甚至整個人趴在草地上平視拍攝，能瞬間讓畫面充滿代入感，並使背景自然拉遠虛化。
+          </div>
+        </article>
+
+        <!-- Scene: 靜物與商品商攝 -->
+        <article class="scene-card" data-category="macro" data-tags="靜物 商品 美食 柔光箱 反光板 景深合成 f/8 f/11 腳架">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>📦 精緻商品商攝與美食靜物</h2>
+              <p class="scene-desc">精準控制光影質感與景深，展現產品材質紋理與誘人細節。</p>
+            </div>
+            <span class="scene-category-pill">商攝必讀</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">最佳光圈</span>
+              <span class="param-value">f/8 – f/11 (極致銳利)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">1/125s (棚燈同步)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 原生低感</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦技術：</strong>手動對焦 (MF) 放大確認，商品長景深可用「景深合成 (Focus Stacking)」</span>
+              <span>💡 <strong>打光要訣：</strong>大柔光箱作為主光、反光板在暗部補光勾勒輪廓</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 俯拍橫臂中軸腳架</span>
+            <span class="gear-tag">💡 攝影棚外拍燈 / 持續燈 + 柔光箱</span>
+            <span class="gear-tag">🪞 白色珍珠反光板 / 銀色反光紙</span>
+            <span class="gear-tag">🔭 50mm / 90mm 微距鏡頭</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>📸 為什麼商攝不能開 f/1.8？</strong>
+            很多新手以為開大光圈背景模糊就是專業，但商品攝影最忌諱「前面商標清楚、商品後端已經糊掉」。必須收至 <strong>f/8–f/11</strong> 確保整件商品輪廓分明；若產品微距極近，則在腳架上拍 5–10 張不同焦點照片進行後期疊合 (Focus Stacking)。
+          </div>
+        </article>
+
+        <!-- Scene: 微距昆蟲與花卉生態 -->
+        <article class="scene-card" data-category="macro" data-tags="微距 昆蟲 花卉 1:1 毫米景深 雙頭閃燈 景深合成">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🔬 超微距昆蟲與花草細節</h2>
+              <p class="scene-desc">探索肉眼不可見的微觀世界，征服毫米級極薄景深與補光挑戰。</p>
+            </div>
+            <span class="scene-category-pill">微觀視界</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">實拍光圈</span>
+              <span class="param-value">f/11 – f/16</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">1/200s (閃燈同步)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 – 400</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦秘訣：</strong>轉為手動對焦固定 1:1 倍率，以身體前後微幅位移尋找焦點</span>
+              <span>💡 <strong>光影配置：</strong>雙頭微距閃光燈或環形閃燈 + 訂製擴散柔光罩</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 90mm / 100mm 1:1 等倍微距鏡</span>
+            <span class="gear-tag">💡 微距雙頭閃燈 + 超大擴散罩</span>
+            <span class="gear-tag">🚂 微距微調雙向對焦雲台軌道</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>⚠️ 微距光學物理硬傷：</strong>在 1:1 放大倍率下，有效光圈會劇烈縮減，且景深薄如紙片（常常只有 1~2 毫米！），手部微震或微風一吹焦點立即跑掉。因此<strong>強效柔和的微距閃光燈是微距攝影的第一生命線</strong>，用極短的閃光脈衝瞬間凍結畫面！
+          </div>
+        </article>
+
+        <!-- Scene: 建築外觀與室內空間 -->
+        <article class="scene-card" data-category="landscape" data-tags="建築 室內 橫平豎直 透視校正 偏光鏡 廣角 畸變">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🏛️ 建築外觀與室內空間空間感</h2>
+              <p class="scene-desc">嚴格維持水平與垂直線條，展現空間結構的純粹對稱與幾何張力。</p>
+            </div>
+            <span class="scene-category-pill">建築空間</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">最佳光圈</span>
+              <span class="param-value">f/8 – f/11 (全圖銳)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">快門速度</span>
+              <span class="param-value">1/60s 或慢曝 2-5s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100</span>
+            </div>
+            <div class="param-extra">
+              <span>📐 <strong>核心鐵律：</strong>開啟電子水平儀，相機嚴格維持「水平」與「俯仰 0 度」避免垂直透視變形</span>
+              <span>👓 <strong>偏光鏡：</strong>轉動 CPL 消除落地大窗戶與反光地板雜光</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 14-24mm 超廣角鏡 / 移軸鏡頭 (Tilt-Shift)</span>
+            <span class="gear-tag">📐 齒輪微調雲台 (Gear Head) 三腳架</span>
+            <span class="gear-tag">👓 圓形 CPL 偏光鏡</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>📐 橫平豎直無變形：</strong>建築攝影最大忌諱是相機仰角朝上拍，導致建築物看起來「像要向後倒塌」。若無昂貴移軸鏡頭，務必站得更遠退後拍，保持機身完全水平，讓垂直線條絕對平行，多餘地面回電腦後期裁切即可。
+          </div>
+        </article>
+
+        <!-- Scene: 舞台表演與室內演講演唱會 -->
+        <article class="scene-card" data-category="action portrait" data-tags="舞台 演唱會 演講 室內 暗光 高ISO 點測光 70-200mm">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🎤 室內舞台、演講與演唱會</h2>
+              <p class="scene-desc">征服昏暗多變的舞台燈光與快速舞動，保護演員臉部曝光不爆光。</p>
+            </div>
+            <span class="scene-category-pill">暗光舞台</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/320s – 1/640s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/2.8 全開大光圈</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 1600 – 6400+</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>測光模式：</strong>「點測光」或「高光重點測光 (Highlight Weighted)」</span>
+              <span>🚫 <strong>現場禮儀：</strong>嚴禁開啟任何閃光燈與對焦輔助燈，開啟電子靜音快門</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 70-200mm f/2.8 遠攝大光圈變焦鏡</span>
+            <span class="gear-tag">🔕 電子靜音快門功能</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🎭 為什麼舞台人臉老是慘白爆光？</strong>
+            因為舞台背景通常是一片漆黑，若使用預設的「矩陣/評價測光」，相機會誤以為環境極暗而拼命拉長曝光，導致聚光燈下的主角人臉徹底死白爆掉！必須切換為<strong>「高光重點測光」或手動將曝光補償減 -1.0EV 至 -1.7EV</strong>。
+          </div>
+        </article>
+        <!-- Scene: 135mm / 200mm 戶外長焦人像 -->
+        <article class="scene-card" data-category="portrait" data-tags="人像 135mm 200mm 長焦 空氣切割 壓縮感 戶外 散景">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>👤 135mm / 200mm 極致空間壓縮與空氣切割人像</h2>
+              <p class="scene-desc">利用長焦透視壓縮感拉近遠方背景，營造主體如同立體剪紙般的空氣切割分離度。</p>
+            </div>
+            <span class="scene-category-pill">長焦神鏡</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/1.8 – f/2.8</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">安全快門</span>
+              <span class="param-value">1/250s – 1/500s</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100 – 400</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>對焦策略：</strong>AF-C + 眼睛追焦 (Eye-AF)，長焦景深極淺需嚴格鎖焦</span>
+              <span>🗣️ <strong>溝通：</strong>拍攝距離常在 5–15 公尺以上，建議搭配對講機或藍牙耳機溝通</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 135mm f/1.8 或 70-200mm f/2.8</span>
+            <span class="gear-tag">📶 藍牙/無線引閃器 (若有離機燈)</span>
+            <span class="gear-tag">🦵 單腳架 (減輕長焦鏡手部負擔)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🔭 透視壓縮魔法：</strong>135mm/200mm 能將背後數十公尺甚至百米外的山巒、樹林或歐風街道「拉近」到模特兒身後，形成緊密飽滿的背景構圖。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 長焦安全快門鐵律：</strong>鏡頭焦距越長手震越劇烈！135mm 安全快門基線為 1/135s，若考慮被攝者肢體晃動與微震，<strong>強烈建議將快門鎖在 1/250s 或 1/500s 以上</strong>。
+          </div>
+        </article>
+
+        <!-- Scene: 海岸慢門海浪 -->
+        <article class="scene-card" data-category="landscape" data-tags="海岸 海浪 慢門 拉絲 霧化 減光鏡 ND1000 腳架 CPL 潮汐">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌊 海岸岩石慢門與海浪拉絲</h2>
+              <p class="scene-desc">掌握潮汐浪花拍岸節奏，快門 1 秒拍出拉絲浪線，長曝 30 秒撫平為夢幻仙氣霧海。</p>
+            </div>
+            <span class="scene-category-pill">海景慢門</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">動感拉絲快門</span>
+              <span class="param-value">1/2s – 1s (退浪瞬間)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">鏡面霧化快門</span>
+              <span class="param-value">20s – 60s (ND1000)</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/8 – f/11 (高銳利)</span>
+            </div>
+            <div class="param-extra">
+              <span>👓 <strong>必備濾鏡：</strong>CPL 消除濕岩反光 + ND64 或 ND1000 減光鏡</span>
+              <span>🌊 <strong>按快門時機：</strong>海浪拍上岸「退回大海的瞬間」按下快門，拉絲線條最修長優雅</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">📐 穩固三腳架 (腳管防水防沙)</span>
+            <span class="gear-tag">🕶️ ND64 / ND1000 圓形或方型濾鏡</span>
+            <span class="gear-tag">🧻 超細纖維拭鏡布 (擦拭海水鹽霧)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🏖️ 腳架防陷下沉絕招：</strong>海邊濕沙被海浪沖刷時，腳架腳管會悄悄往下陷落造成微晃！拍攝前用力將腳架三隻腳<strong>用力往下踩入沙中至少 5–10 公分到底部硬岩石層</strong>，確認穩固再按快門。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 海水鹽霧保養：</strong>海水微粒具強烈腐蝕性。外拍完畢返家後，<strong>必須用濕布將腳架、相機外殼徹底擦拭</strong>，並用清水沖洗腳架金屬腳管晾乾，以免金屬螺絲鏽蝕卡死。
+          </div>
+        </article>
+
+        <!-- Scene: 雪景與高調雪山 -->
+        <article class="scene-card" data-category="landscape" data-tags="雪景 雪山 白加黑減 曝光補償 偏光鏡 低溫 保暖 結露">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>❄️ 壯麗雪景與高調雪山 (Snowscape)</h2>
+              <p class="scene-desc">牢記「白加黑減」曝光補償鐵律，還原純淨皚皚白雪，對抗極寒低溫掉電。</p>
+            </div>
+            <span class="scene-category-pill">極寒雪域</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">曝光補償 (EV)</span>
+              <span class="param-value">+1.0EV ~ +2.0EV</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">推薦光圈</span>
+              <span class="param-value">f/8 – f/11</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">ISO 感光度</span>
+              <span class="param-value">ISO 100</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>白加黑減心法：</strong>相機測光表以 18% 灰為基準，大面積白雪會讓相機誤判「太亮」而調暗，拍成髒髒的水泥灰！必須手動增加 +1.3EV 至 +2.0EV 曝光補償</span>
+              <span>🎨 <strong>白平衡：</strong>日光雪地偏藍，手動設為 5500K–6000K 或點選乾淨白雪自定義灰階</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">👓 CPL 偏光鏡 (壓暗雪地藍天對比、消除冰面刺眼眩光)</span>
+            <span class="gear-tag">🔋 備用電池 2~3 顆 (貼身內袋保暖)</span>
+            <span class="gear-tag">🛍️ 密封夾鏈保鮮袋 (進室內回溫防潮)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>📊 檢查雪地直方圖 (Histogram)：</strong>拍完看照片背面的直方圖，高光波峰應該靠向右側（接近 255 但不貼頂溢出），這樣才能呈現冰晶白雪通透閃耀的質感。
+          </div>
+        </article>
+
+        <!-- Scene: 超長焦懸日懸月 -->
+        <article class="scene-card" data-category="landscape astro" data-tags="懸日 懸月 長焦 400mm 600mm 透視 地景 大氣熱浪 腳架">
+          <div class="scene-header">
+            <div class="scene-title-group">
+              <h2>🌕 超長焦巨型懸日與懸月 (Moon & Sun Alignment)</h2>
+              <p class="scene-desc">利用超長焦鏡頭將遠方巨大的日月與城市地標建築合而為一，震撼比例衝擊視覺。</p>
+            </div>
+            <span class="scene-category-pill">天文地景</span>
+          </div>
+
+          <div class="param-box">
+            <div class="param-item">
+              <span class="param-label">懸月曝光</span>
+              <span class="param-value">1/125s – 1/250s | f/8 | ISO 200</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">懸日日落</span>
+              <span class="param-value">1/500s – 1/2000s | f/11 | ISO 100</span>
+            </div>
+            <div class="param-item">
+              <span class="param-label">推薦焦距</span>
+              <span class="param-value">400mm – 800mm 等效</span>
+            </div>
+            <div class="param-extra">
+              <span>🎯 <strong>拍攝距離：</strong>離前景地標越遠（通常 2~10 公里），日月的相對視覺比例越大</span>
+              <span>🔭 <strong>對焦：</strong>手動對焦 (MF) 放大畫面精確對準月球環形山隕石坑紋理</span>
+            </div>
+          </div>
+
+          <div class="gear-list">
+            <span class="gear-tag">🔭 100-400mm / 200-600mm 超遠攝鏡頭 + 1.4x/2x 增距鏡</span>
+            <span class="gear-tag">📐 超重型重裝腳架 + 懸臂雲台 (Gimbal Head)</span>
+            <span class="gear-tag">📱 太陽/月亮軌跡精算 App (如 PhotoPills / Planit)</span>
+          </div>
+
+          <div class="pro-rules">
+            <strong>🌕 拍滿月別用慢快門：</strong>月亮在太空中其實是被太陽直射的岩石，表面極亮！若快門慢於 1/60s，月球表面的嫦娥環形山紋理會完全過曝成一顆發光死白圓球，且地球自轉會讓長焦下的月球產生位移殘影。
+          </div>
+
+          <div class="pitfall-alert">
+            <strong>⚠️ 大氣擾動與熱浪：</strong>在柏油路面或夏季高溫下，遠距離拍攝地面熱氣上升會導致月亮輪廓如水波般劇烈扭曲。秋冬清晨或冷空氣通過後的大氣最為通透平靜。
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: CALCULATORS ==================== -->
+    <section id="tab-calculators" class="tab-content">
+      <div class="calc-container">
+
+        <!-- Calculator 1: DoF & Hyperfocal Distance -->
+        <div class="calc-card" id="calc-dof">
+          <div class="calc-header">
+            <h3>📏 景深 (DoF) 與超焦距精密計算機</h3>
+            <p>即時計算前後景深範圍，並提供「多人團體照光圈健檢」！</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sensorSelect">感光元件片幅</label>
+              <select id="sensorSelect">
+                <option value="0.030" selected>全片幅 35mm (Full Frame, CoC: 0.030mm)</option>
+                <option value="0.020">APS-C (Sony / Nikon / Fuji 1.5x, CoC: 0.020mm)</option>
+                <option value="0.019">APS-C (Canon 1.6x, CoC: 0.019mm)</option>
+                <option value="0.015">M4/3 (Olympus / Panasonic 2.0x, CoC: 0.015mm)</option>
+                <option value="0.011">1 吋感光元件 (Sony RX100等, CoC: 0.011mm)</option>
+                <option value="0.038">中片幅 (Fuji GFX 44x33, CoC: 0.038mm)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="focalInput">鏡頭實體焦距 <span class="unit-badge">mm</span></label>
+              <input type="number" id="focalInput" value="50" min="8" max="800" step="1">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apertureSelect">鏡頭光圈值 (f-number)</label>
+              <select id="apertureSelect">
+                <option value="1.2">f/1.2</option>
+                <option value="1.4">f/1.4</option>
+                <option value="1.8">f/1.8</option>
+                <option value="2.0">f/2.0</option>
+                <option value="2.8">f/2.8</option>
+                <option value="4.0">f/4.0</option>
+                <option value="5.6">f/5.6</option>
+                <option value="7.1" selected>f/7.1 (團體/風景黃金推薦)</option>
+                <option value="8.0">f/8.0 (最佳光學甜區)</option>
+                <option value="11.0">f/11.0</option>
+                <option value="16.0">f/16.0 (注意繞射)</option>
+                <option value="22.0">f/22.0</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="distInput">對焦距離 (主體距離) <span class="unit-badge">公尺 (m)</span></label>
+              <input type="number" id="distInput" value="3.5" min="0.2" max="200" step="0.1">
+            </div>
+          </div>
+
+          <!-- Output Box -->
+          <div class="calc-result-box">
+            <div class="result-highlight">
+              <div class="result-title">總景深清晰涵蓋範圍 (Total DoF)</div>
+              <div class="result-value" id="resTotalDof">2.24 m</div>
+            </div>
+
+            <div class="result-sub-grid">
+              <div class="sub-result-item">
+                <span class="label">前景深起點 (Near Limit)</span>
+                <span class="val" id="resNearLimit">2.71 m</span>
+              </div>
+              <div class="sub-result-item">
+                <span class="label">後景深終點 (Far Limit)</span>
+                <span class="val" id="resFarLimit">4.95 m</span>
+              </div>
+              <div class="sub-result-item">
+                <span class="label">超焦距 (Hyperfocal Distance)</span>
+                <span class="val" id="resHyperfocal">11.79 m</span>
+              </div>
+              <div class="sub-result-item">
+                <span class="label">前後景深比例 (Near / Far)</span>
+                <span class="val" id="resRatio">41% / 59%</span>
+              </div>
+            </div>
+
+            <!-- Visual Bar -->
+            <div class="dof-visual-container">
+              <div class="dof-legend">
+                <span>0m (相機)</span>
+                <span style="color: var(--accent-rose);">● 主體位置: <span id="visualSubjectDist">3.5m</span></span>
+                <span>清晰區: <span id="visualSharpRange">2.71m ~ 4.95m</span></span>
+              </div>
+              <div class="dof-bar-wrapper">
+                <div class="dof-sharp-zone" id="dofVisualBar" style="left: 30%; width: 40%;"></div>
+                <div class="subject-marker" id="dofSubjectMarker" style="left: 45%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-world Group photo assistant interactive callout -->
+          <div class="group-photo-assistant">
+            <h4>💡 實務實戰驗證分析</h4>
+            <p id="dofPracticalAdvice">
+              <strong>團體照情境分析：</strong>若一群人站立排成 2~3 排（前後站位深度約 1.2 公尺），在目前參數下總景深為 <strong>1.42 公尺</strong>，足以涵蓋整組人員！請將對焦點置於距離相機約 <strong>3.1 公尺</strong>的第 1~2 排肩膀處，前後人員都能保證清晰。
+            </p>
+          </div>
+        </div>
+
+        <!-- Calculator 2: Astrophotography Shutter (500 Rule vs NPF Rule) -->
+        <div class="calc-card" id="calc-astro">
+          <div class="calc-header">
+            <h3>🌌 星空不拖尾快門計算機</h3>
+            <p>告別拉絲星軌！精準計算銀河拍攝最長安全曝光秒數。</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="astroFocal">實體焦距 <span class="unit-badge">mm</span></label>
+              <input type="number" id="astroFocal" value="16" min="8" max="200" step="1">
+            </div>
+            <div class="form-group">
+              <label for="astroAperture">鏡頭光圈</label>
+              <select id="astroAperture">
+                <option value="1.4">f/1.4</option>
+                <option value="1.8">f/1.8</option>
+                <option value="2.0">f/2.0</option>
+                <option value="2.8" selected>f/2.8</option>
+                <option value="4.0">f/4.0</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="astroSensor">相機片幅類型</label>
+              <select id="astroSensor">
+                <option value="1.0" selected>全片幅 35mm (裁切係數 1.0x)</option>
+                <option value="1.5">APS-C (Sony/Nikon/Fuji 1.5x)</option>
+                <option value="1.6">APS-C (Canon 1.6x)</option>
+                <option value="2.0">Micro 4/3 (2.0x)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="astroMegapixels">機身有效畫素</label>
+              <select id="astroMegapixels">
+                <option value="24" selected>2400 萬畫素 (標準主流)</option>
+                <option value="33">3300 萬畫素 (Sony A74 等)</option>
+                <option value="45">4500 萬畫素 (Nikon Z8/Canon R5)</option>
+                <option value="61">6100 萬超高畫素 (Sony A7R5 等)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-result-box">
+            <div class="result-highlight">
+              <div class="result-title">NPF 精準建議快門 (高畫素首選)</div>
+              <div class="result-value" id="resNpfShutter">13.2 秒</div>
+            </div>
+
+            <div class="result-sub-grid">
+              <div class="sub-result-item">
+                <span class="label">傳統 500 法則上限</span>
+                <span class="val" id="res500Shutter">31.2 秒</span>
+              </div>
+              <div class="sub-result-item">
+                <span class="label">嚴格 350 法則上限</span>
+                <span class="val" id="res350Shutter">21.8 秒</span>
+              </div>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.4;">
+              💡 <strong>說明：</strong>500 法則源自底片時代，現代數位相機（尤其是 3000 萬畫素以上）在 100% 放大時，500 法則計算的時間早已產生微小星點拖尾。推薦使用 <strong>NPF 法則秒數</strong>，星點顆顆如針尖般渾圓！
+            </p>
+          </div>
+        </div>
+
+        <!-- Calculator 3: ND Filter Long Exposure & Timer -->
+        <div class="calc-card" id="calc-nd">
+          <div class="calc-header">
+            <h3>🕶️ ND 減光鏡曝光換算與長曝計時器</h3>
+            <p>無濾鏡基準測光 ➔ 裝上減光鏡長曝秒數，野外現場直接按鈕倒數！</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="baseShutter">原始測光快門 (無濾鏡)</label>
+              <select id="baseShutter">
+                <option value="0.001">1/1000 秒</option>
+                <option value="0.002">1/500 秒</option>
+                <option value="0.004">1/250 秒</option>
+                <option value="0.008">1/125 秒</option>
+                <option value="0.0166" selected>1/60 秒 (常見日常手持)</option>
+                <option value="0.0333">1/30 秒</option>
+                <option value="0.0666">1/15 秒</option>
+                <option value="0.125">1/8 秒</option>
+                <option value="0.25">1/4 秒</option>
+                <option value="0.5">1/2 秒</option>
+                <option value="1">1 秒</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ndSelect">ND 減光鏡規格</label>
+              <select id="ndSelect">
+                <option value="2">ND4 (減 2 檔 EV)</option>
+                <option value="3">ND8 (減 3 檔 EV, 適合瀑布流水)</option>
+                <option value="4">ND16 (減 4 檔 EV)</option>
+                <option value="6" selected>ND64 (減 6 檔 EV, 晨昏大景熱門)</option>
+                <option value="10">ND1000 (減 10 檔 EV, 白天長曝大魔王)</option>
+                <option value="16.6">ND100000 (減 16.6 檔, 拍日蝕專用)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-result-box">
+            <div class="result-highlight">
+              <div class="result-title">裝上減光鏡後所需長曝時間</div>
+              <div class="result-value" id="resNdShutter">1.07 秒</div>
+            </div>
+
+            <div class="timer-action-box">
+              <div class="timer-display" id="timerDisplay">00:01.1</div>
+              <button class="timer-btn" id="startTimerBtn">
+                <span>⏱️ 開始現場長曝倒數</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: GEAR & FILTERS ==================== -->
+    <section id="tab-gear" class="tab-content">
+      <div class="gear-guide-grid">
+
+        <div class="gear-card">
+          <h4>👓 CPL 圓形偏光鏡 (Circular Polarizer)</h4>
+          <p>戶外風景攝影不可或缺的靈魂之鏡，無法被後期軟體完全替代！</p>
+          <ul>
+            <li><strong>核心作用：</strong>旋轉外圈可消除非金屬表面（如水面、濕潤岩石、玻璃窗、植物葉片表面蠟質）的刺眼反射光。</li>
+            <li><strong>色彩加深：</strong>使藍天更深邃飽滿、白雲層次分明、山林樹葉重現鮮翠飽和本色。</li>
+            <li><strong>最佳角度：</strong>鏡頭朝向與太陽夾角呈 <strong>90 度</strong> 時，偏光消光效果最強烈。</li>
+            <li><strong>減光提醒：</strong>裝上 CPL 會自然損失約 1.5 ~ 2 檔曝光，注意快門速度是否掉入安全快門以下。</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <h4>🕶️ ND 減光鏡 (Neutral Density)</h4>
+          <p>相機的墨鏡，用來在光線充足的環境下強行拉長曝光時間或開大光圈。</p>
+          <ul>
+            <li><strong>ND8 (3 檔)：</strong>溪流、小瀑布慢快門必備，適合陰天或森林林蔭環境。</li>
+            <li><strong>ND64 (6 檔)：</strong>晨昏日出日落黃金神器，在太陽下山時將快門拉長至 10-30 秒拍車軌海浪。</li>
+            <li><strong>ND1000 (10 檔)：</strong>艷陽正午強行長曝 30 秒至數分鐘，將人潮洶湧的廣場行人完全霧化消除，或將海浪撫平成鏡面。</li>
+            <li><strong>黑柔焦鏡 (Black Mist)：</strong>降低數位銳利生硬感，使高光溢出溫潤電影感光暈，特別適合復古夜景與氛圍人像。</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <h4>📐 三腳架與雲台實戰心法</h4>
+          <p>再頂級的防手震，也無法取代一座穩固沉穩的三腳架。</p>
+          <ul>
+            <li><strong>上腳架必關防手震：</strong>相機或鏡頭裝在腳架上時，<strong>務必關閉機身防手震 (IBIS) 與鏡頭防手震 (IS/VR/OSS)</strong>！否則防震馬達因偵測不到震動反而會產生自我迴授微動，導致畫面微糊。</li>
+            <li><strong>中軸盡量不升：</strong>中軸伸長會形成單薄槓桿，極易受到微風吹拂震動。除非高度不足，否則優先伸長粗壯的主腳管。</li>
+            <li><strong>腳架掛勾配重：</strong>在海邊強風或山頂空曠處，可在腳架底部掛勾懸掛相機背包壓低重心。</li>
+            <li><strong>快拆板隨時鎖緊：</strong>出門前用十元硬幣或六角板手確認機底快拆板鎖死，避免機身旋轉摔落。</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <h4>💡 閃光燈與控光配件</h4>
+          <p>攝影是捕捉光影的藝術，學會主動製造光線才能擺脫靠天吃飯。</p>
+          <ul>
+            <li><strong>避免直閃：</strong>機頂閃光燈直接對準人臉只會拍出慘白油光與生硬死黑背影。</li>
+            <li><strong>跳燈 (Bounce)：</strong>室內天花板或白牆是天然的大柔光板，將燈頭朝上朝側 45 度打擊反彈，營造自然柔和光線。</li>
+            <li><strong>離機引閃 (Off-Camera Flash)：</strong>透過無線引閃器將閃光燈擺在人體 45 度側上方，營造輪廓感與立體雕塑感。</li>
+            <li><strong>五合一反光板：</strong>戶外人像性價比最高配件，白色柔和補面光、銀色提亮眼神光、金色增添暖意、透光板當柔光頂幕。</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <h4>🧼 清潔與全天候防護</h4>
+          <p>小小的疏忽可能造成昂貴器材損壞或整趟旅程廢片。</p>
+          <ul>
+            <li><strong>強力吹球：</strong>清潔鏡頭或 CMOS 灰塵的第一步！<strong>嚴禁用嘴吹氣</strong>（口水霧氣會腐蝕鍍膜）。</li>
+            <li><strong>鏡頭筆與無塵布：</strong>先用毛刷掃去硬質砂礫，再用碳粉頭旋轉去除指紋油脂。</li>
+            <li><strong>防雨罩與暖暖包：</strong>雨天或雪地必備防雨套；極寒環境必備鏡頭加熱帶，防止鏡片受潮結霜白化。</li>
+            <li><strong>相機包防潮包：</strong>外拍歸來後，相機不可長期悶在密閉背包內，應盡速取出放入電子防潮箱（濕度控制在 40%–50% RH）。</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <h4>🛡️ 光學繞射 (Diffraction) 警戒線</h4>
+          <p>光圈越小真的越清楚嗎？打破新手最大迷思！</p>
+          <ul>
+            <li><strong>光學甜區 (Sweet Spot)：</strong>多數鏡頭最佳畫質與最銳利中心邊緣解像力通常落在 <strong>f/5.6 – f/8</strong>。</li>
+            <li><strong>繞射現象：</strong>當光圈縮小至 <strong>f/16 甚至 f/22</strong> 時，光線穿過極小孔洞會發生顯著繞射波紋干涉，導致整個畫面邊緣與中心解析度全面軟化發虛！</li>
+            <li><strong>正確取捨：</strong>除需要星芒或特殊長曝外，風景全景深拍法優先使用 <strong>f/8–f/11 搭配超焦距</strong>，切勿為了求景深無止境縮到 f/22。</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: CHECKLIST ==================== -->
+    <section id="tab-checklist" class="tab-content">
+      <div class="checklist-card">
+        <div class="checklist-header">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main);">🎒 攝影外拍出發前 12 項防呆檢查表</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">打勾進度會自動儲存在手機/瀏覽器中，不再漏帶關鍵配件！</p>
+          </div>
+          <div style="text-align: right;">
+            <div class="checklist-progress-text" id="checkProgress">進度: 0 / 12 (0%)</div>
+            <button class="checklist-reset-btn" id="resetChecklistBtn">全部重設</button>
+          </div>
+        </div>
+
+        <div class="check-group">
+          <div class="check-group-title">💾 儲存與電力 (最致命缺漏)</div>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c1">
+            <div class="check-label">
+              <span class="check-title">1. 相機內已確認裝入高速記憶卡，且已在相機內完成格式化</span>
+              <span class="check-desc">出發前一定要插在機身內確認能正常寫入，切忌到了現場開機才看見「NO CARD」。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c2">
+            <div class="check-label">
+              <span class="check-title">2. 額外攜帶 1~2 張備用記憶卡放在相機包夾層</span>
+              <span class="check-desc">防範主卡讀寫錯誤、容量爆滿或突發性卡片鎖定壞軌。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c3">
+            <div class="check-label">
+              <span class="check-title">3. 機身主電池 100% 充飽電</span>
+              <span class="check-desc">出發前一晚確保充電座綠燈，並開機確認電量顯示滿格。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c4">
+            <div class="check-label">
+              <span class="check-title">4. 至少 1~2 顆備用原廠/副廠電池已充飽</span>
+              <span class="check-desc">低溫雪地或長曝縮時攝影耗電極快，無反相機電池消耗尤甚。</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="check-group">
+          <div class="check-group-title">⚙️ 機身關鍵設定防呆</div>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c5">
+            <div class="check-label">
+              <span class="check-title">5. 照片儲存格式確認設為 RAW（或 RAW + Fine JPEG）</span>
+              <span class="check-desc">保留 14-bit 最大動態範圍與後期白平衡調整空間，切勿誤設為純壓縮 JPEG。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c6">
+            <div class="check-label">
+              <span class="check-title">6. 上腳架拍攝記得「關閉機身與鏡頭防手震 (IBIS/IS/VR/OSS)」</span>
+              <span class="check-desc">避免腳架上防手震元件因無震動誤判自激產生微震發糊。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c7">
+            <div class="check-label">
+              <span class="check-title">7. 拍攝星空/煙火/螢火蟲時，記得「關閉長時間曝光降噪」</span>
+              <span class="check-desc">否則曝光 20 秒會花額外 20 秒跑黑畫面消除噪點，錯過下一個黃金瞬間。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c8">
+            <div class="check-label">
+              <span class="check-title">8. ISO 設定確認已從昨天的極限高感 (如 12800) 重設回標準</span>
+              <span class="check-desc">避免大白天一開機在不知情下用超高 ISO 拍攝導致滿是雜訊。</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="check-group">
+          <div class="check-group-title">🎒 配件與光學裝備</div>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c9">
+            <div class="check-label">
+              <span class="check-title">9. 腳架快拆板 (Quick Release Plate) 已緊鎖在機身底部</span>
+              <span class="check-desc">攝影師界十大痛點之首：到了現場帶了重型腳架，卻發現快拆板留在家裡！</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c10">
+            <div class="check-label">
+              <span class="check-title">10. 鏡頭前後鏡片、感光元件及觀景窗已用吹球與拭鏡筆清潔</span>
+              <span class="check-desc">檢查逆光下有無頑固指紋油漬或毛屑。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c11">
+            <div class="check-label">
+              <span class="check-title">11. 必備濾鏡 (CPL偏光鏡 / ND減光鏡 / 轉接環) 已收入收納盒</span>
+              <span class="check-desc">檢查濾鏡口徑是否吻合當天攜帶的鏡頭尺寸（如 67mm, 77mm, 82mm）。</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-id="c12">
+            <div class="check-label">
+              <span class="check-title">12. 鏡頭遮光罩 (Lens Hood) 正裝入袋、快門線電池有電</span>
+              <span class="check-desc">遮光罩能阻絕雜散光進入，並在意外碰撞或摔落時提供鏡頭第一道物理防護緩衝。</span>
+            </div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+      <p>📷 <strong>攝影實戰現場速查指南</strong> — 專為戶外實戰設計的單頁速查工具與光學運算手冊</p>
+      <p style="font-size: 0.75rem; color: var(--text-muted);">
+        涵蓋全場景曝光參數 · 景深與超焦距計算 · NPF星空防拖尾 · ND長曝換算 · 出發防呆清單 | 100% 離線可用 · 支援暗夜紅光護眼
+      </p>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Application Logic -->
+  <script>
+    (function() {
+      'use strict';
+
+      // --- Theme Management ---
+      const themes = ['dark', 'red', 'light'];
+      const themeBtn = document.getElementById('themeBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeLabel = document.getElementById('themeLabel');
+      
+      let currentTheme = localStorage.getItem('photo_theme') || 'dark';
+      applyTheme(currentTheme);
+
+      themeBtn.addEventListener('click', () => {
+        const nextIdx = (themes.indexOf(currentTheme) + 1) % themes.length;
+        currentTheme = themes[nextIdx];
+        localStorage.setItem('photo_theme', currentTheme);
+        applyTheme(currentTheme);
+      });
+
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'red') {
+          themeIcon.textContent = '🔴';
+          themeLabel.textContent = '暗夜紅光';
+        } else if (theme === 'light') {
+          themeIcon.textContent = '☀️';
+          themeLabel.textContent = '亮色';
+        } else {
+          themeIcon.textContent = '🌙';
+          themeLabel.textContent = '深色';
+        }
+      }
+
+      // --- Navigation Tabs ---
+      const navBtns = document.querySelectorAll('.nav-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          navBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-target');
+          const targetContent = document.getElementById(target);
+          if (targetContent) {
+            targetContent.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // --- Search & Filter Logic ---
+      const searchInput = document.getElementById('sceneSearch');
+      const tagBtns = document.querySelectorAll('.tag-btn');
+      const sceneCards = document.querySelectorAll('.scene-card');
+      const countAll = document.getElementById('count-all');
+      if (countAll) countAll.textContent = sceneCards.length;
+
+      let currentTag = 'all';
+
+      function filterScenes() {
+        const query = searchInput.value.trim().toLowerCase();
+
+        sceneCards.forEach(card => {
+          const title = card.querySelector('h2').textContent.toLowerCase();
+          const desc = card.querySelector('.scene-desc').textContent.toLowerCase();
+          const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+          const category = (card.getAttribute('data-category') || '').toLowerCase();
+          const textContent = card.textContent.toLowerCase();
+
+          const matchesSearch = !query || 
+            title.includes(query) || 
+            desc.includes(query) || 
+            tags.includes(query) || 
+            textContent.includes(query);
+
+          let matchesTag = true;
+          if (currentTag !== 'all') {
+            if (currentTag === 'tripod') {
+              matchesTag = tags.includes('腳架') || textContent.includes('三腳架');
+            } else if (currentTag === 'filter') {
+              matchesTag = tags.includes('濾鏡') || tags.includes('cpl') || tags.includes('nd') || textContent.includes('偏光鏡') || textContent.includes('減光鏡');
+            } else {
+              matchesTag = category.includes(currentTag);
+            }
+          }
+
+          if (matchesSearch && matchesTag) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      searchInput.addEventListener('input', filterScenes);
+
+      tagBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tagBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTag = btn.getAttribute('data-tag');
+          filterScenes();
+        });
+      });
+
+      // --- Calculator 1: DoF & Hyperfocal Distance ---
+      const sensorSelect = document.getElementById('sensorSelect');
+      const focalInput = document.getElementById('focalInput');
+      const apertureSelect = document.getElementById('apertureSelect');
+      const distInput = document.getElementById('distInput');
+
+      const resTotalDof = document.getElementById('resTotalDof');
+      const resNearLimit = document.getElementById('resNearLimit');
+      const resFarLimit = document.getElementById('resFarLimit');
+      const resHyperfocal = document.getElementById('resHyperfocal');
+      const resRatio = document.getElementById('resRatio');
+      const visualSubjectDist = document.getElementById('visualSubjectDist');
+      const visualSharpRange = document.getElementById('visualSharpRange');
+      const dofVisualBar = document.getElementById('dofVisualBar');
+      const dofSubjectMarker = document.getElementById('dofSubjectMarker');
+      const dofPracticalAdvice = document.getElementById('dofPracticalAdvice');
+
+      function calculateDof() {
+        const c = parseFloat(sensorSelect.value) || 0.030; // Circle of confusion in mm
+        const f = parseFloat(focalInput.value) || 50;     // Focal length in mm
+        const N = parseFloat(apertureSelect.value) || 7.1; // f-number
+        const sMeters = parseFloat(distInput.value) || 3.5; // Subject distance in meters
+        const s = sMeters * 1000;                         // Subject distance in mm
+
+        // Hyperfocal Distance H (mm) = (f^2 / (N * c)) + f
+        const H = ((f * f) / (N * c)) + f;
+        const HMeters = H / 1000;
+
+        // Near Limit Dn (mm) = (H * s) / (H + (s - f))
+        const Dn = (H * s) / (H + (s - f));
+        const DnMeters = Dn / 1000;
+
+        // Far Limit Df (mm)
+        let DfMeters = Infinity;
+        let totalDofMeters = Infinity;
+
+        if (s >= (H - f)) {
+          DfMeters = Infinity;
+          totalDofMeters = Infinity;
+        } else {
+          const Df = (H * s) / (H - (s - f));
+          DfMeters = Df / 1000;
+          totalDofMeters = DfMeters - DnMeters;
+        }
+
+        // Display results
+        resHyperfocal.textContent = `${HMeters.toFixed(2)} m`;
+        resNearLimit.textContent = `${DnMeters.toFixed(2)} m`;
+        
+        if (DfMeters === Infinity) {
+          resFarLimit.textContent = '無限遠 (∞)';
+          resTotalDof.textContent = '無限大 (至∞)';
+          resRatio.textContent = '前景深有限 / 後至∞';
+          visualSharpRange.textContent = `${DnMeters.toFixed(2)}m ~ 無限遠 (∞)`;
+        } else {
+          resFarLimit.textContent = `${DfMeters.toFixed(2)} m`;
+          resTotalDof.textContent = `${totalDofMeters.toFixed(2)} m`;
+
+          const nearDoF = sMeters - DnMeters;
+          const farDoF = DfMeters - sMeters;
+          const nearRatio = Math.round((nearDoF / totalDofMeters) * 100);
+          const farRatio = 100 - nearRatio;
+          resRatio.textContent = `${nearRatio}% / ${farRatio}%`;
+          visualSharpRange.textContent = `${DnMeters.toFixed(2)}m ~ ${DfMeters.toFixed(2)}m`;
+        }
+
+        visualSubjectDist.textContent = `${sMeters.toFixed(1)}m`;
+
+        // Visual bar update
+        const displayMax = Math.max(sMeters * 2.2, DfMeters !== Infinity ? DfMeters * 1.3 : 15);
+        const nearPct = Math.min(Math.max((DnMeters / displayMax) * 100, 0), 100);
+        const farPct = DfMeters === Infinity ? 100 : Math.min(Math.max((DfMeters / displayMax) * 100, 0), 100);
+        const subPct = Math.min(Math.max((sMeters / displayMax) * 100, 0), 100);
+
+        dofVisualBar.style.left = `${nearPct}%`;
+        dofVisualBar.style.width = `${Math.max(farPct - nearPct, 2)}%`;
+        dofSubjectMarker.style.left = `${subPct}%`;
+
+        // Real-world Group photo assistant interactive advice
+        updatePracticalAdvice(f, N, sMeters, totalDofMeters, DnMeters, DfMeters, HMeters);
+      }
+
+      function updatePracticalAdvice(f, N, sMeters, totalDof, Dn, Df, H) {
+        let adviceHtml = '';
+        if (totalDof === Infinity) {
+          adviceHtml = `<strong>超焦距全景狀態：</strong>目前設定已達到或超過超焦距！從 <strong>${Dn.toFixed(2)} 公尺</strong> 一直到天際線無限遠，全部都在清晰景深範圍內。極度適合山岳風景、大景深旅拍！`;
+        } else if (totalDof < 0.2) {
+          adviceHtml = `<strong>⚠️ 極淺景深警示：</strong>總景深僅有 <strong>${(totalDof * 100).toFixed(1)} 公分</strong>！若拍攝人像特寫，稍微晃動或側臉就會造成一眼清晰一眼模糊；若拍團體照，<strong>後排人臉必定全糊</strong>！強烈建議將光圈縮至 <strong>f/5.6 – f/8</strong> 或拉遠拍攝距離。`;
+        } else if (totalDof >= 1.0 && totalDof <= 2.5) {
+          const focusRec = (Dn + (sMeters - Dn) * 0.4).toFixed(2);
+          adviceHtml = `<strong>✅ 完美團體照景深配置：</strong>目前總景深涵蓋 <strong>${totalDof.toFixed(2)} 公尺</strong>，深度非常適合 2~3 排團體站位（一般站位深度約 0.8~1.2 米）。建議將焦點對準約 <strong>${focusRec} 公尺</strong>處（第 1 排與第 2 排肩膀之間），即可確保整組所有人臉孔清晰銳利！`;
+        } else if (totalDof > 2.5) {
+          adviceHtml = `<strong>寬廣安全景深：</strong>總景深達 <strong>${totalDof.toFixed(2)} 公尺</strong>（${Dn.toFixed(2)}m ~ ${Df.toFixed(2)}m），容錯率極高，前後多排站位或街拍抓拍皆能游刃有餘。`;
+        } else {
+          adviceHtml = `<strong>中等景深（${(totalDof * 100).toFixed(0)} 公分）：</strong>適合單人全身人像或雙人並排站位。若有前後交錯站位，請注意後排人員是否超出 ${Df.toFixed(2)} 公尺的後景深邊界。`;
+        }
+        dofPracticalAdvice.innerHTML = adviceHtml;
+      }
+
+      [sensorSelect, focalInput, apertureSelect, distInput].forEach(el => {
+        el.addEventListener('input', calculateDof);
+      });
+      calculateDof();
+
+      // --- Calculator 2: Astrophotography (500 vs NPF Rule) ---
+      const astroFocal = document.getElementById('astroFocal');
+      const astroAperture = document.getElementById('astroAperture');
+      const astroSensor = document.getElementById('astroSensor');
+      const astroMegapixels = document.getElementById('astroMegapixels');
+
+      const resNpfShutter = document.getElementById('resNpfShutter');
+      const res500Shutter = document.getElementById('res500Shutter');
+      const res350Shutter = document.getElementById('res350Shutter');
+
+      function calculateAstro() {
+        const focal = parseFloat(astroFocal.value) || 16;
+        const N = parseFloat(astroAperture.value) || 2.8;
+        const cropFactor = parseFloat(astroSensor.value) || 1.0;
+        const mp = parseFloat(astroMegapixels.value) || 24;
+
+        // 500 Rule: t = 500 / (focal * cropFactor)
+        const t500 = 500 / (focal * cropFactor);
+        const t350 = 350 / (focal * cropFactor);
+
+        // Pixel pitch (p in microns):
+        let sensorWidth = 35.9 / cropFactor;
+        const pxWidth = Math.sqrt(mp * 1000000 * 1.5);
+        const pixelPitch = (sensorWidth / pxWidth) * 1000; // in microns
+
+        // NPF Rule: t = (35 * N + 30 * pixelPitch) / focal
+        const tNpf = (35 * N + 30 * pixelPitch) / focal;
+
+        res500Shutter.textContent = `${t500.toFixed(1)} 秒`;
+        res350Shutter.textContent = `${t350.toFixed(1)} 秒`;
+        resNpfShutter.textContent = `${tNpf.toFixed(1)} 秒`;
+      }
+
+      [astroFocal, astroAperture, astroSensor, astroMegapixels].forEach(el => {
+        el.addEventListener('input', calculateAstro);
+      });
+      calculateAstro();
+
+      // --- Calculator 3: ND Filter & Timer ---
+      const baseShutter = document.getElementById('baseShutter');
+      const ndSelect = document.getElementById('ndSelect');
+      const resNdShutter = document.getElementById('resNdShutter');
+      const timerDisplay = document.getElementById('timerDisplay');
+      const startTimerBtn = document.getElementById('startTimerBtn');
+
+      let targetSeconds = 1.07;
+      let timerInterval = null;
+      let timerStartTime = null;
+
+      function calculateNd() {
+        const base = parseFloat(baseShutter.value) || (1 / 60);
+        const evStops = parseFloat(ndSelect.value) || 6;
+        const factor = Math.pow(2, evStops);
+        targetSeconds = base * factor;
+
+        if (targetSeconds >= 60) {
+          const mins = Math.floor(targetSeconds / 60);
+          const secs = (targetSeconds % 60).toFixed(1);
+          resNdShutter.textContent = `${mins} 分 ${secs} 秒 (${targetSeconds.toFixed(1)}s)`;
+        } else if (targetSeconds < 1) {
+          resNdShutter.textContent = `${targetSeconds.toFixed(2)} 秒 (1/${Math.round(1 / targetSeconds)}s)`;
+        } else {
+          resNdShutter.textContent = `${targetSeconds.toFixed(2)} 秒`;
+        }
+
+        if (!timerInterval) {
+          formatTimerDisplay(targetSeconds);
+        }
+      }
+
+      function formatTimerDisplay(totalSecs) {
+        const m = Math.floor(totalSecs / 60);
+        const s = totalSecs % 60;
+        const sInt = Math.floor(s);
+        const sDec = Math.floor((s - sInt) * 10);
+        const mStr = String(m).padStart(2, '0');
+        const sStr = String(sInt).padStart(2, '0');
+        timerDisplay.textContent = `${mStr}:${sStr}.${sDec}`;
+      }
+
+      // AudioContext pre-initialization on user interaction (iOS Safari compliant)
+      let sharedAudioCtx = null;
+      let wakeLockSentinel = null;
+
+      async function requestWakeLock() {
+        try {
+          if ('wakeLock' in navigator) {
+            wakeLockSentinel = await navigator.wakeLock.request('screen');
+            wakeLockSentinel.addEventListener('release', () => {
+              wakeLockSentinel = null;
+            });
+          }
+        } catch (e) {
+          // Wake lock failure ignored
+        }
+      }
+
+      function releaseWakeLock() {
+        if (wakeLockSentinel) {
+          wakeLockSentinel.release().catch(() => {});
+          wakeLockSentinel = null;
+        }
+      }
+
+      function initAudioContext() {
+        try {
+          if (!sharedAudioCtx) {
+            sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (sharedAudioCtx.state === 'suspended') {
+            sharedAudioCtx.resume();
+          }
+        } catch (e) {}
+      }
+
+      startTimerBtn.addEventListener('click', () => {
+        // Pre-warm audio on user touch/click gesture
+        initAudioContext();
+
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          releaseWakeLock();
+          startTimerBtn.classList.remove('running');
+          startTimerBtn.innerHTML = '<span>⏱️ 開始現場長曝倒數</span>';
+          formatTimerDisplay(targetSeconds);
+        } else {
+          startTimerBtn.classList.add('running');
+          startTimerBtn.innerHTML = '<span>⏹️ 中途停止倒數</span>';
+          requestWakeLock();
+          
+          timerStartTime = performance.now();
+          const totalMs = targetSeconds * 1000;
+
+          timerInterval = setInterval(() => {
+            const elapsedMs = performance.now() - timerStartTime;
+            const remainMs = totalMs - elapsedMs;
+
+            if (remainMs <= 0) {
+              clearInterval(timerInterval);
+              timerInterval = null;
+              releaseWakeLock();
+              startTimerBtn.classList.remove('running');
+              startTimerBtn.innerHTML = '<span>⏱️ 倒數完成！重新開始</span>';
+              timerDisplay.textContent = '00:00.0';
+              playBeepAlert();
+            } else {
+              formatTimerDisplay(remainMs / 1000);
+            }
+          }, 60);
+        }
+      });
+
+      // Handle visibility change to prevent display lag after screen wakeup
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && timerInterval && timerStartTime) {
+          const elapsedMs = performance.now() - timerStartTime;
+          const remainMs = (targetSeconds * 1000) - elapsedMs;
+          if (remainMs > 0) {
+            formatTimerDisplay(remainMs / 1000);
+          }
+        }
+      });
+
+      function playBeepAlert() {
+        try {
+          initAudioContext();
+          if (sharedAudioCtx) {
+            const osc = sharedAudioCtx.createOscillator();
+            const gain = sharedAudioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, sharedAudioCtx.currentTime);
+            gain.gain.setValueAtTime(0.3, sharedAudioCtx.currentTime);
+            osc.connect(gain);
+            gain.connect(sharedAudioCtx.destination);
+            osc.start();
+            osc.stop(sharedAudioCtx.currentTime + 0.5);
+          }
+        } catch (e) {}
+        if (navigator.vibrate) {
+          navigator.vibrate([300, 150, 300]);
+        }
+      }
+
+      baseShutter.addEventListener('change', calculateNd);
+      ndSelect.addEventListener('change', calculateNd);
+      calculateNd();
+
+      // --- Checklist LocalStorage Logic ---
+      const checklistKey = 'photo_field_checklist_v1';
+      const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+      const checkProgress = document.getElementById('checkProgress');
+      const resetChecklistBtn = document.getElementById('resetChecklistBtn');
+
+      function loadChecklist() {
+        const saved = JSON.parse(localStorage.getItem(checklistKey) || '{}');
+        let count = 0;
+
+        checkboxes.forEach(box => {
+          const id = box.getAttribute('data-id');
+          if (saved[id]) {
+            box.checked = true;
+            box.closest('.check-item').classList.add('completed');
+            count++;
+          } else {
+            box.checked = false;
+            box.closest('.check-item').classList.remove('completed');
+          }
+        });
+
+        updateCheckProgress(count);
+      }
+
+      function updateCheckProgress(count) {
+        const total = checkboxes.length;
+        const pct = Math.round((count / total) * 100);
+        checkProgress.textContent = `進度: ${count} / ${total} (${pct}%)`;
+        if (count === total) {
+          checkProgress.style.color = 'var(--accent-cyan)';
+          checkProgress.textContent = `🎉 裝備已全數就緒！(100%)`;
+        } else {
+          checkProgress.style.color = 'var(--accent-emerald)';
+        }
+      }
+
+      checkboxes.forEach(box => {
+        box.addEventListener('change', () => {
+          const saved = JSON.parse(localStorage.getItem(checklistKey) || '{}');
+          const id = box.getAttribute('data-id');
+          const item = box.closest('.check-item');
+
+          if (box.checked) {
+            saved[id] = true;
+            item.classList.add('completed');
+          } else {
+            delete saved[id];
+            item.classList.remove('completed');
+          }
+
+          localStorage.setItem(checklistKey, JSON.stringify(saved));
+          const count = Object.keys(saved).length;
+          updateCheckProgress(count);
+        });
+      });
+
+      resetChecklistBtn.addEventListener('click', () => {
+        if (confirm('確定要清空所有檢查標記嗎？')) {
+          localStorage.removeItem(checklistKey);
+          loadChecklist();
+        }
+      });
+
+      loadChecklist();
+
+    })();
+  </script>
+</body>
+</html>
