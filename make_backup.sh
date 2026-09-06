@@ -34,3 +34,10 @@ echo "==> Backup complete!"
 echo "    Local:  ${LOCAL_BACKUP_DIR}/"
 echo "    Global: ${GLOBAL_BACKUP_DIR}/"
 ls -lh "${LOCAL_BACKUP_DIR}/${ZIP_NAME}"
+
+# 4. Sync to Google Drive via rclone if available
+RCLONE="/opt/homebrew/bin/rclone"
+if [ -x "$RCLONE" ]; then
+    echo "==> Syncing photography-field-guide backup to Google Drive..."
+    "$RCLONE" copy "${GLOBAL_BACKUP_DIR}/" "gdrive:/Documents重要檔案備份/photography-field-guide/" -v || echo "  (rclone sync failed or offline, local backup preserved)"
+fi
