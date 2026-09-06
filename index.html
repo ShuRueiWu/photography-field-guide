@@ -1283,32 +1283,46 @@
     /* Scene Card User Gear Recommendation Box */
     .user-gear-box {
       background: rgba(34, 211, 238, 0.08);
-      border: 1px solid rgba(34, 211, 238, 0.3);
-      border-radius: 10px;
-      padding: 0.75rem 0.9rem;
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      font-size: 0.82rem;
+      gap: 0.45rem;
+      font-size: 0.83rem;
+      width: 100%;
+      box-sizing: border-box;
       transition: all 0.2s;
     }
     .user-gear-box-title {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.75rem;
       font-weight: 700;
       color: var(--accent-cyan);
+      border-bottom: 1px dashed rgba(34, 211, 238, 0.25);
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.15rem;
+    }
+    .user-gear-box-title > span:first-child {
+      font-size: 0.88rem;
+      white-space: nowrap;
     }
     .user-gear-box-title .lens-pick {
-      background: rgba(34, 211, 238, 0.2);
+      background: rgba(34, 211, 238, 0.18);
       color: var(--accent-cyan);
-      font-size: 0.72rem;
-      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
       border-radius: 6px;
+      line-height: 1.35;
+      border: 1px solid rgba(34, 211, 238, 0.3);
     }
     .user-gear-box-content {
       color: var(--text-main);
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     /* Preset Quick Buttons for Calculators */
@@ -1600,6 +1614,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👨‍👩‍👧‍👦 多人團體照 / 全家福合照</h2>
+              <p class="scene-desc">確保前後排每個人臉部清晰銳利，防範廣角變形與閉眼。</p>
+            </div>
+            <span class="scene-category-pill">團體必備</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -1608,11 +1627,6 @@
             <div class="user-gear-box-content">
               轉至 <strong>35mm 或 50mm 端</strong>，光圈縮至 <strong>f/7.1 – f/8</strong>。距離 3.5 米時 50mm f/7.1 景深達 2.24 米（35mm f/8 更達 4.3 米），確保 2~3 排所有人臉孔根根睫毛清晰！對焦點放第一排肩膀。
             </div>
-          </div>
-
-              <p class="scene-desc">確保前後排每個人臉部清晰銳利，防範廣角變形與閉眼。</p>
-            </div>
-            <span class="scene-category-pill">團體必備</span>
           </div>
 
           <div class="param-box">
@@ -1668,19 +1682,19 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👤 85mm 經典半身 / 糖水特寫人像</h2>
+              <p class="scene-desc">人像鏡皇焦段，提供極致奶油散景與完美的五官透視比例。</p>
+            </div>
+            <span class="scene-category-pill">人像首選</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
-              <span>🎯 您的無 85 鏡替代方案</span>
-              <span class="lens-pick">首選：70-200 GM @ 135-200mm f/2.8 或 55 1.8 ZA</span>
+              <span>🎯 85mm 替代拍法</span>
+              <span class="lens-pick">首選：70-200 GM (135-200mm f/2.8) 或 55 1.8 ZA</span>
             </div>
             <div class="user-gear-box-content">
               您沒有 85mm f/1.4，但戶外請直接拿出 <strong>70-200 GM 推到 135mm–200mm f/2.8</strong>！200mm 望遠壓縮帶來的背景虛化奶油融化感超越 85mm f/1.8！若在艷陽天戶外想用 <strong>55mm F1.8 ZA 全開 f/1.8</strong> 或 <strong>70-200 GM 全開 f/2.8</strong> 拍極致散景，強烈陽光往往讓快門飆破 1/8000s 導致過曝。此時只要拿出您的 <strong>82mm ND8 減光鏡</strong>（搭配轉接環），立即減 3 檔曝光，將快門壓回 1/1000s 安全範圍，大太陽下也能放心開大光圈！
             </div>
-          </div>
-
-              <p class="scene-desc">人像鏡皇焦段，提供極致奶油散景與完美的五官透視比例。</p>
-            </div>
-            <span class="scene-category-pill">人像首選</span>
           </div>
 
           <div class="param-box">
@@ -1733,6 +1747,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🚶 35mm / 50mm 旅遊隨拍與街頭人文</h2>
+              <p class="scene-desc">交代主體與周遭空間故事，展現生動的故事感與身臨其境視角。</p>
+            </div>
+            <span class="scene-category-pill">人文街拍</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -1741,11 +1760,6 @@
             <div class="user-gear-box-content">
               長時間漫步隨拍首推 <strong>55mm F1.8 ZA</strong>，全套機鏡不到 1 公斤！若想玩街拍超焦距泛焦，帶 <strong>24-70 GM II</strong> 轉至 35mm 端，設為 f/8、對焦鎖定 5 公尺，2.6 米至無限遠抬手即拍！
             </div>
-          </div>
-
-              <p class="scene-desc">交代主體與周遭空間故事，展現生動的故事感與身臨其境視角。</p>
-            </div>
-            <span class="scene-category-pill">人文街拍</span>
           </div>
 
           <div class="param-box">
@@ -1787,6 +1801,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>✨ 螢火蟲微光軌跡拍攝</h2>
+              <p class="scene-desc">捕抓漆黑森林中漫天飛舞的綠黃色夢幻光點與呼吸光軌。</p>
+            </div>
+            <span class="scene-category-pill">季節限定</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -1795,11 +1814,6 @@
             <div class="user-gear-box-content">
               螢火蟲需要極限進光量！您的鏡頭群中 <strong>55mm F1.8 ZA 是唯一能開到 f/1.8 的鏡頭</strong>（比 f/2.8 多了 1.33 檔進光量！），且 55mm 的焦距壓縮感能把微弱光點放大成迷人光斑。設為 <strong>f/1.8 全開、ISO 1600–3200、單張 20 秒連拍</strong>回家疊圖！
             </div>
-          </div>
-
-              <p class="scene-desc">捕抓漆黑森林中漫天飛舞的綠黃色夢幻光點與呼吸光軌。</p>
-            </div>
-            <span class="scene-category-pill">季節限定</span>
           </div>
 
           <div class="param-box">
@@ -1845,6 +1859,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌌 銀河核心與壯麗星空</h2>
+              <p class="scene-desc">記錄浩瀚星海與璀璨銀河拱橋，精算快門時間避免星點拖尾拉絲。</p>
+            </div>
+            <span class="scene-category-pill">星空必拍</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -1853,11 +1872,6 @@
             <div class="user-gear-box-content">
               轉至 <strong>16mm 端、光圈全開 f/2.8</strong>。在 A7R3 的 4240 萬畫素下，NPF 精算法則安全快門為 <strong>14.5 秒</strong>（建議設 14s 或 15s 防星點拖尾）。因無 f/1.4，請將感光度拉高至 <strong>ISO 3200 – 6400</strong> 彌補進光量。
             </div>
-          </div>
-
-              <p class="scene-desc">記錄浩瀚星海與璀璨銀河拱橋，精算快門時間避免星點拖尾拉絲。</p>
-            </div>
-            <span class="scene-category-pill">星空必拍</span>
           </div>
 
           <div class="param-box">
@@ -1901,6 +1915,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌌 夢幻舞動極光 (Aurora)</h2>
+              <p class="scene-desc">根據極光活動劇烈程度動態切換快門，保留天際光幕絲狀紋理。</p>
+            </div>
+            <span class="scene-category-pill">極地追光</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -1909,11 +1928,6 @@
             <div class="user-gear-box-content">
               16mm f/2.8 全開。慢速微弱極光用 <strong>6–8 秒、ISO 1600–3200</strong>；當極光爆發翻滾跳躍時，快門縮短至 <strong>2–3 秒、ISO 拉至 6400</strong> 定格簾幕細絲。
             </div>
-          </div>
-
-              <p class="scene-desc">根據極光活動劇烈程度動態切換快門，保留天際光幕絲狀紋理。</p>
-            </div>
-            <span class="scene-category-pill">極地追光</span>
           </div>
 
           <div class="param-box" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
@@ -1956,7 +1970,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🎆 璀璨煙火與城市夜景 (現代數位疊圖流)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">棄用傳統易晃動的搖黑卡！採用現代「單發乾淨拍 ➔ 後製變亮堆疊 (Lighten Blending)」，煙霧零干擾、完美掌控構圖。</p>
+            </div>
+            <span class="scene-category-pill">節慶夜景</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭實戰視角攻略）</span>
                   <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
@@ -1971,10 +1990,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">棄用傳統易晃動的搖黑卡！採用現代「單發乾淨拍 ➔ 後製變亮堆疊 (Lighten Blending)」，煙霧零干擾、完美掌控構圖。</p>
-            </div>
-            <span class="scene-category-pill">節慶夜景</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2018,7 +2033,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌊 瀑布溪流與綿密絲絹水感</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">慢速快門將奔騰水花化為柔順白絹，CPL 消除濕滑岩石反光。</p>
+            </div>
+            <span class="scene-category-pill">風景經典</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
                   <span class="lens-pick">3 鏡皆可針對距離選用</span>
@@ -2032,10 +2052,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">慢速快門將奔騰水花化為柔順白絹，CPL 消除濕滑岩石反光。</p>
-            </div>
-            <span class="scene-category-pill">風景經典</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2081,7 +2097,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌅 晨昏日落與極致藍調時刻 (Blue Hour)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">掌握日落前後黃金半小時光線變化，拍出耀眼太陽星芒與高動態範圍。</p>
+            </div>
+            <span class="scene-category-pill">大景風光</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
                   <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
@@ -2096,10 +2117,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">掌握日落前後黃金半小時光線變化，拍出耀眼太陽星芒與高動態範圍。</p>
-            </div>
-            <span class="scene-category-pill">大景風光</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2143,7 +2160,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🚗 城市夜景與車流光軌 (Light Trails)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">慢速曝光將穿梭車潮化作紅色尾燈與白色頭燈的金色絲帶。</p>
+            </div>
+            <span class="scene-category-pill">夜色風華</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
                   <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
@@ -2158,10 +2180,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">慢速曝光將穿梭車潮化作紅色尾燈與白色頭燈的金色絲帶。</p>
-            </div>
-            <span class="scene-category-pill">夜色風華</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2198,6 +2216,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏃 運動賽事與飛羽飛鳥 (Sports & Birds)</h2>
+              <p class="scene-desc">利用千分之一秒高速快門定格極速動態，或搖鏡追焦展現速度流線。</p>
+            </div>
+            <span class="scene-category-pill">極速定格</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -2206,11 +2229,6 @@
             <div class="user-gear-box-content">
               使用 <strong>70-200 GM @ 200mm f/2.8</strong>。若距離不夠遠，直接在 A7R3 開啟「APS-C 裁切功能」，鏡頭瞬間等效變成 <strong>105-300mm f/2.8 超長焦</strong>，且依然享有 1880 萬高畫素！
             </div>
-          </div>
-
-              <p class="scene-desc">利用千分之一秒高速快門定格極速動態，或搖鏡追焦展現速度流線。</p>
-            </div>
-            <span class="scene-category-pill">極速定格</span>
           </div>
 
           <div class="param-box">
@@ -2254,6 +2272,17 @@
             <span class="scene-category-pill">溫馨家庭</span>
           </div>
 
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：70-200 GM (遠距不驚動) 或 24-70 GM II</span>
+            </div>
+            <div class="user-gear-box-content">
+              戶外奔跑首選 <strong>70-200 GM @ f/2.8</strong>，退至 5~10 米遠距平視抓拍，不干擾寵物或孩童玩耍自然神態；室內或近身互動換上 <strong>24-70 GM II</strong>，光線微弱時則由 <strong>55mm F1.8 ZA</strong> 全開 f/1.8 兼顧奶油散景與安全快門。
+            </div>
+          </div>
+
+
           <div class="param-box">
             <div class="param-item">
               <span class="param-label">推薦快門</span>
@@ -2289,6 +2318,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>📦 精緻商品商攝與美食靜物</h2>
+              <p class="scene-desc">精準控制光影質感與景深，展現產品材質紋理與誘人細節。</p>
+            </div>
+            <span class="scene-category-pill">商攝必讀</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -2297,11 +2331,6 @@
             <div class="user-gear-box-content">
               24-70 GM II 近攝能力大幅進化！70mm 端最近對焦距離僅 <strong>21 公分</strong>，放大倍率達 <strong>0.32x</strong>，兼具優異微距能力。搭配 f/8–f/11 與腳架，商品商標與細節銳利無比。
             </div>
-          </div>
-
-              <p class="scene-desc">精準控制光影質感與景深，展現產品材質紋理與誘人細節。</p>
-            </div>
-            <span class="scene-category-pill">商攝必讀</span>
           </div>
 
           <div class="param-box">
@@ -2346,6 +2375,17 @@
             <span class="scene-category-pill">微觀視界</span>
           </div>
 
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：24-70 GM II @ 70mm 端 0.21m 超近攝</span>
+            </div>
+            <div class="user-gear-box-content">
+              善用 <strong>24-70 GM II 在 70mm 端的 0.21m 最近對焦與 0.32x 強大放大率</strong>（在 A7R3 開啟 APS-C 模式更達 <strong>0.48x 等效微距</strong>）！毫米級景深下強烈建議手動分層拍攝 3~5 張進行<strong>景深合成 (Focus Stacking)</strong>，突破物理極限由前到後全清晰。
+            </div>
+          </div>
+
+
           <div class="param-box">
             <div class="param-item">
               <span class="param-label">實拍光圈</span>
@@ -2381,7 +2421,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏛️ 建築外觀與室內空間空間感</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">嚴格維持水平與垂直線條，展現空間結構的純粹對稱與幾何張力。</p>
+            </div>
+            <span class="scene-category-pill">建築空間</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
                   <span class="lens-pick">4 顆鏡頭皆有精采打法</span>
@@ -2396,10 +2441,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">嚴格維持水平與垂直線條，展現空間結構的純粹對稱與幾何張力。</p>
-            </div>
-            <span class="scene-category-pill">建築空間</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2441,6 +2482,17 @@
             <span class="scene-category-pill">暗光舞台</span>
           </div>
 
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：70-200 GM f/2.8 或 55 1.8 ZA</span>
+            </div>
+            <div class="user-gear-box-content">
+              中遠距離觀眾席必備 <strong>70-200 GM @ 200mm f/2.8</strong>，精準特寫台上主角神情；若舞台極暗且距離較近，換上 <strong>55mm F1.8 ZA 全開 f/1.8</strong> 獲得多出 1.33 檔進光量，有效壓低高感噪點。
+            </div>
+          </div>
+
+
           <div class="param-box">
             <div class="param-item">
               <span class="param-label">安全快門</span>
@@ -2475,6 +2527,11 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👤 135mm / 200mm 極致空間壓縮與空氣切割人像</h2>
+              <p class="scene-desc">利用長焦透視壓縮感拉近遠方背景，營造主體如同立體剪紙般的空氣切割分離度。</p>
+            </div>
+            <span class="scene-category-pill">長焦神鏡</span>
+          </div>
+
           <div class="user-gear-box">
             <div class="user-gear-box-title">
               <span>🎯 您的裝備最佳拍法</span>
@@ -2483,11 +2540,6 @@
             <div class="user-gear-box-content">
               站距模特兒 5–8 米，轉到 <strong>135mm–200mm 端、光圈 f/2.8 全開</strong>。開啟 Eye-AF 與機身 OSS 防手震，快門至少 1/320s，享受電影等級的空氣切割散景！
             </div>
-          </div>
-
-              <p class="scene-desc">利用長焦透視壓縮感拉近遠方背景，營造主體如同立體剪紙般的空氣切割分離度。</p>
-            </div>
-            <span class="scene-category-pill">長焦神鏡</span>
           </div>
 
           <div class="param-box">
@@ -2534,6 +2586,17 @@
             <span class="scene-category-pill">海景慢門</span>
           </div>
 
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：16-35 GM / 82mm CPL + ND8 雙片疊加</span>
+            </div>
+            <div class="user-gear-box-content">
+              使用 <strong>16-35 GM</strong> 超廣角貼近潮水礁石，將 <strong>82mm CPL 疊加在 82mm ND8 前方</strong>（總減光約 4.5 檔），白天陽光下可將快門降至 <strong>1/2s ~ 1s 的黃金拉絲拉線領域</strong>，同時完全消除濕滑礁石與潮水雜光！
+            </div>
+          </div>
+
+
           <div class="param-box">
             <div class="param-item">
               <span class="param-label">動感拉絲快門</span>
@@ -2578,6 +2641,17 @@
             <span class="scene-category-pill">極寒雪域</span>
           </div>
 
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：16-35 GM (雪原浩瀚) 或 70-200 GM (遠山特寫)</span>
+            </div>
+            <div class="user-gear-box-content">
+              <strong>16-35 GM</strong> 展現純白雪原天地大景，<strong>70-200 GM</strong> 壓縮遠方冰封雪峰紋理；正面強光下鎖上 <strong>82mm CPL</strong> 消除冰雪強烈偏振反射光，並務必執行<strong>「白加黑減」曝光補償 +1.0EV ~ +1.7EV</strong>。
+            </div>
+          </div>
+
+
           <div class="param-box">
             <div class="param-item">
               <span class="param-label">曝光補償 (EV)</span>
@@ -2618,6 +2692,17 @@
             <span class="scene-category-pill">天文地景</span>
           </div>
 
+          <div class="user-gear-box">
+            <div class="user-gear-box-title">
+              <span>🎯 您的裝備最佳拍法</span>
+              <span class="lens-pick">首選：70-200 GM @ 200mm + A7R3 APS-C 模式</span>
+            </div>
+            <div class="user-gear-box-content">
+              使用 <strong>70-200 GM @ 200mm</strong>，在 A7R3 機身內開啟「APS-C 裁切」，瞬間變身為 <strong>等效 300mm f/2.8 超長焦</strong>（仍保有 1880 萬高畫質），將數公里外的地標建築與初升滿月壓縮在同一畫面！
+            </div>
+          </div>
+
+
           <div class="param-box" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
             <div class="param-item">
               <span class="param-label">懸月特寫曝光</span>
@@ -2657,7 +2742,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏛️ 博物館、水族館與玻璃展櫃 (Museums & Aquariums)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">嚴禁閃光燈與三腳架，需在微光下拍出通透無雜光的玻璃展品與游動生物。</p>
+            </div>
+            <span class="scene-category-pill">室內微光</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法</span>
                   <span class="lens-pick">首選：55mm F1.8 ZA / 24-70mm GM II</span>
@@ -2666,10 +2756,6 @@
                   暗部弱光首推 <strong>55mm F1.8 ZA</strong>，F1.8 超大光圈進光量是 F2.8 的 2.5 倍，能用更低 ISO 保留文物與游動水母的極限細節！拍攝展櫃小文物則切換至 <strong>24-70 GM II</strong>，利用 0.21m/0.30m 近攝能力特寫文物紋理。
                 </div>
               </div>
-              <p class="scene-desc">嚴禁閃光燈與三腳架，需在微光下拍出通透無雜光的玻璃展品與游動生物。</p>
-            </div>
-            <span class="scene-category-pill">室內微光</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2710,7 +2796,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌸 櫻花、楓葉與花卉花海 (Cherry Blossoms & Foliage)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">利用長焦壓縮花瓣密度，善用逆光透光質感，拍出粉嫩透亮的晶瑩花景。</p>
+            </div>
+            <span class="scene-category-pill">自然風光</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
                   <span class="lens-pick">4 顆鏡頭皆有專屬打法</span>
@@ -2725,10 +2816,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">利用長焦壓縮花瓣密度，善用逆光透光質感，拍出粉嫩透亮的晶瑩花景。</p>
-            </div>
-            <span class="scene-category-pill">自然風光</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2769,7 +2856,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>✈️ 航空飛機與鐵道火車 (Aviation & Railways)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">噴射客機極限凝結 vs 螺旋槳旋轉弧線 vs 鐵道列車橫向動感搖鏡追焦。</p>
+            </div>
+            <span class="scene-category-pill">高速交通</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法</span>
                   <span class="lens-pick">首選：FE 70-200mm GM / 82mm ND8</span>
@@ -2778,10 +2870,6 @@
                   <strong>70-200mm GM</strong> 為航空與鐵道首選利器！將鏡頭側邊 OSS 開關切換為 <strong>Mode 2（橫向追焦防震）</strong>，能大幅提高平移搖鏡成功率。拍螺旋槳機時，強烈陽光下若想把快門放慢至 1/125s~1/250s，光圈容易縮爆繞射，裝上 <strong>82mm ND8</strong> 即可在甜區 f/5.6~f/8 輕鬆拉出完整旋轉圓盤！
                 </div>
               </div>
-              <p class="scene-desc">噴射客機極限凝結 vs 螺旋槳旋轉弧線 vs 鐵道列車橫向動感搖鏡追焦。</p>
-            </div>
-            <span class="scene-category-pill">高速交通</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2822,7 +2910,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>⚡ 閃電暴風與雷雨夜空 (Lightning & Thunderstorms)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">利用長曝讓雷電自行曝光在感光元件上，安全第一捕捉大自然的極限能量。</p>
+            </div>
+            <span class="scene-category-pill">極端氣象</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法（各鏡頭視角攻略）</span>
                   <span class="lens-pick">3 鏡皆可針對距離選用</span>
@@ -2837,10 +2930,6 @@
                   </div>
                 </div>
               </div>
-              <p class="scene-desc">利用長曝讓雷電自行曝光在感光元件上，安全第一捕捉大自然的極限能量。</p>
-            </div>
-            <span class="scene-category-pill">極端氣象</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
@@ -2882,7 +2971,12 @@
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>💫 旋轉星軌與同心圓天體 (Star Trails - 現代間隔疊圖流)</h2>
-              <div class="user-gear-box">
+              <p class="scene-desc">利用地球自轉在夜空畫出華麗同心圓光弧。間隔連拍 ➔ 後製變亮堆疊，容錯率 100%。</p>
+            </div>
+            <span class="scene-category-pill">天文地景</span>
+          </div>
+
+          <div class="user-gear-box">
                 <div class="user-gear-box-title">
                   <span>🎯 您的裝備最佳拍法</span>
                   <span class="lens-pick">首選：16-35 GM / 55mm ZA + 電子快門線</span>
@@ -2891,10 +2985,6 @@
                   完全<strong>不需傳統冒險單張長曝 2 小時</strong>！將 <strong>16-35 GM</strong> 設於 16mm 光圈 <strong>f/2.8–f/4</strong>、ISO <strong>400–800</strong>、單張快門 <strong>25 秒</strong>。接上您的<strong>電子定時快門線</strong>設定「間隔 1 秒、連續拍 100~180 張（耗時約 1~1.5 小時）」。回電腦使用 StarStaX 或 Photoshop <strong>「變亮 (Lighten)」</strong>混合模式一鍵堆疊，星軌圓弧綿密無斷點，零感光元件熱噪點！
                 </div>
               </div>
-              <p class="scene-desc">利用地球自轉在夜空畫出華麗同心圓光弧。間隔連拍 ➔ 後製變亮堆疊，容錯率 100%。</p>
-            </div>
-            <span class="scene-category-pill">天文地景</span>
-          </div>
 
           <div class="param-box">
             <div class="param-item">
