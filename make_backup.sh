@@ -30,14 +30,29 @@ zip -q -r "${LOCAL_BACKUP_DIR}/${ZIP_NAME}" index.html test_accuracy.py README.m
 cp "${LOCAL_BACKUP_DIR}/${ZIP_NAME}" "${GLOBAL_BACKUP_DIR}/${ZIP_NAME}"
 cp "${LOCAL_BACKUP_DIR}/${ZIP_NAME}" "${GLOBAL_BACKUP_DIR}/photography-field-guide_latest.zip"
 
-echo "==> Backup complete!"
+# 4. Retention policy: keep latest 5 timestamped versions in both dirs, auto-prune older ones
+MAX_KEEP=5
+prune_old() {
+    local DIR="$1"
+    local PATTERN="$2"
+    cd "$DIR"
+    local COUNT=$(ls -1t ${PATTERN} 2>/dev/null | wc -l | tr -d ' ')
+    if [ "$COUNT" -gt "$MAX_KEEP" ]; then
+        ls -1t ${PATTERN} 2>/dev/null | tail -n +$((MAX_KEEP + 1)) | while read -r f; do
+            [ -f "$f" ] && rm -f "$f"
+        done
+    fi
+}
+
+prune_old "${LOCAL_BACKUP_DIR}" "index_2*.html"
+prune_old "${LOCAL_BACKUP_DIR}" "test_accuracy_2*.py"
+prune_old "${LOCAL_BACKUP_DIR}" "README_2*.md"
+prune_old "${LOCAL_BACKUP_DIR}" "photography-field-guide_2*.zip"
+prune_old "${GLOBAL_BACKUP_DIR}" "index_2*.html"
+prune_old "${GLOBAL_BACKUP_DIR}" "photography-field-guide_2*.zip"
+
+echo "==> Backup complete (latest ${MAX_KEEP} versions retained)!"
 echo "    Local:  ${LOCAL_BACKUP_DIR}/"
 echo "    Global: ${GLOBAL_BACKUP_DIR}/"
+echo "    (Cloud sync is scheduled daily at 04:30 via launchd com.sierra.backup-gdrive)"
 ls -lh "${LOCAL_BACKUP_DIR}/${ZIP_NAME}"
-
-# 4. Sync to Google Drive via rclone if available
-RCLONE="/opt/homebrew/bin/rclone"
-if [ -x "$RCLONE" ]; then
-    echo "==> Syncing photography-field-guide backup to Google Drive..."
-    "$RCLONE" copy "${GLOBAL_BACKUP_DIR}/" "gdrive:/Documents重要檔案備份/photography-field-guide/" -v || echo "  (rclone sync failed or offline, local backup preserved)"
-fi
