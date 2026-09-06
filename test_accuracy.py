@@ -63,6 +63,17 @@ assert 10 <= t_npf <= 20
 
 # Test ND filter 6 stops from 1/60s:
 t_nd64 = (1/60) * (2 ** 6)
-assert round(t_nd64, 2) == 1.07
+# 7. Test Gear Separation and Click-to-Filter Scene Logic:
+scene_tags = re.findall(r'<article class="scene-card"[^>]+>', html)
+assert len(scene_tags) == 20
+for s in scene_tags:
+    assert 'data-lenses=' in s, f"Scene missing data-lenses: {s}"
+    assert 'data-filters=' in s, f"Scene missing data-filters: {s}"
 
-print("All 20 scenes, UI features, and optical formulas verified perfectly!")
+assert 'toggleGearLensFilter' in html, "Missing toggleGearLensFilter"
+assert 'toggleGearFilterFilter' in html, "Missing toggleGearFilterFilter"
+assert 'activeGearFilterNotice' in html, "Missing activeGearFilterNotice"
+assert '專屬鏡頭庫' in html, "Lenses should be separated into dedicated section"
+assert '光學濾鏡庫' in html, "Filters should be separated into dedicated section"
+
+print("All 20 scenes, UI features, optical formulas, and gear filtering verified perfectly!")

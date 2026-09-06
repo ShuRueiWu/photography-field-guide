@@ -99,6 +99,23 @@
       border-color: var(--accent-blue);
       color: var(--accent-blue);
     }
+    [data-theme="light"] .gear-chip.active {
+      background: rgba(3, 105, 161, 0.15);
+      border-color: #0369a1;
+      box-shadow: 0 0 0 2px rgba(3, 105, 161, 0.25);
+    }
+    [data-theme="light"] .gear-calc-btn {
+      background: rgba(3, 105, 161, 0.1);
+      border-color: rgba(3, 105, 161, 0.3);
+      color: #0369a1;
+    }
+    [data-theme="light"] .active-gear-filter-notice {
+      background: rgba(3, 105, 161, 0.08);
+      border-color: rgba(3, 105, 161, 0.3);
+    }
+    [data-theme="light"] .active-gear-filter-notice .notice-left strong {
+      color: #0369a1;
+    }
 
     /* Astro Red Night Mode (Preserves Dark Adaptation & Fireflies Safe) */
     [data-theme="red"] {
@@ -1050,35 +1067,136 @@
       background: var(--accent-blue);
       color: #fff;
     }
-    .gear-chip-list {
+    .gear-section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .gear-section-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.5rem;
+    }
+    .gear-section-title .hint-text {
+      font-size: 0.74rem;
+      font-weight: normal;
+      color: var(--text-muted);
+    }
+    .gear-chip-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.65rem;
     }
     .gear-chip {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 0.4rem 0.75rem;
-      font-size: 0.8rem;
+      border-radius: 12px;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.75rem;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.2s;
+      user-select: none;
     }
     .gear-chip:hover {
       border-color: var(--accent-blue);
       background: var(--bg-card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+    .gear-chip.active {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 2px var(--accent-blue);
+    }
+    .gear-chip-icon {
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+    .gear-chip-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex: 1;
+      min-width: 0;
     }
     .gear-chip .lens-tag {
       font-weight: 700;
       color: var(--accent-cyan);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
     }
     .gear-chip .lens-sub {
-      font-size: 0.7rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
+      line-height: 1.35;
+    }
+    .gear-calc-btn {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-blue);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .gear-calc-btn:hover {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    /* Active filter banner */
+    .active-gear-filter-notice {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--accent-blue);
+      border-radius: 12px;
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      animation: fadeIn 0.2s ease;
+    }
+    .active-gear-filter-notice .notice-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+    .active-gear-filter-notice .notice-left strong {
+      color: var(--accent-blue);
+    }
+    .active-gear-filter-notice .clear-filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .active-gear-filter-notice .clear-filter-btn:hover {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
     }
 
     /* Scene Card User Gear Recommendation Box */
@@ -1240,56 +1358,111 @@
       <div class="my-gear-banner" id="myGearBanner">
         <div class="my-gear-header">
           <div class="my-gear-title">
-            <span>🧰</span>
-            <span>您的專屬器材庫現役配置</span>
-            <span class="my-gear-badge">Sony A7R3 旗艦全幅</span>
+            <span>🧰 您的專屬器材庫現役配置</span>
+            <span class="my-gear-badge">Sony A7R3 旗艦全幅 (42.4MP · 4.51μm)</span>
           </div>
           <button class="my-gear-toggle-btn active" id="toggleMyGearBtn">
-            <span>🎯 器材專屬數據快選：已啟用</span>
+            <span>🎯 器材專屬推薦：已啟用</span>
           </button>
         </div>
-        <div class="gear-chip-list">
-          <div class="gear-chip" title="4240萬高畫素全片幅，像素尺寸 4.51μm">
-            <span>📷</span>
-            <span class="lens-tag">Sony A7R3</span>
-            <span class="lens-sub">42.4MP · 全幅 · 4.51μm</span>
+
+        <!-- Section 1: 專屬鏡頭庫 (點擊直接篩選適拍題材) -->
+        <div class="gear-section-block">
+          <div class="gear-section-title">
+            <span>🔭 我的專屬鏡頭庫（4 顆）</span>
+            <span class="hint-text">👉 點擊鏡頭可<strong>直接篩選「能拍什麼題材」</strong>；點右側按鈕才跳景深計算機</span>
           </div>
-          <div class="gear-chip" onclick="jumpToLensCalc(16, 2.8)" title="點擊直接套入計算機">
-            <span>🔭</span>
-            <span class="lens-tag">FE 16-35mm F2.8 GM</span>
-            <span class="lens-sub">82mm 口徑 · 超廣角/星空大景</span>
-          </div>
-          <div class="gear-chip" onclick="jumpToLensCalc(50, 7.1)" title="點擊直接套入計算機">
-            <span>🔭</span>
-            <span class="lens-tag">FE 24-70mm F2.8 GM II</span>
-            <span class="lens-sub">82mm 口徑 · 團體/隨拍/0.32x近攝</span>
-          </div>
-          <div class="gear-chip" onclick="jumpToLensCalc(200, 2.8)" title="點擊直接套入計算機">
-            <span>🔭</span>
-            <span class="lens-tag">FE 70-200mm F2.8 GM</span>
-            <span class="lens-sub">77mm 口徑 · 散景壓縮/運動飛羽</span>
-          </div>
-          <div class="gear-chip" onclick="jumpToLensCalc(55, 1.8)" title="點擊直接套入計算機">
-            <span>🔭</span>
-            <span class="lens-tag">Sonnar 55mm F1.8 ZA</span>
-            <span class="lens-sub">49mm 口徑 · 最大光圈王/螢火蟲</span>
-          </div>
-          <div class="gear-chip" title="戶外風景消光去反光利器">
-            <span>👓</span>
-            <span class="lens-tag">已備 82mm CPL 偏光鏡</span>
-            <span class="lens-sub">消光去水面岩石反光/藍天加深</span>
-          </div>
-          <div class="gear-chip" title="82mm ND8 (減 3 檔 EV)，直上 16-35 與 24-70">
-            <span>🕶️</span>
-            <span class="lens-tag">已備 82mm ND8 減光鏡</span>
-            <span class="lens-sub">減 3 檔 · 瀑布溪流/艷陽大光圈神器</span>
+          <div class="gear-chip-list">
+            <!-- 16-35 GM -->
+            <div class="gear-chip" data-lens="16-35" onclick="toggleGearLensFilter('16-35', 'FE 16-35mm F2.8 GM')">
+              <span class="gear-chip-icon">🔭</span>
+              <div class="gear-chip-body">
+                <div class="lens-tag">
+                  <span>FE 16-35mm F2.8 GM</span>
+                  <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(16, 2.8);" title="套入景深計算機">🧮 算景深</button>
+                </div>
+                <span class="lens-sub">82mm 口徑 · 銀河星空 / 極光大景 / 建築室內 / 瀑布晨昏 (12 個題材)</span>
+              </div>
+            </div>
+
+            <!-- 24-70 GM II -->
+            <div class="gear-chip" data-lens="24-70" onclick="toggleGearLensFilter('24-70', 'FE 24-70mm F2.8 GM II')">
+              <span class="gear-chip-icon">🔭</span>
+              <div class="gear-chip-body">
+                <div class="lens-tag">
+                  <span>FE 24-70mm F2.8 GM II</span>
+                  <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(50, 7.1);" title="套入景深計算機">🧮 算景深</button>
+                </div>
+                <span class="lens-sub">82mm 口徑 · 團體合照 / 街拍人文 / 靜物美食 / 旅遊隨拍 (12 個題材)</span>
+              </div>
+            </div>
+
+            <!-- 70-200 GM -->
+            <div class="gear-chip" data-lens="70-200" onclick="toggleGearLensFilter('70-200', 'FE 70-200mm F2.8 GM')">
+              <span class="gear-chip-icon">🔭</span>
+              <div class="gear-chip-body">
+                <div class="lens-tag">
+                  <span>FE 70-200mm F2.8 GM</span>
+                  <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(200, 2.8);" title="套入景深計算機">🧮 算景深</button>
+                </div>
+                <span class="lens-sub">77mm 口徑 · 戶外長焦散景 / 舞台演講 / 高速生態 / 懸日懸月 (9 個題材)</span>
+              </div>
+            </div>
+
+            <!-- 55 1.8 ZA -->
+            <div class="gear-chip" data-lens="55" onclick="toggleGearLensFilter('55', 'Sonnar T* FE 55mm F1.8 ZA')">
+              <span class="gear-chip-icon">🔭</span>
+              <div class="gear-chip-body">
+                <div class="lens-tag">
+                  <span>Sonnar 55mm F1.8 ZA</span>
+                  <button class="gear-calc-btn" onclick="event.stopPropagation(); jumpToLensCalc(55, 1.8);" title="套入景深計算機">🧮 算景深</button>
+                </div>
+                <span class="lens-sub">49mm 口徑 · F1.8大光圈之王 / 螢火蟲 / 暗光人像隨拍 (7 個題材)</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
-          <span>💡 <strong>濾鏡省錢共享技巧：</strong>16-35 GM 與 24-70 GM II 皆為 <strong>82mm 口徑</strong>，只需買一套 82mm CPL 與 ND 即可雙鏡共用！</span>
-          <span>🔄 70-200 GM 為 <strong>77mm</strong>，只需加一枚 <strong>77mm轉82mm轉接環 (Step-Up Ring)</strong> 即可直接共用 82mm 濾鏡！</span>
+
+        <!-- Section 2: 光學濾鏡庫 (明確獨立分開，不與鏡頭混雜) -->
+        <div class="gear-section-block">
+          <div class="gear-section-title">
+            <span>🔲 光學濾鏡庫（82mm 頂級系統）</span>
+            <span class="hint-text">👉 點擊濾鏡可<strong>篩選「需要/推薦此濾鏡的場景」</strong></span>
+          </div>
+          <div class="gear-chip-list">
+            <!-- 82mm CPL -->
+            <div class="gear-chip" data-filter="cpl" onclick="toggleGearFilterFilter('cpl', '82mm CPL 偏光鏡')">
+              <span class="gear-chip-icon">👓</span>
+              <div class="gear-chip-body">
+                <div class="lens-tag">
+                  <span>82mm CPL 偏光鏡</span>
+                  <span style="font-size: 0.72rem; color: var(--accent-emerald); font-weight: normal;">已入庫</span>
+                </div>
+                <span class="lens-sub">消水面岩石反光 / 藍天白雲更飽和 / 櫥窗建築透視 (9 個題材)</span>
+              </div>
+            </div>
+
+            <!-- 82mm ND8 -->
+            <div class="gear-chip" data-filter="nd8" onclick="toggleGearFilterFilter('nd8', '82mm ND8 減光鏡')">
+              <span class="gear-chip-icon">🕶️</span>
+              <div class="gear-chip-body">
+                <div class="lens-tag">
+                  <span>82mm ND8 減光鏡 (減 3 檔)</span>
+                  <span style="font-size: 0.72rem; color: var(--accent-emerald); font-weight: normal;">已入庫</span>
+                </div>
+                <span class="lens-sub">瀑布溪流絲絹 / 艷陽戶外大光圈人像 / 海浪慢門拉絲 (4 個題材)</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; line-height: 1.5;">
+            <span>💡 <strong>口徑原生直上：</strong>16-35 GM 與 24-70 GM II 皆為 <strong>82mm 口徑</strong>，這兩片 82mm 濾鏡皆可雙鏡直上！</span>
+            <span>🔄 <strong>長焦無痛共用：</strong>70-200 GM (77mm) 只需一枚 <strong>77→82mm 升量轉接環 (Step-Up Ring)</strong> 即可直接共用！</span>
+            <span>🌊 <strong>雙鏡疊加技巧：</strong>在陽光強烈的瀑布或海邊，將 <strong>CPL + ND8 疊加</strong>可達 <strong>~4.5 檔減光</strong>，同時去雜光並拉出長曝！</span>
+          </div>
         </div>
       </div>
+
       <div class="search-filter-section">
         <div class="search-box">
           <span class="search-icon">🔍</span>
@@ -1308,11 +1481,20 @@
         </div>
       </div>
 
+      <!-- Active Gear Filter Notice -->
+      <div id="activeGearFilterNotice" class="active-gear-filter-notice" style="display: none;">
+        <div class="notice-left">
+          <span id="activeFilterIcon">🎯</span>
+          <span id="activeFilterText">目前篩選：...</span>
+        </div>
+        <button class="clear-filter-btn" onclick="clearGearFilter()">✕ 顯示全部 20 個場景</button>
+      </div>
+
       <!-- Scene Cards Grid -->
       <div class="scene-grid" id="sceneGrid">
 
         <!-- Scene: 多人團體照 / 合照 -->
-        <article class="scene-card" data-category="portrait group" data-tags="團體照 合照 景深 f/7.1 f/8 閉眼 邊緣變形 前景深">
+        <article class="scene-card" data-category="portrait group" data-lenses="24-70 16-35" data-filters="cpl" data-tags="團體照 合照 景深 f/7.1 f/8 閉眼 邊緣變形 前景深 24-70mm 16-35mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👨‍👩‍👧‍👦 多人團體照 / 全家福合照</h2>
@@ -1380,7 +1562,7 @@
         </article>
 
         <!-- Scene: 85mm 經典半身特寫 / 淺景深人像 -->
-        <article class="scene-card" data-category="portrait" data-tags="人像 85mm 淺景深 特寫 眼睛對焦 糖水照 散景">
+        <article class="scene-card" data-category="portrait" data-lenses="70-200 55" data-filters="nd8" data-tags="人像 85mm 淺景深 特寫 眼睛對焦 糖水照 散景 70-200mm 55mm ND8">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👤 85mm 經典半身 / 糖水特寫人像</h2>
@@ -1445,7 +1627,7 @@
         </article>
 
         <!-- Scene: 35mm / 50mm 環境人文與街拍 -->
-        <article class="scene-card" data-category="portrait" data-tags="35mm 50mm 街拍 人文 旅遊 隨拍 盲拍 泛焦">
+        <article class="scene-card" data-category="portrait" data-lenses="24-70 55 16-35" data-filters="cpl" data-tags="35mm 50mm 街拍 人文 旅遊 隨拍 盲拍 泛焦 24-70mm 55mm 16-35mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🚶 35mm / 50mm 旅遊隨拍與街頭人文</h2>
@@ -1499,7 +1681,7 @@
         </article>
 
         <!-- Scene: 螢火蟲 -->
-        <article class="scene-card" data-category="astro" data-tags="螢火蟲 夜景 長曝 大光圈 疊圖 腳架 紅光 噪點">
+        <article class="scene-card" data-category="astro" data-lenses="55 24-70 16-35" data-filters="" data-tags="螢火蟲 夜景 長曝 大光圈 疊圖 腳架 紅光 噪點 55mm 24-70mm 16-35mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>✨ 螢火蟲微光軌跡拍攝</h2>
@@ -1557,7 +1739,7 @@
         </article>
 
         <!-- Scene: 銀河星空 -->
-        <article class="scene-card" data-category="astro" data-tags="銀河 星空 500法則 NPF法則 超廣角 疊圖 無限遠對焦">
+        <article class="scene-card" data-category="astro" data-lenses="16-35" data-filters="" data-tags="銀河 星空 500法則 NPF法則 超廣角 疊圖 無限遠對焦 16-35mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌌 銀河核心與壯麗星空</h2>
@@ -1613,7 +1795,7 @@
         </article>
 
         <!-- Scene: 極光追光 -->
-        <article class="scene-card" data-category="astro" data-tags="極光 爆發 快門動態調整 低溫 電池保暖 暖暖包">
+        <article class="scene-card" data-category="astro" data-lenses="16-35 55" data-filters="" data-tags="極光 爆發 快門動態調整 低溫 電池保暖 暖暖包 16-35mm 55mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌌 夢幻舞動極光 (Aurora)</h2>
@@ -1668,7 +1850,7 @@
         </article>
 
         <!-- Scene: 煙火施放 -->
-        <article class="scene-card" data-category="astro landscape" data-tags="煙火 B門 黑卡 快門線 ISO100 小光圈 煙霧">
+        <article class="scene-card" data-category="astro landscape" data-lenses="16-35 24-70" data-filters="cpl" data-tags="煙火 B門 黑卡 快門線 ISO100 小光圈 煙霧 16-35mm 24-70mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🎆 璀璨煙火與城市夜景</h2>
@@ -1715,7 +1897,7 @@
         </article>
 
         <!-- Scene: 瀑布流水與絲絹水感 -->
-        <article class="scene-card" data-category="landscape" data-tags="瀑布 流水 慢快門 絲絹 減光鏡 ND鏡 CPL 偏光鏡 腳架">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70" data-filters="cpl nd8" data-tags="瀑布 流水 慢快門 絲絹 減光鏡 ND鏡 CPL 偏光鏡 腳架 16-35mm 24-70mm ND8">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌊 瀑布溪流與綿密絲絹水感</h2>
@@ -1773,7 +1955,7 @@
         </article>
 
         <!-- Scene: 晨昏日出日落 / 藍調時刻 -->
-        <article class="scene-card" data-category="landscape" data-tags="晨昏 日出 日落 藍調 星芒 HDR 包圍曝光 GND">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70 70-200" data-filters="cpl" data-tags="晨昏 日出 日落 藍調 星芒 HDR 包圍曝光 GND 16-35mm 24-70mm 70-200mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌅 晨昏日落與極致藍調時刻 (Blue Hour)</h2>
@@ -1817,7 +1999,7 @@
         </article>
 
         <!-- Scene: 城市夜景與車流光軌 -->
-        <article class="scene-card" data-category="landscape astro" data-tags="城市夜景 車軌 光軌 慢快門 藍調 腳架 小光圈">
+        <article class="scene-card" data-category="landscape astro" data-lenses="16-35 24-70" data-filters="nd8" data-tags="城市夜景 車軌 光軌 慢快門 藍調 腳架 小光圈 16-35mm 24-70mm ND8">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🚗 城市夜景與車流光軌 (Light Trails)</h2>
@@ -1857,7 +2039,7 @@
         </article>
 
         <!-- Scene: 高速運動與飛羽賽事 -->
-        <article class="scene-card" data-category="action" data-tags="運動 飛羽 鳥類 賽車 追焦 連拍 高速快門 AF-C">
+        <article class="scene-card" data-category="action" data-lenses="70-200" data-filters="" data-tags="運動 飛羽 鳥類 賽車 追焦 連拍 高速快門 AF-C 70-200mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏃 運動賽事與飛羽飛鳥 (Sports & Birds)</h2>
@@ -1908,7 +2090,7 @@
         </article>
 
         <!-- Scene: 寵物與活潑孩童 -->
-        <article class="scene-card" data-category="action portrait" data-tags="寵物 狗 貓 兒童 奔跑抓拍 水平視線 AF-C">
+        <article class="scene-card" data-category="action portrait" data-lenses="70-200 24-70 55" data-filters="" data-tags="寵物 狗 貓 兒童 奔跑抓拍 水平視線 AF-C 70-200mm 24-70mm 55mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🐾 奔跑寵物與活潑幼童</h2>
@@ -1948,7 +2130,7 @@
         </article>
 
         <!-- Scene: 靜物與商品商攝 -->
-        <article class="scene-card" data-category="macro" data-tags="靜物 商品 美食 柔光箱 反光板 景深合成 f/8 f/11 腳架">
+        <article class="scene-card" data-category="macro" data-lenses="24-70 55" data-filters="cpl" data-tags="靜物 商品 美食 柔光箱 反光板 景深合成 f/8 f/11 腳架 24-70mm 55mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>📦 精緻商品商攝與美食靜物</h2>
@@ -2000,7 +2182,7 @@
         </article>
 
         <!-- Scene: 微距昆蟲與花卉生態 -->
-        <article class="scene-card" data-category="macro" data-tags="微距 昆蟲 花卉 1:1 毫米景深 雙頭閃燈 景深合成">
+        <article class="scene-card" data-category="macro" data-lenses="24-70 70-200" data-filters="" data-tags="微距 昆蟲 花卉 1:1 毫米景深 雙頭閃燈 景深合成 24-70mm 70-200mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🔬 超微距昆蟲與花草細節</h2>
@@ -2040,7 +2222,7 @@
         </article>
 
         <!-- Scene: 建築外觀與室內空間 -->
-        <article class="scene-card" data-category="landscape" data-tags="建築 室內 橫平豎直 透視校正 偏光鏡 廣角 畸變">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35" data-filters="cpl" data-tags="建築 室內 橫平豎直 透視校正 偏光鏡 廣角 畸變 16-35mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🏛️ 建築外觀與室內空間空間感</h2>
@@ -2080,7 +2262,7 @@
         </article>
 
         <!-- Scene: 舞台表演與室內演講演唱會 -->
-        <article class="scene-card" data-category="action portrait" data-tags="舞台 演唱會 演講 室內 暗光 高ISO 點測光 70-200mm">
+        <article class="scene-card" data-category="action portrait" data-lenses="70-200 55" data-filters="" data-tags="舞台 演唱會 演講 室內 暗光 高ISO 點測光 70-200mm 55mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🎤 室內舞台、演講與演唱會</h2>
@@ -2119,7 +2301,7 @@
           </div>
         </article>
         <!-- Scene: 135mm / 200mm 戶外長焦人像 -->
-        <article class="scene-card" data-category="portrait" data-tags="人像 135mm 200mm 長焦 空氣切割 壓縮感 戶外 散景">
+        <article class="scene-card" data-category="portrait" data-lenses="70-200" data-filters="" data-tags="人像 135mm 200mm 長焦 空氣切割 壓縮感 戶外 散景 70-200mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>👤 135mm / 200mm 極致空間壓縮與空氣切割人像</h2>
@@ -2173,7 +2355,7 @@
         </article>
 
         <!-- Scene: 海岸慢門海浪 -->
-        <article class="scene-card" data-category="landscape" data-tags="海岸 海浪 慢門 拉絲 霧化 減光鏡 ND1000 腳架 CPL 潮汐">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70" data-filters="cpl nd8" data-tags="海岸 海浪 慢門 拉絲 霧化 減光鏡 ND1000 腳架 CPL 潮汐 16-35mm 24-70mm ND8">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌊 海岸岩石慢門與海浪拉絲</h2>
@@ -2217,7 +2399,7 @@
         </article>
 
         <!-- Scene: 雪景與高調雪山 -->
-        <article class="scene-card" data-category="landscape" data-tags="雪景 雪山 白加黑減 曝光補償 偏光鏡 低溫 保暖 結露">
+        <article class="scene-card" data-category="landscape" data-lenses="16-35 24-70 70-200" data-filters="cpl" data-tags="雪景 雪山 白加黑減 曝光補償 偏光鏡 低溫 保暖 結露 16-35mm 24-70mm 70-200mm CPL">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>❄️ 壯麗雪景與高調雪山 (Snowscape)</h2>
@@ -2257,7 +2439,7 @@
         </article>
 
         <!-- Scene: 超長焦懸日懸月 -->
-        <article class="scene-card" data-category="landscape astro" data-tags="懸日 懸月 長焦 400mm 600mm 透視 地景 大氣熱浪 腳架">
+        <article class="scene-card" data-category="landscape astro" data-lenses="70-200" data-filters="" data-tags="懸日 懸月 長焦 400mm 600mm 透視 地景 大氣熱浪 腳架 70-200mm">
           <div class="scene-header">
             <div class="scene-title-group">
               <h2>🌕 超長焦巨型懸日與懸月 (Moon & Sun Alignment)</h2>
@@ -2874,7 +3056,7 @@
         if (toggleMyGearBtn) {
           if (myGearModeActive) {
             toggleMyGearBtn.classList.add('active');
-            toggleMyGearBtn.innerHTML = '<span>🎯 器材專屬數據快選：已啟用</span>';
+            toggleMyGearBtn.innerHTML = '<span>🎯 器材專屬推薦：已啟用</span>';
           } else {
             toggleMyGearBtn.classList.remove('active');
             toggleMyGearBtn.innerHTML = '<span>顯示通用模式 (點擊切換為我的裝備)</span>';
@@ -2888,6 +3070,85 @@
           updateMyGearBoxes();
         });
       }
+
+      // --- Gear Filter State (Lenses & Filters) ---
+      let activeGearLens = null;   // '16-35' | '24-70' | '70-200' | '55'
+      let activeGearFilter = null; // 'cpl' | 'nd8'
+
+      window.toggleGearLensFilter = function(lensKey, lensName) {
+        if (activeGearLens === lensKey) {
+          // Toggle off if already active
+          clearGearFilter();
+          return;
+        }
+        activeGearLens = lensKey;
+        activeGearFilter = null;
+
+        // Highlight active lens chip
+        document.querySelectorAll('.gear-chip[data-lens]').forEach(chip => {
+          chip.classList.toggle('active', chip.getAttribute('data-lens') === lensKey);
+        });
+        document.querySelectorAll('.gear-chip[data-filter]').forEach(chip => {
+          chip.classList.remove('active');
+        });
+
+        // Show active notice banner
+        const notice = document.getElementById('activeGearFilterNotice');
+        const icon = document.getElementById('activeFilterIcon');
+        if (notice && icon) {
+          notice.style.display = 'flex';
+          icon.textContent = '🔭';
+        }
+
+        filterScenes();
+
+        if (notice) {
+          notice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      };
+
+      window.toggleGearFilterFilter = function(filterKey, filterName) {
+        if (activeGearFilter === filterKey) {
+          // Toggle off if already active
+          clearGearFilter();
+          return;
+        }
+        activeGearFilter = filterKey;
+        activeGearLens = null;
+
+        // Highlight active filter chip
+        document.querySelectorAll('.gear-chip[data-filter]').forEach(chip => {
+          chip.classList.toggle('active', chip.getAttribute('data-filter') === filterKey);
+        });
+        document.querySelectorAll('.gear-chip[data-lens]').forEach(chip => {
+          chip.classList.remove('active');
+        });
+
+        // Show active notice banner
+        const notice = document.getElementById('activeGearFilterNotice');
+        const icon = document.getElementById('activeFilterIcon');
+        if (notice && icon) {
+          notice.style.display = 'flex';
+          icon.textContent = filterKey === 'cpl' ? '👓' : '🕶️';
+        }
+
+        filterScenes();
+
+        if (notice) {
+          notice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      };
+
+      window.clearGearFilter = function() {
+        activeGearLens = null;
+        activeGearFilter = null;
+        document.querySelectorAll('.gear-chip[data-lens], .gear-chip[data-filter]').forEach(chip => {
+          chip.classList.remove('active');
+        });
+        const notice = document.getElementById('activeGearFilterNotice');
+        if (notice) notice.style.display = 'none';
+        filterScenes();
+      };
 
       // --- Navigation Tabs ---
       const navBtns = document.querySelectorAll('.nav-btn');
@@ -2919,12 +3180,15 @@
 
       function filterScenes() {
         const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
 
         sceneCards.forEach(card => {
           const title = card.querySelector('h2').textContent.toLowerCase();
           const desc = card.querySelector('.scene-desc').textContent.toLowerCase();
           const tags = (card.getAttribute('data-tags') || '').toLowerCase();
           const category = (card.getAttribute('data-category') || '').toLowerCase();
+          const lenses = (card.getAttribute('data-lenses') || '').toLowerCase();
+          const filters = (card.getAttribute('data-filters') || '').toLowerCase();
           const textContent = card.textContent.toLowerCase();
 
           const matchesSearch = !query || 
@@ -2944,12 +3208,31 @@
             }
           }
 
-          if (matchesSearch && matchesTag) {
+          let matchesGear = true;
+          if (activeGearLens) {
+            matchesGear = lenses.includes(activeGearLens);
+          } else if (activeGearFilter) {
+            matchesGear = filters.includes(activeGearFilter);
+          }
+
+          if (matchesSearch && matchesTag && matchesGear) {
             card.style.display = 'flex';
+            visibleCount++;
           } else {
             card.style.display = 'none';
           }
         });
+
+        // Update notice banner text
+        const noticeText = document.getElementById('activeFilterText');
+        if ((activeGearLens || activeGearFilter) && noticeText) {
+          const name = activeGearLens ? 
+            (activeGearLens === '16-35' ? 'FE 16-35mm F2.8 GM' : 
+             activeGearLens === '24-70' ? 'FE 24-70mm F2.8 GM II' :
+             activeGearLens === '70-200' ? 'FE 70-200mm F2.8 GM' : 'Sonnar T* FE 55mm F1.8 ZA') :
+            (activeGearFilter === 'cpl' ? '82mm CPL 偏光鏡' : '82mm ND8 減光鏡');
+          noticeText.innerHTML = `正在篩選<strong>【${name}】</strong>適拍題材（共找到 <strong>${visibleCount}</strong> 個場景）：`;
+        }
       }
 
       searchInput.addEventListener('input', filterScenes);
@@ -2959,7 +3242,11 @@
           tagBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           currentTag = btn.getAttribute('data-tag');
-          filterScenes();
+          if (currentTag === 'all') {
+            clearGearFilter();
+          } else {
+            filterScenes();
+          }
         });
       });
 
