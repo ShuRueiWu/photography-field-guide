@@ -1203,8 +1203,13 @@
           </div>
           <div class="gear-chip" title="戶外風景消光去反光利器">
             <span>👓</span>
-            <span class="lens-tag">已備 CPL 偏光鏡</span>
+            <span class="lens-tag">已備 82mm CPL 偏光鏡</span>
             <span class="lens-sub">消光去水面岩石反光/藍天加深</span>
+          </div>
+          <div class="gear-chip" title="82mm ND8 (減 3 檔 EV)，直上 16-35 與 24-70">
+            <span>🕶️</span>
+            <span class="lens-tag">已備 82mm ND8 減光鏡</span>
+            <span class="lens-sub">減 3 檔 · 瀑布溪流/艷陽大光圈神器</span>
           </div>
         </div>
         <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
@@ -1312,7 +1317,7 @@
               <span class="lens-pick">首選：70-200 GM @ 135-200mm f/2.8 或 55 1.8 ZA</span>
             </div>
             <div class="user-gear-box-content">
-              您沒有 85mm f/1.4，但戶外請直接拿出 <strong>70-200 GM 推到 135mm–200mm f/2.8</strong>！200mm 望遠壓縮帶來的背景虛化奶油融化感超越 85mm f/1.8！若在室內或近距離半身，則換上 <strong>55mm F1.8 ZA @ f/1.8–f/2.2</strong>，蔡司通透空氣感無可比擬。
+              您沒有 85mm f/1.4，但戶外請直接拿出 <strong>70-200 GM 推到 135mm–200mm f/2.8</strong>！200mm 望遠壓縮帶來的背景虛化奶油融化感超越 85mm f/1.8！若在艷陽天戶外想用 <strong>55mm F1.8 ZA 全開 f/1.8</strong> 或 <strong>70-200 GM 全開 f/2.8</strong> 拍極致散景，強烈陽光往往讓快門飆破 1/8000s 導致過曝。此時只要拿出您的 <strong>82mm ND8 減光鏡</strong>（搭配轉接環），立即減 3 檔曝光，將快門壓回 1/1000s 安全範圍，大太陽下也能放心開大光圈！
             </div>
           </div>
 
@@ -1647,7 +1652,7 @@
               <span class="lens-pick">首選：16-35 GM 或 24-70 GM II + 82mm CPL/ND</span>
             </div>
             <div class="user-gear-box-content">
-              兩顆大三元鏡頭口徑均為 <strong>82mm</strong>！您只需要備妥一枚 82mm CPL 偏光鏡與一枚 82mm ND64 減光鏡，兩顆鏡頭隨時交換通用，光圈設在 f/8–f/11 最利甜區。
+              您手頭已有 <strong>82mm CPL 與 82mm ND8</strong>！直接鎖在 16-35 GM 或 24-70 GM II 上。在陰天或溪流林蔭下，原本約 1/30s 的快門裝上 ND8 後剛好降至 <strong>1/4 秒黃金絲絹水感</strong>！若水流光線仍偏亮，可將 <strong>CPL 疊在 ND8 上</strong>（總共約減 4.5 檔），快門直接進入 0.4s ~ 1s 的綿密絲流領域！
             </div>
           </div>
 
@@ -2423,6 +2428,17 @@
         <div class="calc-card" id="calc-nd">
           <div class="calc-header">
             <h3>🕶️ ND 減光鏡曝光換算與長曝計時器</h3>
+          <!-- User ND8 Quick Preset -->
+          <div class="calc-quick-strip" style="margin-bottom: 0.8rem;">
+            <div class="calc-quick-label">⚡ 您的現役濾鏡快速換算 (82mm ND8 減 3 檔)：</div>
+            <div class="calc-quick-buttons">
+              <button type="button" class="quick-preset-btn" onclick="applyMyNd8Preset(0.0166)">☀️ 艷陽日常 1/60s ➔ 裝上您的 ND8 (快門變 1/8 秒)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyMyNd8Preset(0.0333)">🌊 林蔭流水 1/30s ➔ 裝上您的 ND8 (快門變 1/4 秒絲絹水感)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyMyNd8Preset(0.008)">👤 戶外人像 1/125s ➔ 裝上您的 ND8 (快門變 1/15 秒)</button>
+              <button type="button" class="quick-preset-btn" onclick="applyCplNd8Stacked(0.0166)">✨ CPL + ND8 雙片疊加 (約減 4.5 檔 ➔ 1/60s 變 0.38 秒)</button>
+            </div>
+          </div>
+
             <p>無濾鏡基準測光 ➔ 裝上減光鏡長曝秒數，野外現場直接按鈕倒數！</p>
           </div>
 
@@ -2654,8 +2670,8 @@
             <input type="checkbox" data-id="c11">
             <span class="check-num-badge">11</span>
             <div class="check-label">
-              <span class="check-title">您的 CPL 偏光鏡與 77mm 轉 82mm 轉接環已入包</span>
-              <span class="check-desc">您已備有 CPL 偏光鏡！拍流水、海浪、藍天必備。16-35 GM 與 24-70 GM II 均為 82mm，若攜帶 70-200 GM (77mm) 請務必帶上 77-82mm 轉接環共用！</span>
+              <span class="check-title">您的 82mm CPL、82mm ND8 減光鏡與 77-82 轉接環已入包</span>
+              <span class="check-desc">您已擁有 82mm CPL 偏光鏡與 82mm ND8（減 3 檔）！可直上 16-35 GM 與 24-70 GM II；若攜帶 70-200 GM (77mm)，務必備妥 77mm 轉 82mm 轉接環共用！</span>
             </div>
           </label>
           <label class="check-item">
@@ -2719,6 +2735,22 @@
 
       
       // --- User Specific Gear Logic (Sony A7R3 + Trinity + 55 ZA) ---
+      
+      window.applyMyNd8Preset = function(baseVal) {
+        document.getElementById('baseShutter').value = String(baseVal);
+        document.getElementById('ndSelect').value = "3"; // ND8 = 3 stops
+        calculateNd();
+      };
+
+      window.applyCplNd8Stacked = function(baseVal) {
+        document.getElementById('baseShutter').value = String(baseVal);
+        // CPL (~1.5 stops) + ND8 (3 stops) ≈ 4.5 stops, we select 4 or closest
+        document.getElementById('ndSelect').value = "4"; 
+        calculateNd();
+        const customSecs = baseVal * Math.pow(2, 4.5);
+        document.getElementById('resNdShutter').textContent = `${customSecs.toFixed(2)} 秒 (CPL+ND8疊加減4.5檔)`;
+      };
+
       window.applyLensPreset = function(focal, aperture, dist) {
         document.getElementById('sensorSelect').value = "0.030"; // Full Frame A7R3
         document.getElementById('focalInput').value = focal;
