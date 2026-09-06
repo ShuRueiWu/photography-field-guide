@@ -783,38 +783,74 @@
     }
 
     .check-item {
-      display: flex;
+      display: grid;
+      grid-template-columns: 22px 34px 1fr;
       align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.6rem 0.5rem;
-      border-radius: 8px;
-      transition: background 0.15s;
+      gap: 0.85rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.6rem;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
       cursor: pointer;
       user-select: none;
     }
     .check-item:hover {
-      background: var(--bg-card);
+      background: var(--bg-card-hover);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateX(2px);
+    }
+    .check-item.completed {
+      background: rgba(52, 211, 153, 0.06);
+      border-color: rgba(52, 211, 153, 0.35);
     }
     .check-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      margin-top: 2px;
+      width: 20px;
+      height: 20px;
+      margin-top: 1px;
       cursor: pointer;
       accent-color: var(--accent-blue);
+    }
+    .check-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 22px;
+      margin-top: 1px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent-blue);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .check-item.completed .check-num-badge {
+      background: rgba(52, 211, 153, 0.15);
+      border-color: rgba(52, 211, 153, 0.35);
+      color: var(--accent-emerald);
     }
     .check-label {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      gap: 0.2rem;
+      min-width: 0;
     }
     .check-title {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--text-main);
+      line-height: 1.4;
     }
     .check-desc {
-      font-size: 0.76rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
+      line-height: 1.45;
     }
     .check-item.completed .check-title {
       text-decoration: line-through;
@@ -1164,6 +1200,11 @@
             <span>🔭</span>
             <span class="lens-tag">Sonnar 55mm F1.8 ZA</span>
             <span class="lens-sub">49mm 口徑 · 最大光圈王/螢火蟲</span>
+          </div>
+          <div class="gear-chip" title="戶外風景消光去反光利器">
+            <span>👓</span>
+            <span class="lens-tag">已備 CPL 偏光鏡</span>
+            <span class="lens-sub">消光去水面岩石反光/藍天加深</span>
           </div>
         </div>
         <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
@@ -2519,109 +2560,109 @@
           </div>
         </div>
 
-        <div class="check-group">
+                <div class="check-group">
           <div class="check-group-title">💾 儲存與電力 (最致命缺漏)</div>
-
           <label class="check-item">
             <input type="checkbox" data-id="c1">
+            <span class="check-num-badge">01</span>
             <div class="check-label">
-              <span class="check-title">1. 相機內已確認裝入高速記憶卡，且已在相機內完成格式化</span>
-              <span class="check-desc">出發前一定要插在機身內確認能正常寫入，切忌到了現場開機才看見「NO CARD」。</span>
+              <span class="check-title">相機內已確認裝入高速記憶卡，且已在機身內完成格式化</span>
+              <span class="check-desc">出發前務必插在機身內開機確認能正常讀寫，切忌到了現場才看見「NO CARD」。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c2">
+            <span class="check-num-badge">02</span>
             <div class="check-label">
-              <span class="check-title">2. 額外攜帶 1~2 張備用記憶卡放在相機包夾層</span>
+              <span class="check-title">額外攜帶 1~2 張備用記憶卡放相機包夾層</span>
               <span class="check-desc">防範主卡讀寫錯誤、容量爆滿或突發性卡片鎖定壞軌。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c3">
+            <span class="check-num-badge">03</span>
             <div class="check-label">
-              <span class="check-title">3. 機身主電池 100% 充飽電</span>
-              <span class="check-desc">出發前一晚確保充電座綠燈，並開機確認電量顯示滿格。</span>
+              <span class="check-title">Sony A7R3 機身主電池 100% 充飽電</span>
+              <span class="check-desc">出發前一晚確認充電座綠燈，並開機確認電量顯示滿格 100%。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c4">
+            <span class="check-num-badge">04</span>
             <div class="check-label">
-              <span class="check-title">4. 至少 1~2 顆備用原廠/副廠電池已充飽</span>
-              <span class="check-desc">低溫雪地或長曝縮時攝影耗電極快，無反相機電池消耗尤甚。</span>
+              <span class="check-title">至少 1~2 顆 NP-FZ100 備用電池已充飽帶齊</span>
+              <span class="check-desc">長曝縮時、低溫雪地或連續追焦極耗電，無反機身必備備用電池。</span>
             </div>
           </label>
         </div>
 
         <div class="check-group">
           <div class="check-group-title">⚙️ 機身關鍵設定防呆</div>
-
           <label class="check-item">
             <input type="checkbox" data-id="c5">
+            <span class="check-num-badge">05</span>
             <div class="check-label">
-              <span class="check-title">5. 照片儲存格式確認設為 RAW（或 RAW + Fine JPEG）</span>
+              <span class="check-title">照片儲存格式確認設為 RAW（或 RAW + Fine JPEG）</span>
               <span class="check-desc">保留 14-bit 最大動態範圍與後期白平衡調整空間，切勿誤設為純壓縮 JPEG。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c6">
+            <span class="check-num-badge">06</span>
             <div class="check-label">
-              <span class="check-title">6. 上腳架拍攝記得「關閉機身與鏡頭防手震 (IBIS/IS/VR/OSS)」</span>
-              <span class="check-desc">避免腳架上防手震元件因無震動誤判自激產生微震發糊。</span>
+              <span class="check-title">上腳架拍攝時，記得「關閉機身與鏡頭防手震 (SteadyShot/OSS)」</span>
+              <span class="check-desc">避免腳架上防手震元件因無震動誤判自激產生微震發糊（手持拍攝時再打開）。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c7">
+            <span class="check-num-badge">07</span>
             <div class="check-label">
-              <span class="check-title">7. 拍攝星空/煙火/螢火蟲時，記得「關閉長時間曝光降噪」</span>
+              <span class="check-title">拍攝星空/煙火/螢火蟲時，記得「關閉長時間曝光降噪」</span>
               <span class="check-desc">否則曝光 20 秒會花額外 20 秒跑黑畫面消除噪點，錯過下一個黃金瞬間。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c8">
+            <span class="check-num-badge">08</span>
             <div class="check-label">
-              <span class="check-title">8. ISO 設定確認已從昨天的極限高感 (如 12800) 重設回標準</span>
-              <span class="check-desc">避免大白天一開機在不知情下用超高 ISO 拍攝導致滿是雜訊。</span>
+              <span class="check-title">ISO 設定確認已從昨天的極限高感重設回標準</span>
+              <span class="check-desc">避免大白天一開機在不知情下用 ISO 6400+ 拍攝導致滿是雜訊。</span>
             </div>
           </label>
         </div>
 
         <div class="check-group">
           <div class="check-group-title">🎒 配件與光學裝備</div>
-
           <label class="check-item">
             <input type="checkbox" data-id="c9">
+            <span class="check-num-badge">09</span>
             <div class="check-label">
-              <span class="check-title">9. 腳架快拆板 (Quick Release Plate) 已緊鎖在機身底部</span>
+              <span class="check-title">腳架快拆板 (Quick Release Plate) 已緊鎖在 A7R3 機身底部</span>
               <span class="check-desc">攝影師界十大痛點之首：到了現場帶了重型腳架，卻發現快拆板留在家裡！</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c10">
+            <span class="check-num-badge">10</span>
             <div class="check-label">
-              <span class="check-title">10. 鏡頭前後鏡片、感光元件及觀景窗已用吹球與拭鏡筆清潔</span>
+              <span class="check-title">鏡頭前後鏡片、感光元件及觀景窗已用吹球與拭鏡筆清潔</span>
               <span class="check-desc">檢查逆光下有無頑固指紋油漬或毛屑。</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c11">
+            <span class="check-num-badge">11</span>
             <div class="check-label">
-              <span class="check-title">11. 必備濾鏡 (CPL偏光鏡 / ND減光鏡 / 轉接環) 已收入收納盒</span>
-              <span class="check-desc">檢查濾鏡口徑是否吻合當天攜帶的鏡頭尺寸（如 67mm, 77mm, 82mm）。</span>
+              <span class="check-title">您的 CPL 偏光鏡與 77mm 轉 82mm 轉接環已入包</span>
+              <span class="check-desc">您已備有 CPL 偏光鏡！拍流水、海浪、藍天必備。16-35 GM 與 24-70 GM II 均為 82mm，若攜帶 70-200 GM (77mm) 請務必帶上 77-82mm 轉接環共用！</span>
             </div>
           </label>
-
           <label class="check-item">
             <input type="checkbox" data-id="c12">
+            <span class="check-num-badge">12</span>
             <div class="check-label">
-              <span class="check-title">12. 鏡頭遮光罩 (Lens Hood) 正裝入袋、快門線電池有電</span>
+              <span class="check-title">鏡頭遮光罩 (Lens Hood) 正裝入袋、快門線電池有電</span>
               <span class="check-desc">遮光罩能阻絕雜散光進入，並在意外碰撞或摔落時提供鏡頭第一道物理防護緩衝。</span>
             </div>
           </label>
