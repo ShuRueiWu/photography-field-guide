@@ -286,13 +286,16 @@
     /* Scene Grid */
     .scene-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 1.25rem;
     }
 
     @media (max-width: 480px) {
       .scene-grid {
         grid-template-columns: 1fr;
+      }
+      .scene-card {
+        padding: 1rem;
       }
     }
 
@@ -329,11 +332,12 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      line-height: 1.35;
     }
 
     .scene-category-pill {
       font-size: 0.7rem;
-      padding: 0.15rem 0.5rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 12px;
       background: rgba(56, 189, 248, 0.12);
       color: var(--accent-blue);
@@ -345,41 +349,56 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       margin-top: 0.2rem;
+      line-height: 1.45;
     }
 
     /* Parameters Grid (The Golden Exposure Triangle) */
     .param-box {
       background: var(--bg-card);
       border-radius: 12px;
-      padding: 0.85rem;
+      padding: 0.85rem 0.95rem;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
-      border: 1px solid rgba(255,255,255,0.04);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem 0.65rem;
+      border: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 420px) {
+      .param-box {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .param-box .param-item:nth-child(3) {
+        grid-column: span 2;
+      }
     }
 
     .param-item {
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
+      min-width: 0;
     }
 
     .param-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 600;
-    }
-
-    .param-value {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      font-family: var(--font-mono);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .param-value {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      word-break: normal;
+      overflow-wrap: break-word;
     }
 
     .param-extra {
@@ -1559,18 +1578,18 @@
             <span class="scene-category-pill">極地追光</span>
           </div>
 
-          <div class="param-box">
+          <div class="param-box" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
             <div class="param-item">
               <span class="param-label">慢速微弱極光</span>
-              <span class="param-value">5s – 10s | f/2.0 | ISO 1600</span>
+              <span class="param-value">5s–10s · f/2.0 · ISO 1600</span>
             </div>
             <div class="param-item">
               <span class="param-label">劇烈跳躍爆發</span>
-              <span class="param-value">1s – 3s | f/1.4 | ISO 6400</span>
+              <span class="param-value">1s–3s · f/2.8 · ISO 6400</span>
             </div>
-            <div class="param-item">
-              <span class="param-label">白平衡</span>
-              <span class="param-value">3500K – 4000K</span>
+            <div class="param-item" style="grid-column: span 2;">
+              <span class="param-label">色溫白平衡</span>
+              <span class="param-value">3500K – 4000K (冷調極光)</span>
             </div>
             <div class="param-extra">
               <span>🎯 <strong>對焦：</strong>對準遠處地平線燈火或亮星手動鎖定 MF</span>
@@ -2193,18 +2212,18 @@
             <span class="scene-category-pill">天文地景</span>
           </div>
 
-          <div class="param-box">
+          <div class="param-box" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
             <div class="param-item">
-              <span class="param-label">懸月曝光</span>
-              <span class="param-value">1/125s – 1/250s | f/8 | ISO 200</span>
+              <span class="param-label">懸月特寫曝光</span>
+              <span class="param-value">1/125s–1/250s · f/8 · ISO 200</span>
             </div>
             <div class="param-item">
-              <span class="param-label">懸日日落</span>
-              <span class="param-value">1/500s – 1/2000s | f/11 | ISO 100</span>
+              <span class="param-label">懸日日落曝光</span>
+              <span class="param-value">1/500s–1/2000s · f/11 · ISO 100</span>
             </div>
-            <div class="param-item">
-              <span class="param-label">推薦焦距</span>
-              <span class="param-value">400mm – 800mm 等效</span>
+            <div class="param-item" style="grid-column: span 2;">
+              <span class="param-label">推薦焦段</span>
+              <span class="param-value">400mm – 800mm 等效長焦</span>
             </div>
             <div class="param-extra">
               <span>🎯 <strong>拍攝距離：</strong>離前景地標越遠（通常 2~10 公里），日月的相對視覺比例越大</span>
